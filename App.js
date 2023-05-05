@@ -1,4 +1,4 @@
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Dimensions } from 'react-native';
@@ -18,13 +18,17 @@ export default function App() {
   const [artistes, setArtistes] = useState([])
   const [localisations, setLocalisations] = useState([])
   const [partenaires, setPartenaires] = useState([])
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let postsURL = "http://cchost.freeboxos.fr/LiveEvents/wp-json/wp/v2/posts?_embed&per_page=100"
+    setLoading(true);
     axios.get(postsURL).then((res) => {
       setPosts(JSON.parse(res.request._response))
+      setLoading(false);
     }).catch((error) => {
       console.log('ceci est une erreur ' + error)
+      setLoading(false);
     });
   }, [])
 
@@ -61,26 +65,30 @@ export default function App() {
     setPartenaires(filteredPosts);
   }, [posts]);
 
+  if (loading) {
+    return (
+      <View style={styles.loading}>
+        <Text>Loading</Text>
+      </View>
+    );
+  }
+
   return (
     <NavigationContainer>
       <Drawer.Navigator
-        initialRouteName="Accueil"
+        initialRouteName="Programmation"
         screenOptions={{
           headerTitle: () => (
             <View style={styles.header}>
               <View style={styles.headerImageLogo}>
                 <Image source={require('./icones/concert.png')} style={styles.headerImageLogoAdjust} />
               </View>
-              <View style={styles.headerImageLeft}>
-                <Image source={require('./icones/notification.png')} style={styles.headerImageLeftNotif} />
-                <Image source={require('./icones/france.png')} style={styles.headerImageLeftDrapeau} />
+              <View style={styles.headerImageRight}>
+                <Image source={require('./icones/notification.png')} style={styles.headerImageRightNotif} />
+                <Image source={require('./icones/france.png')} style={styles.headerImageRightDrapeau} />
               </View>
             </View>
           ),
-          headerStyle: {
-            borderBottomRightRadius: 20,
-            borderBottomLeftRadius: 20,
-          },
         }}
       >
         <Drawer.Screen name="Accueil" component={Accueil} />
@@ -116,21 +124,27 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     alignItems: 'center',
   },
-  headerImageLeft: {
+  headerImageRight: {
     flexDirection: 'row'
   },
-  headerImageLeftNotif: {
+  headerImageRightNotif: {
     width: screenWidth * 0.08,
     height: screenWidth * 0.08,
     resizeMode: 'contain',
     alignItems: 'center',
     marginRight: 15
   },
-  headerImageLeftDrapeau: {
+  headerImageRightDrapeau: {
     width: screenWidth * 0.06,
     height: screenWidth * 0.06,
     resizeMode: 'contain',
-    alignItems: 'center',
-    marginTop: 'auto'
+    marginTop: 'auto',
+    marginBottom: 'auto',
+  },
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   }
 });
