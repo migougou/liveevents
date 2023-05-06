@@ -9,6 +9,7 @@ import Partenaires from './components/Partenaires';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Billetterie from './components/Billetterie';
+import DetailsArtiste from './components/DetailsArtiste';
 
 const screenWidth = Dimensions.get('window').width;
 const Drawer = createDrawerNavigator();
@@ -99,6 +100,9 @@ export default function App() {
         <Drawer.Screen name="Billetterie" component={Billetterie} />
         <Drawer.Screen name="Partenaires">
           {(props) => <Partenaires {...props} partenaires={partenaires} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="DetailsArtiste">
+          {(props) => <DetailsArtiste {...props} artiste={artistes[0]} />}
         </Drawer.Screen>
       </Drawer.Navigator>
     </NavigationContainer>
