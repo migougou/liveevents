@@ -40,41 +40,35 @@ const Programmation = ({ artistes }) => {
     */
     function filtres(arrayArtistes, arrayFiltre) {
         let listes = []
-        arrayFiltre.filter(arrayInfo => {
-
+        arrayFiltre.forEach(arrayInfo => {
             // Compare les éléments séléctionnés du filtre scènes avec les artistes
             if (arrayInfo.scene !== undefined) {
-                let liste = []
-                arrayArtistes.filter(artiste => {
-                    if (arrayInfo.selected && arrayInfo.scene === artiste.acf.scene) {
-                        liste.push(artiste);
-                    }
+                let liste = arrayArtistes.filter(artiste => {
+                    return arrayInfo.selected && arrayInfo.scene === artiste.acf.scene;
                 })
                 listes.push(liste)
             }
             // Compare les éléments séléctionnés du filtre stylesmusicaux avec les artistes
             else if (arrayInfo.style !== undefined) {
-                let liste = []
-                arrayArtistes.filter(artiste => {
-                    if (arrayInfo.selected && arrayInfo.style === artiste.acf.style_musical) {
-                        liste.push(artiste);
-                    }
+                let liste = arrayArtistes.filter(artiste => {
+                    return arrayInfo.selected && arrayInfo.style === artiste.acf.style_musical;
                 })
                 listes.push(liste)
             }
         })
-
-        // Test des filtres utilisés pour que s'il n'y a pas de filtre, on retourne la liste sans traitement.
-        let emptyTest = true;
-        listes.forEach(scene => {
-            if (scene.length !== 0) {
-                emptyTest = false
-            }
-        })
-        if (emptyTest) {
+    
+        let resultList = listes.flat();
+    
+        // Si aucun filtre n'est sélectionné, retourne le tableau original d'artistes
+        if (arrayFiltre.every(info => !info.selected)) {
             return arrayArtistes;
+        }
+    
+        // Si aucun résultat n'est trouvé, retourne un tableau vide
+        if (resultList.length === 0) {
+            return [];
         } else {
-            return listes.flat();
+            return resultList;
         }
     }
 
@@ -338,6 +332,7 @@ const Programmation = ({ artistes }) => {
                             renderItem={({ item }) => <CarteArtiste item={item} />}
                             keyExtractor={item => item.id}
                             style={styles.list}
+                            ListEmptyComponent={<Text>Aucun artiste ne correspond à ce ou ces critères de filtre.</Text>}
                         />
                     </View>
             }
