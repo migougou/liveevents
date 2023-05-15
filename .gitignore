@@ -1,1 +1,4 @@
 node_modules
+
+# Création automatique d'un dossier .idea avec des fichiers .xml pour une raison inconnue (Benjamin)
+.idea
