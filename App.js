@@ -21,16 +21,23 @@ export default function App() {
   const [partenaires, setPartenaires] = useState([])
   const [loading, setLoading] = useState(true);
 
+  //fetch des données de worpress, a mettre en commentaire si on veut passer par le json
+  /*   useEffect(() => {
+      let postsURL = "http://cchost.freeboxos.fr/LiveEvents/wp-json/wp/v2/posts?_embed&per_page=100"
+      setLoading(true);
+      axios.get(postsURL).then((res) => {
+        setPosts(JSON.parse(res.request._response))
+        setLoading(false);
+      }).catch((error) => {
+        console.log('ceci est une erreur ' + error)
+        setLoading(false);
+      });
+    }, []) */
+
+  //récupération des données du wordpress via le json, a mettre en commentaire si on veut passer par fetch du site wordpress
   useEffect(() => {
-    let postsURL = "http://cchost.freeboxos.fr/LiveEvents/wp-json/wp/v2/posts?_embed&per_page=100"
-    setLoading(true);
-    axios.get(postsURL).then((res) => {
-      setPosts(JSON.parse(res.request._response))
-      setLoading(false);
-    }).catch((error) => {
-      console.log('ceci est une erreur ' + error)
-      setLoading(false);
-    });
+    setPosts(require('./wordpress.json'))
+    setLoading(false)
   }, [])
 
   useEffect(() => {
