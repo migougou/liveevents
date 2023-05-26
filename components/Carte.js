@@ -1,6 +1,7 @@
-import React, { useState } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, Text, Image } from "react-native";
+
+import s_carte from "../styles/carte.js"
 
 const toiletIcon = require("../icones/toilet-icon.png");
 const sceneIcon = require("../icones/scene.png");
@@ -44,9 +45,9 @@ const secourPins = [
 
 const Carte = () => {
   return (
-    <View style={styles.container}>
+    <View style={s_carte.container}>
       <MapView
-        style={styles.map}
+        style={s_carte.map}
         initialRegion={{
           ...initialPin,
           latitudeDelta: 0.02,
@@ -55,50 +56,50 @@ const Carte = () => {
       >
         {toiletPins.map((toilet, index) => (
           <Marker key={index} coordinate={toilet}>
-            <Image source={toiletIcon} style={styles.toiletIcon} />
-            <Callout style={styles.callout}>
+            <Image source={toiletIcon} style={s_carte.toiletIcon} />
+            <Callout style={s_carte.callout}>
               <Text>Toilettes</Text>
             </Callout>
           </Marker>
         ))}
         {scenePins.map((scene, index) => (
           <Marker key={index} coordinate={scene}>
-            <Image source={sceneIcon} style={styles.sceneIcon} />
-            <Callout style={styles.callout}>
+            <Image source={sceneIcon} style={s_carte.sceneIcon} />
+            <Callout style={s_carte.callout}>
               <Text>Scene</Text>
             </Callout>
           </Marker>
         ))}
         {restauPins.map((restau, index) => (
           <Marker key={index} coordinate={restau}>
-            <Image source={restauIcon} style={styles.restauIcon} />
-            <Callout style={styles.calloutRestau}>
+            <Image source={restauIcon} style={s_carte.restauIcon} />
+            <Callout style={s_carte.calloutRestau}>
               <Text>Restauration</Text>
             </Callout>
           </Marker>
         ))}
         {secourPins.map((secour, index) => (
           <Marker key={index} coordinate={secour}>
-            <Image source={secourIcon} style={styles.secourIcon} />
-            <Callout style={styles.callout}>
+            <Image source={secourIcon} style={s_carte.secourIcon} />
+            <Callout style={s_carte.callout}>
               <Text>Secours</Text>
             </Callout>
           </Marker>
         ))}
       </MapView>
 
-      <View style={styles.legend}>
-        <Text style={styles.textLegendScene}>
-          <Image source={sceneIcon} style={styles.sceneIconLegend} /> Scènes
+      <View style={s_carte.legend}>
+        <Text style={s_carte.textLegendScene}>
+          <Image source={sceneIcon} style={s_carte.sceneIconLegend} /> Scènes
         </Text>
-        <Text style={styles.textLegend}>
-          <Image source={toiletIcon} style={styles.toiletIcon} /> Toilettes
+        <Text style={s_carte.textLegend}>
+          <Image source={toiletIcon} style={s_carte.toiletIcon} /> Toilettes
         </Text>
-        <Text style={styles.textLegend}>
-          <Image source={secourIcon} style={styles.secourIcon} /> Secours
+        <Text style={s_carte.textLegend}>
+          <Image source={secourIcon} style={s_carte.secourIcon} /> Secours
         </Text>
-        <Text style={styles.textLegend}>
-          <Image source={restauIcon} style={styles.restauIcon} /> Restaurations
+        <Text style={s_carte.textLegend}>
+          <Image source={restauIcon} style={s_carte.restauIcon} /> Restaurations
         </Text>
       </View>
     </View>
@@ -106,63 +107,3 @@ const Carte = () => {
 };
 
 export default Carte;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  map: {
-    width: "100%",
-    height: "100%",
-  },
-  legend: {
-    position: "absolute",
-    top: 10,
-    left: 10,
-    fontWeight: "bold",
-    color: "white",
-    backgroundColor: "green",
-    padding: 10,
-    marginHorizontal: 5,
-    borderRadius: 10,
-    alignItems: "flex-start",
-    flexDirection: "column",
-  },
-  textLegend: {
-    marginBottom: 5,
-    fontSize: 16,
-  },
-  textLegendScene: {
-    marginBottom: 5,
-    fontSize: 16,
-    marginStart: 0,
-  },
-  sceneIconLegend: {
-    width: 20,
-    height: 20,
-  },
-  toiletIcon: {
-    width: 20,
-    height: 20,
-  },
-  sceneIcon: {
-    width: 30,
-    height: 30,
-  },
-  restauIcon: {
-    width: 20,
-    height: 20,
-  },
-  secourIcon: {
-    width: 20,
-    height: 20,
-  },
-  callout: {
-    width: 55,
-    height: 20,
-  },
-  calloutRestau: {
-    width: 85,
-    height: 20,
-  },
-});

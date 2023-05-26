@@ -1,4 +1,4 @@
-import { Image, Text, View, Dimensions } from "react-native";
+import { Image, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { useEffect, useState } from "react";
@@ -11,7 +11,7 @@ import Partenaires from "./components/Partenaires";
 import Billetterie from "./components/Billetterie";
 import DetailsArtiste from "./components/DetailsArtiste";
 
-import styles from "./styles";
+import s_app from "./styles/app.js";
 
 const Drawer = createDrawerNavigator();
 const API_URL =
@@ -72,7 +72,7 @@ export default function App() {
 
   if (loading) {
     return (
-      <View style={styles.loading}>
+      <View style={s_app.loading}>
         <Text>{loadingText}</Text>
       </View>
     );
@@ -80,7 +80,7 @@ export default function App() {
 
   if (error) {
     return (
-      <View style={styles.error}>
+      <View style={s_app.error}>
         <Text>{error}</Text>
       </View>
     );
@@ -92,21 +92,21 @@ export default function App() {
         initialRouteName="Accueil"
         screenOptions={{
           headerTitle: () => (
-            <View style={styles.header}>
-              <View style={styles.headerImageLogo}>
+            <View style={s_app.header}>
+              <View style={s_app.headerImageLogo}>
                 <Image
                   source={require("./icones/concert.png")}
-                  style={styles.headerImageLogoAdjust}
+                  style={s_app.headerImageLogoAdjust}
                 />
               </View>
-              <View style={styles.headerImageRight}>
+              <View style={s_app.headerImageRight}>
                 <Image
                   source={require("./icones/notification.png")}
-                  style={styles.headerImageRightNotif}
+                  style={s_app.headerImageRightNotif}
                 />
                 <Image
                   source={require("./icones/france.png")}
-                  style={styles.headerImageRightDrapeau}
+                  style={s_app.headerImageRightDrapeau}
                 />
               </View>
             </View>
