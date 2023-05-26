@@ -1,9 +1,8 @@
-import { StyleSheet } from "react-native";
-import { Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 const screenWidth = Dimensions.get("window").width;
 
-const styles = StyleSheet.create({
+const s_app = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
@@ -54,4 +53,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles;
+export default s_app;

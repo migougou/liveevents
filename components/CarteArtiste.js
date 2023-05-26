@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Dimensions, Image } from "react-native";
-import { StyleSheet } from "react-native";
-import { Text, View } from "react-native";
+import { Text, Image, View } from "react-native";
 
-const screenWidth = Dimensions.get("window").width;
+import s_carte_artiste from "../styles/carteArtiste";
 
 const CarteArtiste = ({ item }) => {
   const hmdebut = item.acf.hdebut.slice(0, 5);
@@ -23,9 +21,9 @@ const CarteArtiste = ({ item }) => {
   }, [item]);
 
   return (
-    <View style={styles.format}>
-      <Image source={{ uri: item.acf.imageurl }} style={styles.icone} />
-      <View style={styles.formatAdjust}>
+    <View style={s_carte_artiste.format}>
+      <Image source={{ uri: item.acf.imageurl }} style={s_carte_artiste.icone} />
+      <View style={s_carte_artiste.formatAdjust}>
         <Text>{nomTraite}</Text>
         <Text>
           {hmdebut} - {hmfin}
@@ -39,28 +37,3 @@ const CarteArtiste = ({ item }) => {
 };
 
 export default CarteArtiste;
-
-const styles = StyleSheet.create({
-  format: {
-    flexDirection: "row",
-    elevation: 5,
-    shadowColor: "#52006A",
-    marginVertical: screenWidth * 0.02,
-    marginHorizontal: screenWidth * 0.02,
-    borderRadius: screenWidth * 0.03,
-    backgroundColor: "white",
-  },
-  formatAdjust: {
-    marginVertical: screenWidth * 0.01,
-    marginHorizontal: screenWidth * 0.02,
-    justifyContent: "center",
-  },
-  icone: {
-    width: screenWidth * 0.2,
-    height: screenWidth * 0.2,
-    borderTopLeftRadius: screenWidth * 0.03,
-    borderTopRightRadius: screenWidth * 0.0,
-    borderBottomLeftRadius: screenWidth * 0.03,
-    borderBottomRightRadius: screenWidth * 0.0,
-  },
-});

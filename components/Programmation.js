@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import {
   FlatList,
-  Dimensions,
   View,
   Text,
   Image,
-  StyleSheet,
   TouchableOpacity,
 } from "react-native";
 import { CheckBox, SearchBar } from "react-native-elements";
 import CarteArtiste from "./CarteArtiste";
 
-const screenWidth = Dimensions.get("window").width;
+import s_programmation from "../styles/programmation.js";
+
 const SaturdayDate = "20230610";
 const SundayDate = "20230611";
 
@@ -21,27 +20,27 @@ const Programmation = ({ artistes }) => {
   const [filtre, setFiltre] = useState(false);
   const [recherche, setRecherche] = useState(false);
   const [rechercher, setRechercher] = useState("");
-  const [listeStylesMusicauxArray, setListeStylesMusicauxArray] = useState([]);
+  const [listeprogrammationMusicauxArray, setListeprogrammationMusicauxArray] = useState([]);
   const [listeScenesArray, setListeScenesArray] = useState([]);
 
   useEffect(() => {
     let updatedArtistes = artistes;
 
     updatedArtistes = filtres(updatedArtistes, listeScenesArray);
-    updatedArtistes = filtres(updatedArtistes, listeStylesMusicauxArray);
+    updatedArtistes = filtres(updatedArtistes, listeprogrammationMusicauxArray);
     updatedArtistes = filtreJour(updatedArtistes, jour);
     updatedArtistes = trieJour(updatedArtistes);
     updatedArtistes = rechercheNomArtiste(updatedArtistes, rechercher);
     setFilterArtistes(updatedArtistes);
-  }, [jour, artistes, rechercher, listeScenesArray, listeStylesMusicauxArray]);
+  }, [jour, artistes, rechercher, listeScenesArray, listeprogrammationMusicauxArray]);
 
   useEffect(() => {
-    stylesMusicauxArray(artistes);
+    programmationMusicauxArray(artistes);
     SceneArray();
   }, [artistes]);
 
   /**
-   * Filtre les artistes en fonction des filtres séléctionnés (styles musicaux et scènes)
+   * Filtre les artistes en fonction des filtres séléctionnés (programmation musicaux et scènes)
    *
    * @param {Array} arrayArtistes - La liste des artistes à filtrer.
    * @param {Array} arrayFiltre - La liste des filtres.
@@ -57,7 +56,7 @@ const Programmation = ({ artistes }) => {
         });
         listes.push(liste);
       }
-      // Compare les éléments séléctionnés du filtre stylesmusicaux avec les artistes
+      // Compare les éléments séléctionnés du filtre programmationmusicaux avec les artistes
       else if (arrayInfo.style !== undefined) {
         let liste = arrayArtistes.filter((artiste) => {
           return (
@@ -152,43 +151,43 @@ const Programmation = ({ artistes }) => {
   }
 
   /**
-   * Crée un tableau d'objets contenant les styles musicaux uniques et leur état de sélection.
+   * Crée un tableau d'objets contenant les programmation musicaux uniques et leur état de sélection.
    *
    * @param {Array} artistes - La liste des artistes avec leurs informations.
-   * @returns {Array} La liste des styles musicaux uniques formatée avec l'état de sélection.
+   * @returns {Array} La liste des programmation musicaux uniques formatée avec l'état de sélection.
    */
-  function stylesMusicauxArray(artistes) {
-    const stylesMusicaux = [];
+  function programmationMusicauxArray(artistes) {
+    const programmationMusicaux = [];
 
-    // Itère sur chaque artiste pour extraire les styles musicaux
+    // Itère sur chaque artiste pour extraire les programmation musicaux
     artistes.forEach((artiste) => {
       const styleMusicalRequete = artiste.acf.style_musical;
       if (styleMusicalRequete.length > 0) {
-        // Trie et formate les styles musicaux pour chaque artiste
+        // Trie et formate les programmation musicaux pour chaque artiste
         const styleMusicalTrie = styleMusicalRequete
           .split(",")
           .map((s) => s.trim());
         styleMusicalTrie.forEach((style) => {
           const styleCapitalized = premiereLettreMajuscule(style);
-          // Ajoute les styles musicaux uniques au tableau
-          if (!stylesMusicaux.includes(styleCapitalized)) {
-            stylesMusicaux.push(styleCapitalized);
+          // Ajoute les programmation musicaux uniques au tableau
+          if (!programmationMusicaux.includes(styleCapitalized)) {
+            programmationMusicaux.push(styleCapitalized);
           }
         });
       }
     });
 
-    // Trie le tableau de styles musicaux par ordre alphabétique
-    stylesMusicaux.sort();
+    // Trie le tableau de programmation musicaux par ordre alphabétique
+    programmationMusicaux.sort();
 
-    // Formate le tableau de styles musicaux avec l'état de sélection
-    const stylesMusicauxFormat = stylesMusicaux.map((style, index) => ({
+    // Formate le tableau de programmation musicaux avec l'état de sélection
+    const programmationMusicauxFormat = programmationMusicaux.map((style, index) => ({
       id: index + 1,
       style: style,
       selected: false,
     }));
 
-    return setListeStylesMusicauxArray(stylesMusicauxFormat);
+    return setListeprogrammationMusicauxArray(programmationMusicauxFormat);
   }
 
   /**
@@ -250,13 +249,13 @@ const Programmation = ({ artistes }) => {
    * @param {array} array - Liste de données qui sont à filtrer.
    * @returns {string} La liste triée.
    */
-  function inversionLogiqueStylesMusicaux(id, array) {
-    const arraySelected = array === listeStylesMusicauxArray ? 0 : 1;
+  function inversionLogiqueprogrammationMusicaux(id, array) {
+    const arraySelected = array === listeprogrammationMusicauxArray ? 0 : 1;
     const inversion = array.map((liste) =>
       liste.id === id ? { ...liste, selected: !liste.selected } : liste
     );
     if (arraySelected === 0) {
-      setListeStylesMusicauxArray(inversion);
+      setListeprogrammationMusicauxArray(inversion);
     } else {
       setListeScenesArray(inversion);
     }
@@ -268,7 +267,7 @@ const Programmation = ({ artistes }) => {
         flex: 1,
       }}
     >
-      <View style={styles.topBar}>
+      <View style={s_programmation.topBar}>
         <TouchableOpacity
           onPress={() => {
             setRecherche(!recherche);
@@ -276,28 +275,28 @@ const Programmation = ({ artistes }) => {
         >
           <Image
             source={require("../icones/rechercher.png")}
-            style={styles.icone}
+            style={s_programmation.icone}
           />
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.text}
+          style={s_programmation.text}
           onPress={() => {
             setJour("samedi");
           }}
         >
           <Text>SAMEDI</Text>
-          <Text style={jour === "samedi" ? styles.selectText : styles.select}>
+          <Text style={jour === "samedi" ? s_programmation.selectText : s_programmation.select}>
             10 Juin
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.text}
+          style={s_programmation.text}
           onPress={() => {
             setJour("dimanche");
           }}
         >
           <Text>DIMANCHE</Text>
-          <Text style={jour === "dimanche" ? styles.selectText : styles.select}>
+          <Text style={jour === "dimanche" ? s_programmation.selectText : s_programmation.select}>
             11 Juin
           </Text>
         </TouchableOpacity>
@@ -309,34 +308,34 @@ const Programmation = ({ artistes }) => {
           {filtre ? (
             <Image
               source={require("../icones/croix.png")}
-              style={styles.icone}
+              style={s_programmation.icone}
             />
           ) : (
             <Image
               source={require("../icones/filtre.png")}
-              style={styles.icone}
+              style={s_programmation.icone}
             />
           )}
         </TouchableOpacity>
       </View>
       {filtre ? (
         <View>
-          <Text style={styles.title}>Filtres</Text>
-          <Text style={styles.subTitle}>Styles musicaux</Text>
+          <Text style={s_programmation.title}>Filtres</Text>
+          <Text style={s_programmation.subTitle}>programmation musicaux</Text>
           <FlatList
-            data={listeStylesMusicauxArray}
+            data={listeprogrammationMusicauxArray}
             renderItem={({ item }) => (
               <View>
                 <CheckBox
                   title={item.style}
                   checked={item.selected}
                   onPress={() => {
-                    inversionLogiqueStylesMusicaux(
+                    inversionLogiqueprogrammationMusicaux(
                       item.id,
-                      listeStylesMusicauxArray
+                      listeprogrammationMusicauxArray
                     );
                   }}
-                  style={styles.checkbox}
+                  style={s_programmation.checkbox}
                   checkedIcon="music"
                   checkedColor="#6DBD38"
                   uncheckedIcon="music"
@@ -347,7 +346,7 @@ const Programmation = ({ artistes }) => {
             )}
             keyExtractor={(item) => item.id}
           />
-          <Text style={styles.subTitle}>Scènes</Text>
+          <Text style={s_programmation.subTitle}>Scènes</Text>
           <FlatList
             data={listeScenesArray}
             renderItem={({ item }) => (
@@ -356,9 +355,9 @@ const Programmation = ({ artistes }) => {
                   title={item.scene}
                   checked={item.selected}
                   onPress={() => {
-                    inversionLogiqueStylesMusicaux(item.id, listeScenesArray);
+                    inversionLogiqueprogrammationMusicaux(item.id, listeScenesArray);
                   }}
-                  style={styles.checkbox}
+                  style={s_programmation.checkbox}
                   checkedIcon="music"
                   checkedColor="#6DBD38"
                   uncheckedIcon="music"
@@ -387,7 +386,7 @@ const Programmation = ({ artistes }) => {
             data={filterArtistes}
             renderItem={({ item }) => <CarteArtiste item={item} />}
             keyExtractor={(item) => item.id}
-            style={styles.list}
+            style={s_programmation.list}
             ListEmptyComponent={
               <Text>
                 Aucun artiste ne correspond à ce ou ces critères de filtre.
@@ -401,40 +400,3 @@ const Programmation = ({ artistes }) => {
 };
 
 export default Programmation;
-
-const styles = StyleSheet.create({
-  topBar: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "#C0C0C0",
-    paddingVertical: screenWidth * 0.015,
-  },
-  icone: {
-    height: screenWidth * 0.1,
-    width: screenWidth * 0.1,
-    marginHorizontal: screenWidth * 0.02,
-  },
-  text: {
-    alignItems: "center",
-  },
-  selectText: {
-    alignItems: "center",
-    borderBottomWidth: screenWidth * 0.007,
-    borderBottomColor: "#000",
-  },
-  list: {
-    marginBottom: screenWidth * 0.13,
-  },
-  checkbox: {
-    backgroundColor: "red",
-  },
-  title: {
-    textAlign: "center",
-    marginVertical: screenWidth * 0.03,
-    fontSize: screenWidth * 0.05,
-  },
-  subTitle: {
-    marginStart: screenWidth * 0.05,
-    marginTop: screenWidth * 0.03,
-  },
-});
