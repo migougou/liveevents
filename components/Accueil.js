@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
+import { CheckBox, } from 'react-native-elements';
 
 const Accueil = () => {
 

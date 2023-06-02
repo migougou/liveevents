@@ -1,7 +1,7 @@
+import React, { useEffect, useState } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
-import { View, Text, Image } from "react-native";
-
-import s_carte from "../styles/carte.js"
+import { View, StyleSheet, Text, Image } from "react-native";
+import { CheckBox } from "react-native-elements";
 
 const toiletIcon = require("../icones/toilet-icon.png");
 const sceneIcon = require("../icones/scene.png");
@@ -10,100 +10,197 @@ const secourIcon = require("../icones/secours.png");
 
 const initialPin = { latitude: 48.859349, longitude: 2.233235 };
 
-const toiletPins = [
-  { latitude: 48.861774, longitude: 2.235063 },
-  { latitude: 48.861027, longitude: 2.233894 },
-  { latitude: 48.857011, longitude: 2.231603 },
-  { latitude: 48.856446, longitude: 2.233706 },
-  { latitude: 48.8567, longitude: 2.235015 },
-  { latitude: 48.858987, longitude: 2.235873 },
-];
+const Carte = ({ localisations }) => {
+  const [toutesLocalisations, setToutesLocalisations] = useState(localisations);
 
-const scenePins = [
-  { latitude: 48.861624, longitude: 2.234115 },
-  { latitude: 48.860198, longitude: 2.23552 },
-  { latitude: 48.855684, longitude: 2.233374 },
-  { latitude: 48.855991, longitude: 2.231615 },
-  { latitude: 48.856094, longitude: 2.235477 },
-];
+  const [legendState, setLegendState] = useState({
+    scene: true,
+    toilet: true,
+    secour: true,
+    restau: true,
+  });
 
-const restauPins = [
-  { latitude: 48.857266, longitude: 2.232859 },
-  { latitude: 48.857229, longitude: 2.23496 },
-  { latitude: 48.858739, longitude: 2.23394 },
-  { latitude: 48.860018, longitude: 2.234124 },
-  { latitude: 48.85802, longitude: 2.236077 },
-];
+  const getIconImage = (typeLocalisation) => {
+    var lowercaseTypeLocalisation = typeLocalisation.toLowerCase();
 
-const secourPins = [
-  { latitude: 48.85568, longitude: 2.233895 },
-  { latitude: 48.857148, longitude: 2.233267 },
-  { latitude: 48.858726, longitude: 2.235278 },
-  { latitude: 48.860384, longitude: 2.234119 },
-  { latitude: 48.861175, longitude: 2.235605 },
-];
+    if (lowercaseTypeLocalisation.includes("restaurant")) {
+      return legendState.restau ? restauIcon : null;
+    } else if (lowercaseTypeLocalisation.includes("toilettes")) {
+      return legendState.toilet ? toiletIcon : null;
+    } else if (lowercaseTypeLocalisation.includes("scène")) {
+      return legendState.scene ? sceneIcon : null;
+    } else if (lowercaseTypeLocalisation.includes("secours")) {
+      return legendState.secour ? secourIcon : null;
+    }
+  };
 
-const Carte = () => {
+  useEffect(() => {
+    const trieLocalisations = localisations.map((localisation) => {});
+  });
+
   return (
-    <View style={s_carte.container}>
+    <View style={styles.container}>
       <MapView
-        style={s_carte.map}
+        style={styles.map}
         initialRegion={{
           ...initialPin,
           latitudeDelta: 0.02,
           longitudeDelta: 0.01,
         }}
       >
-        {toiletPins.map((toilet, index) => (
-          <Marker key={index} coordinate={toilet}>
-            <Image source={toiletIcon} style={s_carte.toiletIcon} />
-            <Callout style={s_carte.callout}>
-              <Text>Toilettes</Text>
-            </Callout>
-          </Marker>
-        ))}
-        {scenePins.map((scene, index) => (
-          <Marker key={index} coordinate={scene}>
-            <Image source={sceneIcon} style={s_carte.sceneIcon} />
-            <Callout style={s_carte.callout}>
-              <Text>Scene</Text>
-            </Callout>
-          </Marker>
-        ))}
-        {restauPins.map((restau, index) => (
-          <Marker key={index} coordinate={restau}>
-            <Image source={restauIcon} style={s_carte.restauIcon} />
-            <Callout style={s_carte.calloutRestau}>
-              <Text>Restauration</Text>
-            </Callout>
-          </Marker>
-        ))}
-        {secourPins.map((secour, index) => (
-          <Marker key={index} coordinate={secour}>
-            <Image source={secourIcon} style={s_carte.secourIcon} />
-            <Callout style={s_carte.callout}>
-              <Text>Secours</Text>
+        {toutesLocalisations.map((localisation) => (
+          <Marker
+            key={localisation.id}
+            coordinate={{
+              latitude: Number(localisation.acf.latitude),
+              longitude: Number(localisation.acf.longitude),
+            }}
+          >
+            <Image
+              source={getIconImage(localisation.acf.localisation)}
+              style={styles.secourIcon}
+            />
+            <Callout style={styles.callout}>
+              <Text>{localisation.acf.localisation}</Text>
             </Callout>
           </Marker>
         ))}
       </MapView>
 
-      <View style={s_carte.legend}>
-        <Text style={s_carte.textLegendScene}>
-          <Image source={sceneIcon} style={s_carte.sceneIconLegend} /> Scènes
-        </Text>
-        <Text style={s_carte.textLegend}>
-          <Image source={toiletIcon} style={s_carte.toiletIcon} /> Toilettes
-        </Text>
-        <Text style={s_carte.textLegend}>
-          <Image source={secourIcon} style={s_carte.secourIcon} /> Secours
-        </Text>
-        <Text style={s_carte.textLegend}>
-          <Image source={restauIcon} style={s_carte.restauIcon} /> Restaurations
-        </Text>
+      <View style={styles.legend}>
+        <View style={styles.legendItem}>
+          <Image source={sceneIcon} style={styles.sceneIconLegend} />
+          <Text style={styles.textScene}>Scènes</Text>
+          <CheckBox
+            checked={legendState.scene}
+            onPress={() =>
+              setLegendState((prevState) => ({
+                ...prevState,
+                scene: !prevState.scene,
+              }))
+            }
+          />
+        </View>
+        <View style={styles.legendItem}>
+          <Image source={toiletIcon} style={styles.toiletIcon} />
+          <Text style={styles.textToilet}>Toilettes</Text>
+          <CheckBox
+            checked={legendState.toilet}
+            onPress={() =>
+              setLegendState((prevState) => ({
+                ...prevState,
+                toilet: !prevState.toilet,
+              }))
+            }
+          />
+        </View>
+        <View style={styles.legendItem}>
+          <Image source={secourIcon} style={styles.secourIcon} />
+          <Text style={styles.textSecour}>Secours</Text>
+          <CheckBox
+            checked={legendState.secour}
+            onPress={() =>
+              setLegendState((prevState) => ({
+                ...prevState,
+                secour: !prevState.secour,
+              }))
+            }
+          />
+        </View>
+        <View style={styles.legendItem}>
+          <Image source={restauIcon} style={styles.restauIcon} />
+          <Text style={styles.textRestau}>Restaurations</Text>
+          <CheckBox
+            checked={legendState.restau}
+            onPress={() =>
+              setLegendState((prevState) => ({
+                ...prevState,
+                restau: !prevState.restau,
+              }))
+            }
+          />
+        </View>
       </View>
     </View>
   );
 };
 
 export default Carte;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  map: {
+    width: "100%",
+    height: "100%",
+  },
+
+  legend: {
+    position: "absolute",
+    top: 10,
+    left: 10,
+    fontWeight: "bold",
+    color: "white",
+    backgroundColor: "white",
+    padding: 10,
+    marginHorizontal: 5,
+    borderRadius: 10,
+    borderColor: "black",
+    borderWidth: 2,
+    alignItems: "flex-start",
+    flexDirection: "column",
+    flexWrap: "wrap",
+  },
+
+  legendItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: 160,
+  },
+
+  textRestau: {
+    marginBottom: 5,
+    fontSize: 16,
+  },
+  textToilet: {
+    marginBottom: 5,
+    fontSize: 16,
+    marginEnd: 37,
+  },
+  textSecour: {
+    marginBottom: 5,
+    fontSize: 16,
+    marginEnd: 40,
+  },
+  textScene: {
+    marginBottom: 5,
+    fontSize: 16,
+    marginStart: 0,
+    marginEnd: 46,
+  },
+  sceneIconLegend: {
+    width: 20,
+    height: 20,
+  },
+  toiletIcon: {
+    width: 20,
+    height: 20,
+  },
+  sceneIcon: {
+    width: 30,
+    height: 30,
+  },
+  restauIcon: {
+    width: 20,
+    height: 20,
+  },
+  secourIcon: {
+    width: 20,
+    height: 20,
+  },
+  callout: {
+    width: 90,
+    height: 20,
+  },
+});

@@ -259,7 +259,9 @@ export default function App() {
         <Drawer.Screen name="Programmation">
           {(props) => <Programmation {...props} artistes={artistes} />}
         </Drawer.Screen>
-        <Drawer.Screen name="Carte" component={Carte} />
+        <Drawer.Screen name="Carte">
+          {(props) => <Carte {...props} localisations={localisations} />}
+        </Drawer.Screen>
         <Drawer.Screen name="Billetterie" component={Billetterie} />
         <Drawer.Screen name="Partenaires">
           {(props) => <Partenaires {...props} partenaires={partenaires} />}
