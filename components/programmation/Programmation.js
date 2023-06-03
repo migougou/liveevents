@@ -2,32 +2,32 @@ import React, { useEffect, useState } from "react";
 import { FlatList, View, Text, Image, TouchableOpacity } from "react-native";
 import { CheckBox, SearchBar } from "react-native-elements";
 import CarteArtiste from "../carte_artiste/CarteArtiste";
-import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, programmationMusicauxArray, SceneArray } from "../utilities.js"
+import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, StylesArray, SceneArray } from "../utilities.js"
 
 import styles from "./styles.js";
 
 const Programmation = ({ artistes }) => {
   const [filterArtistes, setFilterArtistes] = useState([]);
-  const [jour, setJour] = useState("samedi");
+  const [jour, setJour] = useState("");
   const [filtre, setFiltre] = useState(false);
   const [recherche, setRecherche] = useState(false);
   const [rechercher, setRechercher] = useState("");
-  const [stylesArray, setListeprogrammationMusicauxArray] = useState([]);
-  const [listeScenesArray, setListeScenesArray] = useState([]);
+  const [stylesArray, setStylesArray] = useState([]);
+  const [listeScenesArray, setScenesArray] = useState([]);
 
   useEffect(() => {
     let updatedArtistes = artistes;
 
-    updatedArtistes = filtreArtistes(updatedArtistes, listeScenesArray, stylesArray);
     updatedArtistes = filtreJour(updatedArtistes, jour);
     updatedArtistes = trieHeures(updatedArtistes);
     updatedArtistes = rechercheNomArtiste(updatedArtistes, rechercher);
+    updatedArtistes = filtreArtistes(updatedArtistes, listeScenesArray, stylesArray);
     setFilterArtistes(updatedArtistes);
   }, [jour, artistes, rechercher, listeScenesArray, stylesArray]);
 
   useEffect(() => {
-    setListeprogrammationMusicauxArray(programmationMusicauxArray(artistes));
-    setListeScenesArray(SceneArray(artistes));
+    setStylesArray(StylesArray(artistes));
+    setScenesArray(SceneArray(artistes));
 }, [artistes]);
 
   /**
@@ -43,9 +43,9 @@ const Programmation = ({ artistes }) => {
       liste.id === id ? { ...liste, selected: !liste.selected } : liste
     );
     if (arraySelected === 0) {
-      setListeprogrammationMusicauxArray(inversion);
+      setStylesArray(inversion);
     } else {
-      setListeScenesArray(inversion);
+      setScenesArray(inversion);
     }
   }
 
