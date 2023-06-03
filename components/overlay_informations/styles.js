@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet } from "react-native";
 
-const { width: screenWidth } = Dimensions.get("window");
+const screenWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
   fullOverlay: {

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Text, View } from "react-native";
+import { Text, View, Dimensions } from "react-native";
 import Carousel from "react-native-reanimated-carousel";
 import { GestureHandlerRootView, TouchableOpacity } from "react-native-gesture-handler";
 import PaginationDot from "react-native-animated-pagination-dot";
 import moment from "moment";
 import { useNavigation } from "@react-navigation/core";
+
+import styles from "./styles";
+const screenWidth = Dimensions.get("window").width;
 
 const autoPlayIntervalTime = 5000;
 const scrollAnimationDurationTime = 2000;
