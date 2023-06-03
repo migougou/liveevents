@@ -20,7 +20,7 @@ export const filtreArtistes = (arrayArtistes, arrayScenes, arrayStyles) => {
 
     // Un artiste est retenu si son style correspond à au moins un style sélectionné
     let matchStyles = arrayStyles.some((styleInfo) => {
-      return styleInfo.selected && artiste.acf.style_musical.includes(styleInfo.style);
+      return styleInfo.selected && artiste.acf.style_musical === styleInfo.style;
     });
 
     // Un artiste est retenu si sa scène correspond à au moins une scène sélectionnée
