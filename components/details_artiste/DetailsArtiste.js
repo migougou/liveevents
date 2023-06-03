@@ -11,7 +11,7 @@ import "moment/locale/fr";
 import {} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import s_details_artistes from "./styles"
+import styles from "./styles"
 
 moment.locale("fr");
 
@@ -24,43 +24,43 @@ const DetailsArtiste = ({ artiste }) => {
     return (
       <ScrollView>
         <View>
-          <View style={s_details_artistes.backButtonContainer}>
+          <View style={styles.backButtonContainer}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <Icon name="chevron-left" size={20} color="white" />
             </TouchableOpacity>
           </View>
-          <Image style={s_details_artistes.format} source={{ uri: artiste.acf.imageurl }} />
-          <View style={s_details_artistes.nomArtiste}>
-            <Text style={s_details_artistes.sizeArtiste}>{artiste.acf.artiste}</Text>
+          <Image style={styles.format} source={{ uri: artiste.acf.imageurl }} />
+          <View style={styles.nomArtiste}>
+            <Text style={styles.sizeArtiste}>{artiste.acf.artiste}</Text>
           </View>
-          <View style={s_details_artistes.styleOrigineContainer}>
-            <View style={s_details_artistes.styleContainer}>
-              <Text style={s_details_artistes.style}>{artiste.acf.style_musical}</Text>
+          <View style={styles.styleOrigineContainer}>
+            <View style={styles.styleContainer}>
+              <Text style={styles.style}>{artiste.acf.style_musical}</Text>
             </View>
-            <View style={s_details_artistes.styleOrigine}>
-              <Text style={s_details_artistes.style}>{artiste.acf.origine}</Text>
+            <View style={styles.styleOrigine}>
+              <Text style={styles.style}>{artiste.acf.origine}</Text>
             </View>
           </View>
           <View>
-            <Text style={s_details_artistes.info}>
+            <Text style={styles.info}>
               {moment(artiste.acf.date)
                 .format("dddd D MMMM")
                 .charAt(0)
                 .toUpperCase() +
                 moment(artiste.acf.date).format("dddd D MMMM").slice(1)}
             </Text>
-            <Text style={s_details_artistes.infos}>
+            <Text style={styles.infos}>
               {hmdebut} - {hmfin}
             </Text>
-            <Text style={s_details_artistes.infos}>{artiste.acf.scene}</Text>
+            <Text style={styles.infos}>{artiste.acf.scene}</Text>
           </View>
-          <View style={s_details_artistes.localiserContainer}>
-            <TouchableOpacity style={s_details_artistes.button} onPress={() => {}}>
-              <Text style={s_details_artistes.buttonText}>LOCALISER</Text>
+          <View style={styles.localiserContainer}>
+            <TouchableOpacity style={styles.button} onPress={() => {}}>
+              <Text style={styles.buttonText}>LOCALISER</Text>
             </TouchableOpacity>
           </View>
-          <View style={s_details_artistes.descriptionContainer}>
-            <Text style={s_details_artistes.descriptionStyle}>
+          <View style={styles.descriptionContainer}>
+            <Text style={styles.descriptionStyle}>
               {artiste.acf.description}
             </Text>
           </View>

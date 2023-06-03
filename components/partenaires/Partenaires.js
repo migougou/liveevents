@@ -8,24 +8,24 @@ import {
   ScrollView,
 } from "react-native";
 
-import s_partenaires from "./styles.js"
+import styles from "./styles.js"
 
 const Partenaires = ({ partenaires }) => {
   return (
-    <View style={s_partenaires.container}>
-      <View style={s_partenaires.content}>
-        <Text style={s_partenaires.title}>Ils nous font confiance</Text>
-        <ScrollView contentContainerStyle={s_partenaires.scrollContainer}>
-          <View style={s_partenaires.partenairesContainer}>
+    <View style={styles.container}>
+      <View style={styles.content}>
+        <Text style={styles.title}>Ils nous font confiance</Text>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <View style={styles.partenairesContainer}>
             {partenaires.map((partenaire, index) => (
               <TouchableOpacity
-                style={s_partenaires.imgContainer}
+                style={styles.imgContainer}
                 key={index}
                 onPress={() => Linking.openURL(partenaire.acf.sitepartenaire)}
               >
                 <Image
                   source={{ uri: partenaire.acf.imageurl }}
-                  style={s_partenaires.image}
+                  style={styles.image}
                 />
               </TouchableOpacity>
             ))}

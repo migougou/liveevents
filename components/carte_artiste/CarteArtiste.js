@@ -21,9 +21,9 @@ const CarteArtiste = ({ item }) => {
   }, [item]);
 
   return (
-    <View style={s_carte_artiste.format}>
-      <Image source={{ uri: item.acf.imageurl }} style={s_carte_artiste.icone} />
-      <View style={s_carte_artiste.formatAdjust}>
+    <View style={styles.format}>
+      <Image source={{ uri: item.acf.imageurl }} style={styles.icone} />
+      <View style={styles.formatAdjust}>
         <Text>{nomTraite}</Text>
         <Text>
           {hmdebut} - {hmfin}

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const s_partenaires = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "pink",
@@ -40,4 +40,4 @@ const s_partenaires = StyleSheet.create({
   },
 });
 
-export default s_partenaires;
+export default styles;
