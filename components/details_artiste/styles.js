@@ -2,7 +2,7 @@ import { StyleSheet, Dimensions } from "react-native";
 
 const screenWidth = Dimensions.get("window").width;
 
-const s_details_artistes = StyleSheet.create({
+const styles = StyleSheet.create({
   backButtonContainer: {
     position: "absolute",
     top: 20,
@@ -102,4 +102,4 @@ const s_details_artistes = StyleSheet.create({
 });
 
 
-export default s_details_artistes;
+export default styles;

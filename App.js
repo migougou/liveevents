@@ -5,16 +5,16 @@ import { Badge, Overlay } from "react-native-elements";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import Accueil from "./components/Accueil";
-import Programmation from "./components/Programmation";
-import Carte from "./components/Carte";
-import Partenaires from "./components/Partenaires";
-import Billetterie from "./components/Billetterie";
-import DetailsArtiste from "./components/DetailsArtiste";
+import Accueil from "./components/accueil/Accueil";
+import Programmation from "./components/programmation/Programmation";
+import Carte from "./components/carte/Carte";
+import Partenaires from "./components/partenaires/Partenaires";
+import Billetterie from "./components/billetterie/Billetterie";
+import DetailsArtiste from "./components/details_artiste/DetailsArtiste";
 import OverlayInformations from "./components/OverlayInformations";
 
-import s_app from "./styles/app.js";
-import DetailsInformations from "./components/DetailsInformations";
+import styles from "./styles.js";
+import DetailsInformations from "./components/details_informations/DetailsInformations";
 
 const Drawer = createDrawerNavigator();
 const API_URL =
@@ -169,7 +169,7 @@ export default function App() {
 
   if (loading) {
     return (
-      <View style={s_app.loading}>
+      <View style={styles.loading}>
         <Text>{loadingText}</Text>
       </View>
     );
@@ -177,7 +177,7 @@ export default function App() {
 
   if (error) {
     return (
-      <View style={s_app.error}>
+      <View style={styles.error}>
         <Text>{error}</Text>
       </View>
     );
@@ -201,14 +201,14 @@ export default function App() {
         initialRouteName="Accueil"
         screenOptions={{
           headerTitle: () => (
-            <View style={s_app.header}>
-              <View style={s_app.headerImageLogo}>
+            <View style={styles.header}>
+              <View style={styles.headerImageLogo}>
                 <Image
                   source={require("./icones/concert.png")}
-                  style={s_app.headerImageLogoAdjust}
+                  style={styles.headerImageLogoAdjust}
                 />
               </View>
-              <View style={s_app.headerImageRight}>
+              <View style={styles.headerImageRight}>
                 {informationType ? (
                   <View>
                     <TouchableOpacity
@@ -218,7 +218,7 @@ export default function App() {
                     >
                       <Image
                         source={require("./icones/notification.png")}
-                        style={s_app.headerImageRightNotif}
+                        style={styles.headerImageRightNotif}
                       />
                     </TouchableOpacity>
                     <Badge
@@ -236,7 +236,7 @@ export default function App() {
                     >
                       <Image
                         source={require("./icones/notificationImportante.png")}
-                        style={s_app.headerImageRightNotif}
+                        style={styles.headerImageRightNotif}
                       />
                     </TouchableOpacity>
                     <Badge
@@ -248,7 +248,7 @@ export default function App() {
                 )}
                 <Image
                   source={require("./icones/france.png")}
-                  style={s_app.headerImageRightDrapeau}
+                  style={styles.headerImageRightDrapeau}
                 />
               </View>
             </View>

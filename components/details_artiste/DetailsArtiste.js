@@ -11,7 +11,7 @@ import "moment/locale/fr";
 import {} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import s_details_artistes from "../styles/detailsArtiste"
+import s_details_artistes from "./styles"
 
 moment.locale("fr");
 

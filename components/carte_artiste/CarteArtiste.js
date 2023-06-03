@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Text, Image, View } from "react-native";
 
-import s_carte_artiste from "../styles/carteArtiste";
+import styles from "./styles";
 
 const CarteArtiste = ({ item }) => {
   const hmdebut = item.acf.hdebut.slice(0, 5);

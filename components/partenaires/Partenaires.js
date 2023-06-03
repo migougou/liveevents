@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 
-import s_partenaires from "../styles/partenaires.js"
+import s_partenaires from "./styles.js"
 
 const Partenaires = ({ partenaires }) => {
   return (

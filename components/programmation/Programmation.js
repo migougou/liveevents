@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { CheckBox, SearchBar } from "react-native-elements";
-import CarteArtiste from "./CarteArtiste";
+import CarteArtiste from "../carte_artiste/CarteArtiste";
 
-import s_programmation from "../styles/programmation.js";
+import styles from "./styles.js";
 
 const SaturdayDate = "20230610";
 const SundayDate = "20230611";
@@ -267,36 +267,36 @@ const Programmation = ({ artistes }) => {
         flex: 1,
       }}
     >
-      <View style={s_programmation.topBar}>
+      <View style={styles.topBar}>
         <TouchableOpacity
           onPress={() => {
             setRecherche(!recherche);
           }}
         >
           <Image
-            source={require("../icones/rechercher.png")}
-            style={s_programmation.icone}
+            source={require("../../icones/rechercher.png")}
+            style={styles.icone}
           />
         </TouchableOpacity>
         <TouchableOpacity
-          style={s_programmation.text}
+          style={styles.text}
           onPress={() => {
             setJour("samedi");
           }}
         >
           <Text>SAMEDI</Text>
-          <Text style={jour === "samedi" ? s_programmation.selectText : s_programmation.select}>
+          <Text style={jour === "samedi" ? styles.selectText : styles.select}>
             10 Juin
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={s_programmation.text}
+          style={styles.text}
           onPress={() => {
             setJour("dimanche");
           }}
         >
           <Text>DIMANCHE</Text>
-          <Text style={jour === "dimanche" ? s_programmation.selectText : s_programmation.select}>
+          <Text style={jour === "dimanche" ? styles.selectText : styles.select}>
             11 Juin
           </Text>
         </TouchableOpacity>
@@ -307,21 +307,21 @@ const Programmation = ({ artistes }) => {
         >
           {filtre ? (
             <Image
-              source={require("../icones/croix.png")}
-              style={s_programmation.icone}
+              source={require("../../icones/croix.png")}
+              style={styles.icone}
             />
           ) : (
             <Image
-              source={require("../icones/filtre.png")}
-              style={s_programmation.icone}
+              source={require("../../icones/filtre.png")}
+              style={styles.icone}
             />
           )}
         </TouchableOpacity>
       </View>
       {filtre ? (
         <View>
-          <Text style={s_programmation.title}>Filtres</Text>
-          <Text style={s_programmation.subTitle}>programmation musicaux</Text>
+          <Text style={styles.title}>Filtres</Text>
+          <Text style={styles.subTitle}>programmation musicaux</Text>
           <FlatList
             data={listeprogrammationMusicauxArray}
             renderItem={({ item }) => (
@@ -335,7 +335,7 @@ const Programmation = ({ artistes }) => {
                       listeprogrammationMusicauxArray
                     );
                   }}
-                  style={s_programmation.checkbox}
+                  style={styles.checkbox}
                   checkedIcon="music"
                   checkedColor="#6DBD38"
                   uncheckedIcon="music"
@@ -346,7 +346,7 @@ const Programmation = ({ artistes }) => {
             )}
             keyExtractor={(item) => item.id}
           />
-          <Text style={s_programmation.subTitle}>Scènes</Text>
+          <Text style={styles.subTitle}>Scènes</Text>
           <FlatList
             data={listeScenesArray}
             renderItem={({ item }) => (
@@ -357,7 +357,7 @@ const Programmation = ({ artistes }) => {
                   onPress={() => {
                     inversionLogiqueprogrammationMusicaux(item.id, listeScenesArray);
                   }}
-                  style={s_programmation.checkbox}
+                  style={styles.checkbox}
                   checkedIcon="music"
                   checkedColor="#6DBD38"
                   uncheckedIcon="music"
@@ -386,7 +386,7 @@ const Programmation = ({ artistes }) => {
             data={filterArtistes}
             renderItem={({ item }) => <CarteArtiste item={item} />}
             keyExtractor={(item) => item.id}
-            style={s_programmation.list}
+            style={styles.list}
             ListEmptyComponent={
               <Text>
                 Aucun artiste ne correspond à ce ou ces critères de filtre.

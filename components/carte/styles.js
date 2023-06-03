@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const s_carte = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -8,27 +8,49 @@ const s_carte = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
+
   legend: {
     position: "absolute",
     top: 10,
     left: 10,
     fontWeight: "bold",
     color: "white",
-    backgroundColor: "green",
+    backgroundColor: "white",
     padding: 10,
     marginHorizontal: 5,
     borderRadius: 10,
+    borderColor: "black",
+    borderWidth: 2,
     alignItems: "flex-start",
     flexDirection: "column",
+    flexWrap: "wrap",
   },
-  textLegend: {
+
+  legendItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: 160,
+  },
+
+  textRestau: {
     marginBottom: 5,
     fontSize: 16,
   },
-  textLegendScene: {
+  textToilet: {
+    marginBottom: 5,
+    fontSize: 16,
+    marginEnd: 37,
+  },
+  textSecour: {
+    marginBottom: 5,
+    fontSize: 16,
+    marginEnd: 40,
+  },
+  textScene: {
     marginBottom: 5,
     fontSize: 16,
     marginStart: 0,
+    marginEnd: 46,
   },
   sceneIconLegend: {
     width: 20,
@@ -51,13 +73,9 @@ const s_carte = StyleSheet.create({
     height: 20,
   },
   callout: {
-    width: 55,
-    height: 20,
-  },
-  calloutRestau: {
-    width: 85,
+    width: 90,
     height: 20,
   },
 });
 
-export default s_carte;
+export default styles;
