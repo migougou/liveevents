@@ -34,6 +34,13 @@ const Programmation = ({ artistes }) => {
     setScenesArray(SceneArray(artistes));
   }, [artistes]);
 
+  /**
+   * Renvoie un composant CheckBox avec des propriétés définies en fonction des éléments de la liste.
+   *
+   * @param {array} array - Liste de données qui sont à filtrer.
+   * @param {function} setArray - Fonction pour mettre à jour l'état de la liste.
+   * @returns {function} Une fonction qui prend un objet item et renvoie un composant CheckBox.
+   */
   const renderCheckbox = (array, setArray) => ({ item }) => (
     <View>
       <CheckBox
@@ -52,11 +59,11 @@ const Programmation = ({ artistes }) => {
   );
 
   /**
-   * Permet de changer le mot logique pour savoir quel filtre est séléctionné.
+   * Permet de changer l'état de sélection de l'élément dans la liste.
    *
    * @param {int} id - Id correspondant à la checkbox cochée.
    * @param {array} array - Liste de données qui sont à filtrer.
-   * @returns {string} La liste triée.
+   * @param {function} setArray - Fonction pour mettre à jour l'état de la liste.
    */
   function inversionLogique(id, array, setArray) {
     const inversion = array.map((liste) =>
