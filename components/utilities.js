@@ -59,11 +59,11 @@ export const filtreJour = (arrayArtistes, jour) => {
  * Trie les artistes filtrés par jour en fonction de leur heure de début.
  * Si les heures sont les mêmes, les artistes sont triés par ordre alphabétique.
  *
- * @param {Array} filtreJourArtistes - La liste des artistes filtrés par jour.
+ * @param {Array} arrayArtistes - La liste des artistes à filtrer.
  * @returns {Array} La liste des artistes triée par heure de début et ordre alphabétique.
  */
-export const trieHeures = (filtreJourArtistes) => {
-  return filtreJourArtistes.sort((a, b) => {
+export const trieHeures = (arrayArtistes) => {
+  return arrayArtistes.sort((a, b) => {
     // Convertir les heures de début en entier pour les comparer
     const aHour = parseInt(a.acf.hdebut.replace(":", ""));
     const bHour = parseInt(b.acf.hdebut.replace(":", ""));
@@ -82,19 +82,19 @@ export const trieHeures = (filtreJourArtistes) => {
  * Filtre la liste des artistes en fonction d'un terme de recherche.
  * Si le terme de recherche est vide, retourne la liste complète des artistes.
  *
- * @param {Array} ordreArtistes - La liste des artistes triée par heure de début et ordre alphabétique.
- * @param {string} rechercher - Le terme de recherche utilisé pour filtrer les artistes.
+ * @param {Array} arrayArtistes - La liste des artistes à filtrer.
+ * @param {string} rechercher - La recherche effectuée pour filtrer les artistes.
  * @returns {Array} La liste des artistes filtrée en fonction du terme de recherche.
  */
-export const rechercheNomArtiste = (ordreArtistes, rechercher) => {
+export const rechercheNomArtiste = (arrayArtistes, rechercher) => {
   // Si le terme de recherche est vide, retourne la liste complète des artistes
   if (rechercher.length === 0) {
-    return ordreArtistes;
+    return arrayArtistes;
   }
 
   const termeRecherche = removeAccents(rechercher).toLowerCase();
 
-  return ordreArtistes.filter((artiste) => {
+  return arrayArtistes.filter((artiste) => {
     const nom = removeAccents(artiste.acf.artiste).toLowerCase();
     return nom.includes(termeRecherche);
   });
@@ -129,35 +129,35 @@ export const premiereLettreMajuscule = (string) => {
 };
 
 /**
- * Crée un tableau d'objets contenant les programmation musicaux uniques et leur état de sélection.
+ * Crée un tableau d'objets contenant les styles et leur état de sélection.
  *
  * @param {Array} artistes - La liste des artistes avec leurs informations.
- * @returns {Array} La liste des programmation musicaux uniques formatée avec l'état de sélection.
+ * @returns {Array} La liste des styles formatée avec l'état de sélection.
  */
 export const StylesArray = (artistes) => {
-  const programmationMusicaux = [];
+  const Styles = [];
 
   // Itère sur chaque artiste pour extraire le style musical
-  artistes.forEach((artiste) => {
-    const styleMusical = artiste.acf.style_musical;
-    if (styleMusical.length > 0) {
-      // Trie et formate le style musical pour chaque artiste
-      const styleMusicalTrie = styleMusical.split(",").map((s) => s.trim());
-      styleMusicalTrie.forEach((style) => {
-        const styleCapitalized = premiereLettreMajuscule(style);
-        // Ajoute les programmation musicaux uniques au tableau
-        if (!programmationMusicaux.includes(styleCapitalized)) {
-          programmationMusicaux.push(styleCapitalized);
+  artistes.forEach(({acf}) => {
+    let style = acf.style_musical;
+
+    if (style.length > 0) {
+      // Trie et formate le style pour chaque artiste
+      style = style.split(",").map((s) => s.trim());
+      style.forEach((style) => {
+        style = premiereLettreMajuscule(style);
+        // Ajoute les styles uniques au tableau
+        if (!Styles.includes(premiereLettreMajuscule(style))) {
+          Styles.push(style);
         }
       });
     }
   });
 
-  // Trie le tableau de programmation musicaux par ordre alphabétique
-  programmationMusicaux.sort();
+  // Trie le tableau de styles par ordre alphabétique
+  Styles.sort();
 
-  // Formate le tableau de programmation musicaux avec l'état de sélection
-  const programmationMusicauxFormat = programmationMusicaux.map(
+  const StylesFormat = Styles.map(
     (style, index) => ({
       id: index + 1,
       style: style,
@@ -165,32 +165,32 @@ export const StylesArray = (artistes) => {
     })
   );
 
-  return programmationMusicauxFormat;
+  return StylesFormat;
 };
 
 /**
- * Crée un tableau d'objets contenant les scènes uniques et leur état de sélection.
+ * Crée un tableau d'objets contenant les scènes et leur état de sélection.
  *
- * @returns {Array} La liste des scènes uniques formatée avec l'état de sélection.
+ * @returns {Array} La liste des scènes formatée avec l'état de sélection.
  */
 export const SceneArray = (artistes) => {
-  const listeScenes = [];
+  const Scenes = [];
 
   // Itère sur chaque artiste pour extraire les scènes
-  artistes.forEach((trieScene) => {
-    const sceneRequete = trieScene.acf.scene;
+  artistes.forEach(({acf}) => {
+    const scene = acf.scene;
 
     // Vérifie si la scène n'est pas vide et n'a pas encore été ajoutée à la liste des scènes
-    if (sceneRequete.length > 0 && !listeScenes.includes(sceneRequete)) {
-      listeScenes.push(sceneRequete);
+    if (scene.length > 0 && !Scenes.includes(scene)) {
+      Scenes.push(scene);
     }
   });
 
   // Trie le tableau de scènes par ordre alphabétique
-  listeScenes.sort();
+  Scenes.sort();
 
   // Formate le tableau de scènes avec l'état de sélection
-  const formatscenes = listeScenes.map((scene, index) => ({
+  const formatscenes = Scenes.map((scene, index) => ({
     id: index + 1,
     scene,
     selected: false,
