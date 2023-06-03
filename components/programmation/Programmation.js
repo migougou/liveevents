@@ -5,9 +5,9 @@ import { SearchBar, CheckBox } from "react-native-elements";
 import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, StylesArray, SceneArray } from "../utilities.js"
 import CarteArtiste from "../carte_artiste/CarteArtiste";
 
-import IconToggleButton from './IconToggleButton';
-import DayButton from './DayButton';
-import FilterCheckList from './FilterCheckList';
+import IconToggleButton from "./IconToggleButton";
+import DayButton from "./DayButton";
+import FilterCheckList from "./FilterCheckList";
 import styles from "./styles.js";
 
 const Programmation = ({ artistes }) => {
@@ -77,7 +77,11 @@ const Programmation = ({ artistes }) => {
       <View style={styles.topBar}>
         <IconToggleButton
           source={require("../../icones/rechercher.png")}
-          onPress={() => setRecherche(!recherche)}
+          altSource={require("../../icones/croix.png")}
+          onPress={() => {
+            setRecherche(!recherche);
+            if (filtre) setFiltre(false);
+          }}
           toggle={recherche}
         />
         <DayButton
@@ -95,7 +99,10 @@ const Programmation = ({ artistes }) => {
         <IconToggleButton
           source={require("../../icones/filtre.png")}
           altSource={require("../../icones/croix.png")}
-          onPress={() => setFiltre(!filtre)}
+          onPress={() => {
+            setFiltre(!filtre);
+            if (recherche) setRecherche(false);
+          }}
           toggle={filtre}
         />
       </View>
