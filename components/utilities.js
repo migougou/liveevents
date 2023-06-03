@@ -18,27 +18,22 @@ export const filtreArtistes = (arrayArtistes, arrayScenes, arrayStyles) => {
   // On filtre les artistes en fonction des scènes et styles sélectionnés
   let filteredArtistes = arrayArtistes.filter((artiste) => {
 
-    // Un artiste est retenu si son style correspond à au moins un style sélectionné
     let matchStyles = arrayStyles.some((styleInfo) => {
       return styleInfo.selected && artiste.acf.style_musical === styleInfo.style;
     });
 
-    // Un artiste est retenu si sa scène correspond à au moins une scène sélectionnée
     let matchScenes = arrayScenes.some((sceneInfo) => {
       return sceneInfo.selected && sceneInfo.scene === artiste.acf.scene;
     });
 
-    // Si aucun style n'est sélectionné, tous les artistes sont retenus, indépendamment du style
     if(arrayStyles.every((info) => !info.selected)) {
       matchStyles = true;
     }
 
-    // Si aucune scène n'est sélectionnée, tous les artistes sont retenus, indépendamment de la scène
     if(arrayScenes.every((info) => !info.selected)) {
       matchScenes = true;
     }
 
-    // Un artiste est retourné s'il correspond à la fois aux styles et aux scènes
     return matchStyles && matchScenes;
   });
 
