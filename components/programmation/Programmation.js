@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, View, Text, Image, TouchableOpacity } from "react-native";
-import { CheckBox, SearchBar } from "react-native-elements";
-import CarteArtiste from "../carte_artiste/CarteArtiste";
-import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, StylesArray, SceneArray } from "../utilities.js"
+import { View, FlatList, Text } from "react-native";
+import { SearchBar, CheckBox } from "react-native-elements";
 
+import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, StylesArray, SceneArray } from "../utilities.js"
+import CarteArtiste from "../carte_artiste/CarteArtiste";
+
+import IconToggleButton from './IconToggleButton';
+import DayButton from './DayButton';
+import FilterCheckList from './FilterCheckList';
 import styles from "./styles.js";
 
 const Programmation = ({ artistes }) => {
@@ -13,7 +17,7 @@ const Programmation = ({ artistes }) => {
   const [recherche, setRecherche] = useState(false);
   const [rechercher, setRechercher] = useState("");
   const [stylesArray, setStylesArray] = useState([]);
-  const [listeScenesArray, setScenesArray] = useState([]);
+  const [scenesArray, setScenesArray] = useState([]);
 
   useEffect(() => {
     let updatedArtistes = artistes;
@@ -21,14 +25,31 @@ const Programmation = ({ artistes }) => {
     updatedArtistes = filtreJour(updatedArtistes, jour);
     updatedArtistes = trieHeures(updatedArtistes);
     updatedArtistes = rechercheNomArtiste(updatedArtistes, rechercher);
-    updatedArtistes = filtreArtistes(updatedArtistes, listeScenesArray, stylesArray);
+    updatedArtistes = filtreArtistes(updatedArtistes, scenesArray, stylesArray);
     setFilterArtistes(updatedArtistes);
-  }, [jour, artistes, rechercher, listeScenesArray, stylesArray]);
+  }, [jour, artistes, rechercher, scenesArray, stylesArray]);
 
   useEffect(() => {
     setStylesArray(StylesArray(artistes));
     setScenesArray(SceneArray(artistes));
-}, [artistes]);
+  }, [artistes]);
+
+  const renderCheckbox = (array, setArray) => ({ item }) => (
+    <View>
+      <CheckBox
+        title={item.style || item.scene}
+        checked={item.selected}
+        onPress={() => {
+          inversionLogique(item.id, array, setArray);
+        }}
+        style={styles.checkbox}
+        checkedIcon="music"
+        checkedColor="#6DBD38"
+        uncheckedIcon="music"
+        uncheckedColor="#CACACA"
+      />
+    </View>
+  );
 
   /**
    * Permet de changer le mot logique pour savoir quel filtre est séléctionné.
@@ -37,128 +58,53 @@ const Programmation = ({ artistes }) => {
    * @param {array} array - Liste de données qui sont à filtrer.
    * @returns {string} La liste triée.
    */
-  function inversionLogiqueprogrammationMusicaux(id, array) {
-    const arraySelected = array === stylesArray ? 0 : 1;
+  function inversionLogique(id, array, setArray) {
     const inversion = array.map((liste) =>
       liste.id === id ? { ...liste, selected: !liste.selected } : liste
     );
-    if (arraySelected === 0) {
-      setStylesArray(inversion);
-    } else {
-      setScenesArray(inversion);
-    }
+    setArray(inversion);
   }
 
   return (
-    <View
-      style={{
-        flex: 1,
-      }}
-    >
+    <View style={{ flex: 1 }}>
       <View style={styles.topBar}>
-        <TouchableOpacity
-          onPress={() => {
-            setRecherche(!recherche);
-          }}
-        >
-          <Image
-            source={require("../../icones/rechercher.png")}
-            style={styles.icone}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.text}
-          onPress={() => {
-            setJour("samedi");
-          }}
-        >
-          <Text>SAMEDI</Text>
-          <Text style={jour === "samedi" ? styles.selectText : styles.select}>
-            10 Juin
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.text}
-          onPress={() => {
-            setJour("dimanche");
-          }}
-        >
-          <Text>DIMANCHE</Text>
-          <Text style={jour === "dimanche" ? styles.selectText : styles.select}>
-            11 Juin
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            setFiltre(!filtre);
-          }}
-        >
-          {filtre ? (
-            <Image
-              source={require("../../icones/croix.png")}
-              style={styles.icone}
-            />
-          ) : (
-            <Image
-              source={require("../../icones/filtre.png")}
-              style={styles.icone}
-            />
-          )}
-        </TouchableOpacity>
+        <IconToggleButton
+          source={require("../../icones/rechercher.png")}
+          onPress={() => setRecherche(!recherche)}
+          toggle={recherche}
+        />
+        <DayButton
+          label="SAMEDI"
+          date="10 Juin"
+          selected={jour === "samedi"}
+          onPress={() => setJour("samedi")}
+        />
+        <DayButton
+          label="DIMANCHE"
+          date="11 Juin"
+          selected={jour === "dimanche"}
+          onPress={() => setJour("dimanche")}
+        />
+        <IconToggleButton
+          source={require("../../icones/filtre.png")}
+          altSource={require("../../icones/croix.png")}
+          onPress={() => setFiltre(!filtre)}
+          toggle={filtre}
+        />
       </View>
       {filtre ? (
-        <View>
-          <Text style={styles.title}>Filtres</Text>
-          <Text style={styles.subTitle}>programmation musicaux</Text>
-          <FlatList
-            data={stylesArray}
-            renderItem={({ item }) => (
-              <View>
-                <CheckBox
-                  title={item.style}
-                  checked={item.selected}
-                  onPress={() => {
-                    inversionLogiqueprogrammationMusicaux(
-                      item.id,
-                      stylesArray
-                    );
-                  }}
-                  style={styles.checkbox}
-                  checkedIcon="music"
-                  checkedColor="#6DBD38"
-                  uncheckedIcon="music"
-                  uncheckedColor="#CACACA"
-                  containerStyle=""
-                />
-              </View>
-            )}
-            keyExtractor={(item) => item.id}
-          />
-          <Text style={styles.subTitle}>Scènes</Text>
-          <FlatList
-            data={listeScenesArray}
-            renderItem={({ item }) => (
-              <View>
-                <CheckBox
-                  title={item.scene}
-                  checked={item.selected}
-                  onPress={() => {
-                    inversionLogiqueprogrammationMusicaux(item.id, listeScenesArray);
-                  }}
-                  style={styles.checkbox}
-                  checkedIcon="music"
-                  checkedColor="#6DBD38"
-                  uncheckedIcon="music"
-                  uncheckedColor="#CACACA"
-                />
-              </View>
-            )}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
+        <FilterCheckList
+          title="Filtres"
+          subTitle1="Styles"
+          data1={stylesArray}
+          renderCheckbox1={renderCheckbox(stylesArray, setStylesArray)}
+          subTitle2="Scènes"
+          data2={scenesArray}
+          renderCheckbox2={renderCheckbox(scenesArray, setScenesArray)}
+        />
       ) : (
         <View>
-          {recherche ? (
+          {recherche && (
             <SearchBar
               placeholder="Rechercher ..."
               lightTheme
@@ -169,7 +115,7 @@ const Programmation = ({ artistes }) => {
               onClear={() => setRecherche(false)}
               autoCorrect={false}
             />
-          ) : null}
+          )}
           <FlatList
             data={filterArtistes}
             renderItem={({ item }) => <CarteArtiste item={item} />}
