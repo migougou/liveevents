@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
-import { CheckBox, } from 'react-native-elements';
+import { Text, View } from "react-native";
 
 const Accueil = () => {
-
-    return (
-        <View>
-            <Text>Page Accueil en travaux</Text>
-        </View>
-    );
+  return (
+    <View>
+      <Text>Page Accueil en travaux</Text>
+    </View>
+  );
 };
 
 export default Accueil;
