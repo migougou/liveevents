@@ -22,10 +22,13 @@ const Programmation = ({ artistes }) => {
   useEffect(() => {
     let updatedArtistes = artistes;
 
-    updatedArtistes = filtreJour(updatedArtistes, jour);
-    updatedArtistes = trieHeures(updatedArtistes);
-    updatedArtistes = rechercheNomArtiste(updatedArtistes, rechercher);
-    updatedArtistes = filtreArtistes(updatedArtistes, scenesArray, stylesArray);
+    if (jour !== "") {
+      updatedArtistes = filtreJour(updatedArtistes, jour);
+      updatedArtistes = trieHeures(updatedArtistes);
+      updatedArtistes = rechercheNomArtiste(updatedArtistes, rechercher);
+      updatedArtistes = filtreArtistes(updatedArtistes, scenesArray, stylesArray);
+    }
+
     setFilterArtistes(updatedArtistes);
   }, [jour, artistes, rechercher, scenesArray, stylesArray]);
 
@@ -88,13 +91,13 @@ const Programmation = ({ artistes }) => {
           label="SAMEDI"
           date="10 Juin"
           selected={jour === "samedi"}
-          onPress={() => setJour("samedi")}
+          onPress={() => setJour(jour === "samedi" ? "" : "samedi")}
         />
         <DayButton
           label="DIMANCHE"
           date="11 Juin"
           selected={jour === "dimanche"}
-          onPress={() => setJour("dimanche")}
+          onPress={() => setJour(jour === "dimanche" ? "" : "dimanche")}
         />
         <IconToggleButton
           source={require("../../icones/filtre.png")}
@@ -120,7 +123,7 @@ const Programmation = ({ artistes }) => {
         <View>
           {recherche && (
             <SearchBar
-              placeholder="Rechercher ..."
+              placeholder="Nom de l'artiste"
               lightTheme
               round
               value={rechercher}
@@ -130,17 +133,25 @@ const Programmation = ({ artistes }) => {
               autoCorrect={false}
             />
           )}
-          <FlatList
-            data={filterArtistes}
-            renderItem={({ item }) => <CarteArtiste item={item} />}
-            keyExtractor={(item) => item.id}
-            style={styles.list}
-            ListEmptyComponent={
+          {
+            jour ? (
+              <FlatList
+                data={filterArtistes}
+                renderItem={({ item }) => <CarteArtiste item={item} />}
+                keyExtractor={(item) => item.id}
+                style={styles.list}
+                ListEmptyComponent={
+                  <Text>
+                    Aucun artiste ne correspond à ce ou ces critères de filtre.
+                  </Text>
+                }
+              />
+            ) : (
               <Text>
-                Aucun artiste ne correspond à ce ou ces critères de filtre.
+                Choisissez le jour qui vous intéresse.
               </Text>
-            }
-          />
+            )
+          }
         </View>
       )}
     </View>
