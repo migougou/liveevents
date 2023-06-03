@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  FlatList,
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { FlatList, View, Text, Image, TouchableOpacity } from "react-native";
 import { CheckBox, SearchBar } from "react-native-elements";
 import CarteArtiste from "../carte_artiste/CarteArtiste";
 

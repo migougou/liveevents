@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MapView, { Marker, Callout } from "react-native-maps";
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, Text, Image } from "react-native";
 import { CheckBox } from "react-native-elements";
 
 import styles from "./styles"

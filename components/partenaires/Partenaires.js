@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  Linking,
-  ScrollView,
-} from "react-native";
+import { View, Text, Image, TouchableOpacity, Linking, ScrollView } from "react-native";
 
 import styles from "./styles.js"
 

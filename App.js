@@ -5,16 +5,8 @@ import { Badge, Overlay } from "react-native-elements";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import Accueil from "./components/accueil/Accueil";
-import Programmation from "./components/programmation/Programmation";
-import Carte from "./components/carte/Carte";
-import Partenaires from "./components/partenaires/Partenaires";
-import Billetterie from "./components/billetterie/Billetterie";
-import DetailsArtiste from "./components/details_artiste/DetailsArtiste";
-import OverlayInformations from "./components/OverlayInformations";
-
+import { Accueil, Programmation, Carte, Partenaires, Billetterie, DetailsArtiste, OverlayInformations, DetailsInformations } from "./components";
 import styles from "./styles.js";
-import DetailsInformations from "./components/details_informations/DetailsInformations";
 
 const Drawer = createDrawerNavigator();
 const API_URL =
