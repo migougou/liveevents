@@ -12,19 +12,18 @@ const Programmation = ({ artistes }) => {
   const [filtre, setFiltre] = useState(false);
   const [recherche, setRecherche] = useState(false);
   const [rechercher, setRechercher] = useState("");
-  const [listeprogrammationMusicauxArray, setListeprogrammationMusicauxArray] = useState([]);
+  const [stylesArray, setListeprogrammationMusicauxArray] = useState([]);
   const [listeScenesArray, setListeScenesArray] = useState([]);
 
   useEffect(() => {
     let updatedArtistes = artistes;
 
-    updatedArtistes = filtreArtistes(updatedArtistes, listeScenesArray);
-    updatedArtistes = filtreArtistes(updatedArtistes, listeprogrammationMusicauxArray);
+    updatedArtistes = filtreArtistes(updatedArtistes, listeScenesArray, stylesArray);
     updatedArtistes = filtreJour(updatedArtistes, jour);
     updatedArtistes = trieHeures(updatedArtistes);
     updatedArtistes = rechercheNomArtiste(updatedArtistes, rechercher);
     setFilterArtistes(updatedArtistes);
-  }, [jour, artistes, rechercher, listeScenesArray, listeprogrammationMusicauxArray]);
+  }, [jour, artistes, rechercher, listeScenesArray, stylesArray]);
 
   useEffect(() => {
     setListeprogrammationMusicauxArray(programmationMusicauxArray(artistes));
@@ -39,7 +38,7 @@ const Programmation = ({ artistes }) => {
    * @returns {string} La liste triée.
    */
   function inversionLogiqueprogrammationMusicaux(id, array) {
-    const arraySelected = array === listeprogrammationMusicauxArray ? 0 : 1;
+    const arraySelected = array === stylesArray ? 0 : 1;
     const inversion = array.map((liste) =>
       liste.id === id ? { ...liste, selected: !liste.selected } : liste
     );
@@ -112,7 +111,7 @@ const Programmation = ({ artistes }) => {
           <Text style={styles.title}>Filtres</Text>
           <Text style={styles.subTitle}>programmation musicaux</Text>
           <FlatList
-            data={listeprogrammationMusicauxArray}
+            data={stylesArray}
             renderItem={({ item }) => (
               <View>
                 <CheckBox
@@ -121,7 +120,7 @@ const Programmation = ({ artistes }) => {
                   onPress={() => {
                     inversionLogiqueprogrammationMusicaux(
                       item.id,
-                      listeprogrammationMusicauxArray
+                      stylesArray
                     );
                   }}
                   style={styles.checkbox}

@@ -2,47 +2,34 @@
  * Filtre les artistes en fonction des filtres séléctionnés (programmation musicaux et scènes)
  *
  * @param {Array} arrayArtistes - La liste des artistes à filtrer.
- * @param {Array} arrayFiltre - La liste des filtres.
+ * @param {Array} arrayScenes - La liste des scènes.
+ * @param {Array} arrayStyles - La liste des styles
  * @returns {Array} La liste des artistes filtrée en fonction des filtres.
  */
-export const filtreArtistes = (arrayArtistes, arrayFiltre) => {
-  let listes = [];
-  arrayFiltre.forEach((arrayInfo) => {
-    // Compare les éléments séléctionnés du filtre scènes avec les artistes
-    if (arrayInfo.scene !== undefined) {
-      let liste = arrayArtistes.filter((artiste) => {
-        return arrayInfo.selected && arrayInfo.scene === artiste.acf.scene;
-      });
-      listes.push(liste);
-    }
-    // Compare les éléments séléctionnés du filtre programmationmusicaux avec les artistes
-    else if (arrayInfo.style !== undefined) {
-      let liste = arrayArtistes.filter((artiste) => {
-        return (
-          arrayInfo.selected && arrayInfo.style === artiste.acf.style_musical
-        );
-      });
-      listes.push(liste);
-    }
-  });
-
-  let resultList = listes.flat();
-
+export const filtreArtistes = (arrayArtistes, arrayScenes, arrayStyles) => {
   // Si aucun filtre n'est sélectionné, retourne le tableau original d'artistes
-  if (arrayFiltre.every((info) => !info.selected)) {
+  if (
+    arrayScenes.every((info) => !info.selected) &&
+    arrayStyles.every((info) => !info.selected)
+  ) {
     return arrayArtistes;
   }
 
-  // Si aucun résultat n'est trouvé, retourne un tableau vide
-  if (resultList.length === 0) {
-    return [];
-  } else {
-    return resultList;
-  }
+  let filteredArtistes = arrayArtistes.filter((artiste) => {
+    let matchScenes = arrayScenes.every((sceneInfo) => {
+      return !sceneInfo.selected || sceneInfo.scene === artiste.acf.scene;
+    });
+
+    let matchStyles = arrayStyles.every((styleInfo) => {
+      return !styleInfo.selected || styleInfo.style === artiste.acf.style_musical;
+    });
+
+    return matchScenes && matchStyles;
+  });
+
+  return filteredArtistes;
 };
 
-const SaturdayDate = "20230610";
-const SundayDate = "20230611";
 
 /**
  * Filtre les artistes en fonction du jour sélectionné (samedi ou dimanche).
@@ -56,8 +43,8 @@ export const filtreJour = (arrayArtistes, jour) => {
     const terms = artiste.acf;
 
     // Vérifie si les données artiste contiennent la date et correspondent au jour sélectionné
-    const isSamedi = jour === "samedi" && terms.date === SaturdayDate;
-    const isDimanche = jour === "dimanche" && terms.date === SundayDate;
+    const isSamedi = jour === "samedi" && terms.date === "20230610";
+    const isDimanche = jour === "dimanche" && terms.date === "20230611";
 
     if (terms && terms.date && (isSamedi || isDimanche)) {
       return true;
