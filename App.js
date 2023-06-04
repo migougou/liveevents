@@ -71,11 +71,22 @@ export default function App() {
     setLoading(false);
   }, []);
 
+  /**
+   * Cette fonction filtre les messages (posts) en fonction d'un terme donné et met à jour l'état correspondant avec le résultat.
+   * @param {string} term - Le terme à rechercher dans les messages. Cela correspond généralement à une catégorie de messages.
+   * @param {function} setData - La fonction de mise à jour de l'état pour la catégorie correspondante (artistes, localisations, partenaires, informations).
+   */
   const filterAndSetData = (term, setData) => {
+    // Filtrer les messages pour ne garder que ceux qui contiennent le terme recherché dans leurs catégories.
     const filteredPosts = posts.filter((post) => {
+      // Obtenir la liste des catégories pour ce message.
       const terms = post._embedded["wp:term"][0] ?? [];
+
+      // Vérifier si le terme recherché est présent dans les catégories.
       return terms.some((termItem) => termItem.slug === term);
     });
+
+    // Mettre à jour l'état correspondant avec les messages filtrés.
     setData(filteredPosts);
   };
 
