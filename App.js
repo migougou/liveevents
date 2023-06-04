@@ -1,6 +1,7 @@
 import { Image, Text, View, TouchableOpacity, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createStackNavigator } from '@react-navigation/stack';
 import { Badge, Overlay } from "react-native-elements";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -9,6 +10,8 @@ import { Accueil, Programmation, Carte, Partenaires, Billetterie, DetailsArtiste
 import styles from "./styles.js";
 
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
+
 const API_URL =
   "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts?_embed&per_page=100";
 const LocalData = require("./wordpress.json");
