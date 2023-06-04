@@ -32,16 +32,16 @@ const styles = StyleSheet.create({
     width: 160,
   },
 
-  textRestau: {
+  textRestaurant: {
     marginBottom: 5,
     fontSize: 16,
   },
-  textToilet: {
+  textWC: {
     marginBottom: 5,
     fontSize: 16,
     marginEnd: 37,
   },
-  textSecour: {
+  textAssistance: {
     marginBottom: 5,
     fontSize: 16,
     marginEnd: 40,
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
   },
-  toiletIcon: {
+  WCIcon: {
     width: 20,
     height: 20,
   },
@@ -64,11 +64,11 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
   },
-  restauIcon: {
+  restaurantIcon: {
     width: 20,
     height: 20,
   },
-  secourIcon: {
+  assistanceIcon: {
     width: 20,
     height: 20,
   },

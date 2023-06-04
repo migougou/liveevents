@@ -5,34 +5,34 @@ import { CheckBox } from "react-native-elements";
 
 import styles from "./styles"
 
-const toiletIcon = require("../../icones/toilet-icon.png");
+const WCIcon = require("../../icones/toilet-icon.png");
 const sceneIcon = require("../../icones/scene.png");
-const restauIcon = require("../../icones/restaurant.png");
-const secourIcon = require("../../icones/secours.png");
+const restaurantIcon = require("../../icones/restaurant.png");
+const assistanceIcon = require("../../icones/secours.png");
 
 const initialPin = { latitude: 48.859349, longitude: 2.233235 };
 
 const Carte = ({ localisations }) => {
-  const [toutesLocalisations, setToutesLocalisations] = useState(localisations);
+  const [allLocations, setAllLocations] = useState(localisations);
 
   const [legendState, setLegendState] = useState({
     scene: true,
-    toilet: true,
-    secour: true,
-    restau: true,
+    WC: true,
+    assistance: true,
+    restaurant: true,
   });
 
   const getIconImage = (typeLocalisation) => {
     var lowercaseTypeLocalisation = typeLocalisation.toLowerCase();
 
     if (lowercaseTypeLocalisation.includes("restaurant")) {
-      return legendState.restau ? restauIcon : null;
+      return legendState.restaurant ? restaurantIcon : null;
     } else if (lowercaseTypeLocalisation.includes("toilettes")) {
-      return legendState.toilet ? toiletIcon : null;
+      return legendState.WC ? WCIcon : null;
     } else if (lowercaseTypeLocalisation.includes("scène")) {
       return legendState.scene ? sceneIcon : null;
     } else if (lowercaseTypeLocalisation.includes("secours")) {
-      return legendState.secour ? secourIcon : null;
+      return legendState.assistance ? assistanceIcon : null;
     }
   };
 
@@ -50,7 +50,7 @@ const Carte = ({ localisations }) => {
           longitudeDelta: 0.01,
         }}
       >
-        {toutesLocalisations.map((localisation) => (
+        {allLocations.map((localisation) => (
           <Marker
             key={localisation.id}
             coordinate={{
@@ -60,7 +60,7 @@ const Carte = ({ localisations }) => {
           >
             <Image
               source={getIconImage(localisation.acf.localisation)}
-              style={styles.secourIcon}
+              style={styles.assistanceIcon}
             />
             <Callout style={styles.callout}>
               <Text>{localisation.acf.localisation}</Text>
@@ -84,40 +84,40 @@ const Carte = ({ localisations }) => {
           />
         </View>
         <View style={styles.legendItem}>
-          <Image source={toiletIcon} style={styles.toiletIcon} />
-          <Text style={styles.textToilet}>Toilettes</Text>
+          <Image source={WCIcon} style={styles.WCIcon} />
+          <Text style={styles.textWC}>Toilettes</Text>
           <CheckBox
-            checked={legendState.toilet}
+            checked={legendState.WC}
             onPress={() =>
               setLegendState((prevState) => ({
                 ...prevState,
-                toilet: !prevState.toilet,
+                WC: !prevState.WC,
               }))
             }
           />
         </View>
         <View style={styles.legendItem}>
-          <Image source={secourIcon} style={styles.secourIcon} />
-          <Text style={styles.textSecour}>Secours</Text>
+          <Image source={assistanceIcon} style={styles.assistanceIcon} />
+          <Text style={styles.textAssistance}>Secours</Text>
           <CheckBox
-            checked={legendState.secour}
+            checked={legendState.assistance}
             onPress={() =>
               setLegendState((prevState) => ({
                 ...prevState,
-                secour: !prevState.secour,
+                assistance: !prevState.assistance,
               }))
             }
           />
         </View>
         <View style={styles.legendItem}>
-          <Image source={restauIcon} style={styles.restauIcon} />
-          <Text style={styles.textRestau}>Restaurations</Text>
+          <Image source={restaurantIcon} style={styles.restaurantIcon} />
+          <Text style={styles.textRestaurant}>Restaurations</Text>
           <CheckBox
-            checked={legendState.restau}
+            checked={legendState.restaurant}
             onPress={() =>
               setLegendState((prevState) => ({
                 ...prevState,
-                restau: !prevState.restau,
+                restaurant: !prevState.restaurant,
               }))
             }
           />
