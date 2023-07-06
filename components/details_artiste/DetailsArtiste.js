@@ -4,7 +4,9 @@ import HeaderArtiste from "./HeaderArtiste";
 import InfoArtiste from "./InfoArtiste";
 import DescriptionArtiste from "./DescriptionArtiste";
 
-const DetailsArtiste = ({ artiste, navigation }) => {
+const DetailsArtiste = ({ route, navigation }) => {
+  const { artiste } = route.params;
+
   if (!artiste) {
     return null;
   }

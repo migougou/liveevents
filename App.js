@@ -1,7 +1,7 @@
 import { Image, Text, View, TouchableOpacity, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from "@react-navigation/stack";
 import { Badge, Overlay } from "react-native-elements";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -23,6 +23,17 @@ const URLFiltreLocalisations =
   "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts?_embed&per_page=100&categories=17";
 const URLFiltrePartenaires =
   "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts?_embed&per_page=100&categories=19";
+
+function ArtistesStack({ artistes }) {
+  return (
+    <Stack.Navigator initialRouteName="Programmation">
+      <Stack.Screen name="Programmation">
+        {(props) => <Programmation {...props} artistes={artistes} />}
+      </Stack.Screen>
+      <Stack.Screen name="Details de l'artiste" component={DetailsArtiste} />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   const [posts, setPosts] = useState([]);
@@ -125,7 +136,7 @@ export default function App() {
           setInformations(JSON.parse(res.request._response));
         })
         .catch((error) => {
-          console.log('Une erreur s\'est produite ' + error);
+          console.log("Une erreur s'est produite " + error);
         });
     };
 
@@ -262,8 +273,8 @@ export default function App() {
         }}
       >
         <Drawer.Screen name="Accueil" component={Accueil} />
-        <Drawer.Screen name="Programmation">
-          {(props) => <Programmation {...props} artistes={artistes} />}
+        <Drawer.Screen name="Artistes">
+          {(props) => <ArtistesStack {...props} artistes={artistes} />}
         </Drawer.Screen>
         <Drawer.Screen name="Carte">
           {(props) => <Carte {...props} localisations={localisations} />}
@@ -271,9 +282,6 @@ export default function App() {
         <Drawer.Screen name="Billetterie" component={Billetterie} />
         <Drawer.Screen name="Partenaires">
           {(props) => <Partenaires {...props} partenaires={partenaires} />}
-        </Drawer.Screen>
-        <Drawer.Screen name="DetailsArtiste">
-          {(props) => <DetailsArtiste {...props} artiste={artistes[0]} />}
         </Drawer.Screen>
         <Drawer.Screen
           name="DetailsInformations"
