@@ -10,9 +10,9 @@ import DayButton from "./DayButton";
 import FilterCheckList from "./FilterCheckList";
 import styles from "./styles.js";
 
-const Programmation = ({ artistes }) => {
+const Programmation = ({ artistes, navigation }) => {
   const [filterArtistes, setFilterArtistes] = useState([]);
-  const [jour, setJour] = useState("");
+  const [jour, setJour] = useState("samedi");
   const [filtre, setFiltre] = useState(false);
   const [recherche, setRecherche] = useState(false);
   const [rechercher, setRechercher] = useState("");
@@ -22,12 +22,10 @@ const Programmation = ({ artistes }) => {
   useEffect(() => {
     let updatedArtistes = artistes;
 
-    if (jour !== "") {
-      updatedArtistes = filtreJour(updatedArtistes, jour);
-      updatedArtistes = trieHeures(updatedArtistes);
-      updatedArtistes = rechercheNomArtiste(updatedArtistes, rechercher);
-      updatedArtistes = filtreArtistes(updatedArtistes, scenesArray, stylesArray);
-    }
+    updatedArtistes = filtreJour(updatedArtistes, jour);
+    updatedArtistes = trieHeures(updatedArtistes);
+    updatedArtistes = rechercheNomArtiste(updatedArtistes, rechercher);
+    updatedArtistes = filtreArtistes(updatedArtistes, scenesArray, stylesArray);
 
     setFilterArtistes(updatedArtistes);
   }, [jour, artistes, rechercher, scenesArray, stylesArray]);
@@ -91,13 +89,13 @@ const Programmation = ({ artistes }) => {
           label="SAMEDI"
           date="10 Juin"
           selected={jour === "samedi"}
-          onPress={() => setJour(jour === "samedi" ? "" : "samedi")}
+          onPress={() => setJour("samedi")}
         />
         <DayButton
           label="DIMANCHE"
           date="11 Juin"
           selected={jour === "dimanche"}
-          onPress={() => setJour(jour === "dimanche" ? "" : "dimanche")}
+          onPress={() => setJour("dimanche")}
         />
         <IconToggleButton
           source={require("../../icones/filtre.png")}
@@ -133,25 +131,24 @@ const Programmation = ({ artistes }) => {
               autoCorrect={false}
             />
           )}
-          {
-            jour ? (
-              <FlatList
-                data={filterArtistes}
-                renderItem={({ item }) => <CarteArtiste item={item} />}
-                keyExtractor={(item) => item.id}
-                style={styles.list}
-                ListEmptyComponent={
-                  <Text>
-                    Aucun artiste ne correspond à ce ou ces critères de filtre.
-                  </Text>
+          <FlatList
+            data={filterArtistes}
+            renderItem={({ item }) => (
+              <CarteArtiste
+                item={item}
+                onPress={() =>
+                  navigation.navigate("Details de l'artiste", { artiste: item })
                 }
               />
-            ) : (
+            )}
+            keyExtractor={(item) => item.id}
+            style={styles.list}
+            ListEmptyComponent={
               <Text>
-                Choisissez le jour qui vous intéresse.
+                Aucun artiste ne correspond à ce ou ces critères de filtre.
               </Text>
-            )
-          }
+            }
+          />
         </View>
       )}
     </View>

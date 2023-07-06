@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Text, Image, View } from "react-native";
+import { Text, Image, View, TouchableOpacity } from "react-native";
 
 import styles from "./styles";
 
-const CarteArtiste = ({ item }) => {
+const CarteArtiste = ({ item, onPress }) => {
   const hmdebut = item.acf.hdebut.slice(0, 5);
   const hmfin = item.acf.hfin.slice(0, 5);
   const [nomTraite, setNomTraite] = useState(item.title.rendered);
@@ -21,7 +21,7 @@ const CarteArtiste = ({ item }) => {
   }, [item]);
 
   return (
-    <View style={styles.format}>
+    <TouchableOpacity onPress={onPress} style={styles.format}>
       <Image source={{ uri: item.acf.imageurl }} style={styles.icone} />
       <View style={styles.formatAdjust}>
         <Text>{nomTraite}</Text>
@@ -32,7 +32,7 @@ const CarteArtiste = ({ item }) => {
           {item.acf.scene} / {item.acf.style_musical}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
