@@ -1,0 +1,204 @@
+[
+    {
+        "id": 561,
+        "date": "2023-06-30T20:09:23",
+        "date_gmt": "2023-06-30T18:09:23",
+        "guid": {
+            "rendered": "https://cchost.bmcorp.fr/LiveEvents/?p=561"
+        },
+        "modified": "2023-06-30T20:09:25",
+        "modified_gmt": "2023-06-30T18:09:25",
+        "slug": "festival-boissons",
+        "status": "publish",
+        "type": "post",
+        "link": "https://cchost.bmcorp.fr/LiveEvents/festival-boissons/",
+        "title": {
+            "rendered": "Festival Boissons"
+        },
+        "content": {
+            "rendered": "",
+            "protected": false
+        },
+        "excerpt": {
+            "rendered": "",
+            "protected": false
+        },
+        "author": 4,
+        "featured_media": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "sticky": false,
+        "template": "",
+        "format": "standard",
+        "meta": [],
+        "categories": [
+            21
+        ],
+        "tags": [],
+        "acf": {
+            "nomcategories": "LE FESTIVAL",
+            "question": "Peut-on apporter ses boissons?",
+            "Reponse": ""
+        },
+        "_links": {
+            "self": [
+                {
+                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts/561"
+                }
+            ],
+            "collection": [
+                {
+                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts"
+                }
+            ],
+            "about": [
+                {
+                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/types/post"
+                }
+            ],
+            "author": [
+                {
+                    "embeddable": true,
+                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/users/4"
+                }
+            ],
+            "replies": [
+                {
+                    "embeddable": true,
+                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/comments?post=561"
+                }
+            ],
+            "version-history": [
+                {
+                    "count": 2,
+                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts/561/revisions"
+                }
+            ],
+            "predecessor-version": [
+                {
+                    "id": 563,
+                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts/561/revisions/563"
+                }
+            ],
+            "wp:attachment": [
+                {
+                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/media?parent=561"
+                }
+            ],
+            "wp:term": [
+                {
+                    "taxonomy": "category",
+                    "embeddable": true,
+                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/categories?post=561"
+                },
+                {
+                    "taxonomy": "post_tag",
+                    "embeddable": true,
+                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/tags?post=561"
+                }
+            ],
+            "curies": [
+                {
+                    "name": "wp",
+                    "href": "https://api.w.org/{rel}",
+                    "templated": true
+                }
+            ]
+        },
+        "_embedded": {
+            "author": [
+                {
+                    "id": 4,
+                    "name": "invite",
+                    "url": "",
+                    "description": "",
+                    "link": "https://cchost.bmcorp.fr/LiveEvents/author/invite/",
+                    "slug": "invite",
+                    "avatar_urls": {
+                        "24": "https://secure.gravatar.com/avatar/a42fa0e3c4ee9868a9a5305575d439f4?s=24&d=mm&r=g",
+                        "48": "https://secure.gravatar.com/avatar/a42fa0e3c4ee9868a9a5305575d439f4?s=48&d=mm&r=g",
+                        "96": "https://secure.gravatar.com/avatar/a42fa0e3c4ee9868a9a5305575d439f4?s=96&d=mm&r=g"
+                    },
+                    "is_super_admin": false,
+                    "woocommerce_meta": {
+                        "variable_product_tour_shown": "",
+                        "activity_panel_inbox_last_read": "",
+                        "activity_panel_reviews_last_read": "",
+                        "categories_report_columns": "",
+                        "coupons_report_columns": "",
+                        "customers_report_columns": "",
+                        "orders_report_columns": "",
+                        "products_report_columns": "",
+                        "revenue_report_columns": "",
+                        "taxes_report_columns": "",
+                        "variations_report_columns": "",
+                        "dashboard_sections": "",
+                        "dashboard_chart_type": "",
+                        "dashboard_chart_interval": "",
+                        "dashboard_leaderboard_rows": "",
+                        "homepage_layout": "",
+                        "homepage_stats": "",
+                        "task_list_tracked_started_tasks": "",
+                        "help_panel_highlight_shown": "",
+                        "android_app_banner_dismissed": ""
+                    },
+                    "acf": [],
+                    "_links": {
+                        "self": [
+                            {
+                                "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/users/4"
+                            }
+                        ],
+                        "collection": [
+                            {
+                                "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/users"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "wp:term": [
+                [
+                    {
+                        "id": 21,
+                        "link": "https://cchost.bmcorp.fr/LiveEvents/category/faq/",
+                        "name": "Faq",
+                        "slug": "faq",
+                        "taxonomy": "category",
+                        "acf": [],
+                        "_links": {
+                            "self": [
+                                {
+                                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/categories/21"
+                                }
+                            ],
+                            "collection": [
+                                {
+                                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/categories"
+                                }
+                            ],
+                            "about": [
+                                {
+                                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/taxonomies/category"
+                                }
+                            ],
+                            "wp:post_type": [
+                                {
+                                    "href": "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts?categories=21"
+                                }
+                            ],
+                            "curies": [
+                                {
+                                    "name": "wp",
+                                    "href": "https://api.w.org/{rel}",
+                                    "templated": true
+                                }
+                            ]
+                        }
+                    }
+                ],
+                []
+            ]
+        }
+    }
+]

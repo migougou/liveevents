@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
     height: screenWidth / 2,
     backgroundColor: "rgba(255, 255, 255, 0.5)",
     padding: 10,
-    borderRadius: 5,
   },
   titreTextCarousel: {
     fontSize: 20,
@@ -29,13 +28,23 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
   },
+  buttonBanal: {
+    padding: 10,
+    borderRadius: 5,
+    backgroundColor: "#33CCFF"
+  },
+  buttonImportant: {
+    padding: 10,
+    borderRadius: 5,
+    backgroundColor: "#E24444"
+  },
   buttonText: {
     color: "black",
     fontSize: 18,
     fontWeight: "bold",
     textAlign: "center",
   },
-  carouselBanale: {
+  carouselBanal: {
     backgroundColor: "#33CCFF",
   },
   carouselImportant: {

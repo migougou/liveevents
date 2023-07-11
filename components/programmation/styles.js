@@ -22,9 +22,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: screenWidth * 0.007,
     borderBottomColor: "#000",
   },
-  list: {
-    marginBottom: screenWidth * 0.13,
-  },
   checkbox: {
     backgroundColor: "red",
   },

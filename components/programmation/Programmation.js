@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, FlatList, Text } from "react-native";
 import { SearchBar, CheckBox } from "react-native-elements";
 
-import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, StylesArray, SceneArray } from "../utilities.js"
+import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, StylesArray, SceneArray, inversionLogique } from "../utilities.js"
 import CarteArtiste from "../carte_artiste/CarteArtiste";
 
 import IconToggleButton from "./IconToggleButton";
@@ -59,20 +59,6 @@ const Programmation = ({ artistes, navigation }) => {
     </View>
   );
 
-  /**
-   * Permet de changer l'état de sélection de l'élément dans la liste.
-   *
-   * @param {int} id - Id correspondant à la checkbox cochée.
-   * @param {array} array - Liste de données qui sont à filtrer.
-   * @param {function} setArray - Fonction pour mettre à jour l'état de la liste.
-   */
-  function inversionLogique(id, array, setArray) {
-    const inversion = array.map((liste) =>
-      liste.id === id ? { ...liste, selected: !liste.selected } : liste
-    );
-    setArray(inversion);
-  }
-
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.topBar}>
@@ -118,7 +104,7 @@ const Programmation = ({ artistes, navigation }) => {
           renderCheckbox2={renderCheckbox(scenesArray, setScenesArray)}
         />
       ) : (
-        <View>
+        <View style={{ flex: 1 }}>
           {recherche && (
             <SearchBar
               placeholder="Nom de l'artiste"
