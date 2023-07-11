@@ -26,11 +26,11 @@ export const filtreArtistes = (arrayArtistes, arrayScenes, arrayStyles) => {
       return sceneInfo.selected && sceneInfo.scene === artiste.acf.scene;
     });
 
-    if(arrayStyles.every((info) => !info.selected)) {
+    if (arrayStyles.every((info) => !info.selected)) {
       matchStyles = true;
     }
 
-    if(arrayScenes.every((info) => !info.selected)) {
+    if (arrayScenes.every((info) => !info.selected)) {
       matchScenes = true;
     }
 
@@ -138,7 +138,7 @@ export const StylesArray = (artistes) => {
   const Styles = [];
 
   // Itère sur chaque artiste pour extraire le style musical
-  artistes.forEach(({acf}) => {
+  artistes.forEach(({ acf }) => {
     let style = acf.style_musical;
 
     if (style.length > 0) {
@@ -177,7 +177,7 @@ export const SceneArray = (artistes) => {
   const Scenes = [];
 
   // Itère sur chaque artiste pour extraire les scènes
-  artistes.forEach(({acf}) => {
+  artistes.forEach(({ acf }) => {
     const scene = acf.scene;
 
     // Vérifie si la scène n'est pas vide et n'a pas encore été ajoutée à la liste des scènes
@@ -197,4 +197,59 @@ export const SceneArray = (artistes) => {
   }));
 
   return formatscenes;
+}
+
+/**
+ * Charge dans la constante handleOpenDetailsInformations une valeur qui va permettre d'afficher les informations importantes ou banales.
+ *
+ * @param {string} infoSelected - string correspondant aux types d'informations à afficher.
+ * @param {const} handleOpenDetailsInformations - Constante qui permet d'ouvrir la page information sélectionnée.
+ * @returns {function} Une fonction permet de naviguer vers la page DetailsInformations en donnant le type d'information à afficher et en fermant l'overlay.
+ */
+export const handleOpenDetails = (infoSelected, handleOpenDetailsInformations) => {
+  const infoType = infoSelected === 'Important' ? 'important' : 'Banal';
+  handleOpenDetailsInformations(infoType);
+};
+
+/**
+* Permet de naviguer vers la page DetailsInformations en donnant le type d'information à afficher et en fermant l'overlay.
+*
+* @param {string} state - mot correspondant au type d'information.
+* @param navigation - Permet de d'afficher une page sans passer par le Navigator.
+* @param {function} overlayInfoLogic - Ferme l'overlay d'informations.
+* @param {const} setChoixInfo - Constante qui permet de savoir quelles informations afficher quand on ouvre DetailsInformations.
+ * @returns {function} Plusieurs fonctions, une qui ouvre la page DetailsInformations, l'autre qui ferme l'overlay et le dernier qui donne l'état de l'information qu'on va afficher.
+*/
+export const handleOpenDetailsInformations = (state, navigation, overlayInfoLogic, setChoixInfo) => {
+  navigation.navigate("DetailsInformations");
+  overlayInfoLogic();
+  setChoixInfo(state);
+};
+
+/**
+ * Charge en fonction d'un string la valeur de la page affichée.
+ *
+ * @param {string} infoSelected - string correspondant aux types d'informations à afficher.
+ * @param {const} setIndexInfoImportantes - Constante qui est chargée avec la valeur de la page importante sélectionnée dans le carrousel.
+ * @param {const} setIndexInfoBanales - Constante qui est chargée avec la valeur de la page banale sélectionnée dans le carrousel.
+ * @param {Number} index - Numéro de la page sélectionnée.
+ * @returns {Number} Valeur de la page actuel dans la constante correspondant au carrousel.
+ */
+export const compteurPage = (infoSelected, setIndexInfoImportantes, setIndexInfoBanales, index) => {
+  const setIndexInfo = infoSelected === "Important" ? setIndexInfoImportantes : setIndexInfoBanales;
+  setIndexInfo(index);
+};
+
+/**
+ * Permet de changer l'état de sélection de l'élément dans la liste.
+ *
+ * @param {int} id - Id correspondant à la checkbox cochée.
+ * @param {array} array - Liste de données qui sont à filtrer.
+ * @param {function} setArray - Fonction pour mettre à jour l'état de la liste.
+ */
+export function inversionLogique(id, array, setArray) {
+  const inversion = array.map((liste) =>
+    liste.id === id ? { ...liste, selected: !liste.selected } : liste
+  );
+  setArray(inversion);
 }
