@@ -40,9 +40,6 @@ export const filtreArtistes = (arrayArtistes, arrayScenes, arrayStyles) => {
   return filteredArtistes;
 };
 
-
-
-
 /**
  * Filtre les artistes en fonction du jour sélectionné (samedi ou dimanche).
  *
@@ -51,9 +48,8 @@ export const filtreArtistes = (arrayArtistes, arrayScenes, arrayStyles) => {
  * @returns {Array} La liste des artistes filtrée en fonction du jour sélectionné.
  */
 export const filtreJour = (arrayArtistes, jour) => {
-  return arrayArtistes.filter(({ acf }) => acf.date === (jour === "samedi" ? "20230610" : "20230611"));
+  return arrayArtistes.filter(({ acf }) => acf.date === (jour === "samedi" ? "20230714" : "20230715"));
 };
-
 
 /**
  * Trie les artistes filtrés par jour en fonction de leur heure de début.
@@ -76,6 +72,23 @@ export const trieHeures = (arrayArtistes) => {
     // Trier les artistes par heure de début
     return aHour - bHour;
   });
+};
+
+/**
+ * Trie les artistes par jour et par heure de début.
+ * Si les heures sont les mêmes, les artistes sont triés par ordre alphabétique.
+ * 
+ * @param {Array} arrayArtistes - La liste des artistes à filtrer.
+ * @returns {Array} La liste des artistes triée par jour, par heure de début et par ordre alphabétique.
+ */
+export const trieArtistes = (arrayArtistes) => {
+  let saturdayArtistes = filtreJour(arrayArtistes, "samedi")
+  saturdayArtistes = trieHeures(saturdayArtistes)
+
+  let sundayArtistes = filtreJour(arrayArtistes, "dimanche")
+  sundayArtistes = trieHeures(sundayArtistes)
+
+  return saturdayArtistes.concat(sundayArtistes)
 };
 
 /**
@@ -134,7 +147,7 @@ export const premiereLettreMajuscule = (string) => {
  * @param {Array} artistes - La liste des artistes avec leurs informations.
  * @returns {Array} La liste des styles formatée avec l'état de sélection.
  */
-export const StylesArray = (artistes) => {
+export const stylesArrayFilter = (artistes) => {
   const Styles = [];
 
   // Itère sur chaque artiste pour extraire le style musical
@@ -173,7 +186,7 @@ export const StylesArray = (artistes) => {
  *
  * @returns {Array} La liste des scènes formatée avec l'état de sélection.
  */
-export const SceneArray = (artistes) => {
+export const sceneArrayFilter = (artistes) => {
   const Scenes = [];
 
   // Itère sur chaque artiste pour extraire les scènes
@@ -253,3 +266,26 @@ export function inversionLogique(id, array, setArray) {
   );
   setArray(inversion);
 }
+/**
+ * Formate une date et une heure de concert en une valeur temporelle enregistrée en millisecondes depuis minuit, le 1er janvier 1970 UTC.
+ * @param {string} date - La date du concert de l'artiste au format "AAAAMMJJ".
+ * @param {string} time - L'heure du début du concert de l'artiste au format "HH:mm".
+ * @returns {number} La valeur temporelle en millisecondes depuis minuit, le 1er janvier 1970 UTC.
+ */
+export const formatDate = (date, time) => {
+  const year = date.slice(0, 4);
+  const month = date.slice(4, 6);
+  const day = date.slice(6, 8);
+  const formattedDate = `${year}-${month}-${day}T${time.slice(0, 5)}:00`;
+
+  return new Date(formattedDate).getTime();
+};
+
+/**
+ * Génère une chaîne de caractères avec une valeur et un mot, en prenant en compte si le mot doit être au pluriel ou au singulier.
+ * @param {number} count - La valeur permettant de déterminer si le mot sera au pluriel ou au singulier.
+ * @param {string} unit - Le mot concerné.
+ * @param {string} suffix - Le suffixe à ajouter au mot au pluriel (par défaut: 's').
+ * @returns {string} La chaîne de caractères résultante.
+ */ 
+export const pluralize = (count, unit, suffix = 's') => `${count} ${unit}${count !== 1 ? suffix : ''}`;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, FlatList, Text } from "react-native";
 import { SearchBar, CheckBox } from "react-native-elements";
 
-import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, StylesArray, SceneArray, inversionLogique } from "../utilities.js"
+import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, stylesArrayFilter, sceneArrayFilter } from "../utilities.js"
 import CarteArtiste from "../carte_artiste/CarteArtiste";
 
 import IconToggleButton from "./IconToggleButton";
@@ -31,8 +31,8 @@ const Programmation = ({ artistes, navigation }) => {
   }, [jour, artistes, rechercher, scenesArray, stylesArray]);
 
   useEffect(() => {
-    setStylesArray(StylesArray(artistes));
-    setScenesArray(SceneArray(artistes));
+    setStylesArray(stylesArrayFilter(artistes));
+    setScenesArray(sceneArrayFilter(artistes));
   }, [artistes]);
 
   /**
