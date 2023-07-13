@@ -182,7 +182,9 @@ export default function App() {
             overlayInfoLogic={overlayInfoLogic} />
         }}
       >
-        <Drawer.Screen name="Accueil" component={Accueil} />
+        <Drawer.Screen name="Accueil" >
+          {(props) => <Accueil {...props} artistes={artistes} />}
+        </Drawer.Screen>
         <Drawer.Screen name="Artistes">
           {(props) => <ArtistesStack {...props} artistes={artistes} />}
         </Drawer.Screen>
