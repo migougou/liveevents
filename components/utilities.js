@@ -75,23 +75,6 @@ export const trieHeures = (arrayArtistes) => {
 };
 
 /**
- * Trie les artistes par jour et par heure de début.
- * Si les heures sont les mêmes, les artistes sont triés par ordre alphabétique.
- * 
- * @param {Array} arrayArtistes - La liste des artistes à filtrer.
- * @returns {Array} La liste des artistes triée par jour, par heure de début et par ordre alphabétique.
- */
-export const trieArtistes = (arrayArtistes) => {
-  let saturdayArtistes = filtreJour(arrayArtistes, "samedi")
-  saturdayArtistes = trieHeures(saturdayArtistes)
-
-  let sundayArtistes = filtreJour(arrayArtistes, "dimanche")
-  sundayArtistes = trieHeures(sundayArtistes)
-
-  return saturdayArtistes.concat(sundayArtistes)
-};
-
-/**
  * Filtre la liste des artistes en fonction d'un terme de recherche.
  * Si le terme de recherche est vide, retourne la liste complète des artistes.
  *
@@ -266,6 +249,7 @@ export function inversionLogique(id, array, setArray) {
   );
   setArray(inversion);
 }
+
 /**
  * Formate une date et une heure de concert en une valeur temporelle enregistrée en millisecondes depuis minuit, le 1er janvier 1970 UTC.
  * @param {string} date - La date du concert de l'artiste au format "AAAAMMJJ".
@@ -289,3 +273,37 @@ export const formatDate = (date, time) => {
  * @returns {string} La chaîne de caractères résultante.
  */ 
 export const pluralize = (count, unit, suffix = 's') => `${count} ${unit}${count > 1 ? suffix : ''}`;
+
+/**
+ * Filtre les artistes par scène et ne retourne que ceux dont les concerts ont lieu dans le futur.
+ * @param {string} selectedScene - Le nom de la scène sélectionnée.
+ * @param {Array} artistes - Le tableau contenant tous les artistes.
+ * @returns {Array} Un tableau contenant uniquement les artistes qui se produisent sur la scène sélectionnée et dont les concerts ont lieu dans le futur.
+ * @note Dans le cas de "Tous" (correspondant à ""), tous les artistes sont renvoyés
+ */
+export const filterArtistesByScene = (selectedScene, artistes) => {
+  const currentDate = new Date();
+  const currentTime = currentDate.getTime();
+
+  const updatedArtistes = artistes.filter((artiste) => {
+    const sceneArtiste = artiste.acf.scene;
+    const eventDateTime = formatDate(artiste.acf.date, artiste.acf.hdebut);
+
+    return selectedScene === "" || sceneArtiste === selectedScene && eventDateTime > currentTime;
+  });
+
+  return updatedArtistes;
+}
+
+/**
+ * Trie le tableau d'artistes par date et heure de concert.
+ * @param {Array} displayArray - Le tableau contenant les artistes à afficher.
+ * @returns {Array} Le tableau d'artistes trié par date et heure de concert.
+ */
+export const trieArtistes = (displayArray) => {
+  return displayArray.sort((a, b) => {
+    const dateA = formatDate(a.acf.date, a.acf.hdebut);
+    const dateB = formatDate(b.acf.date, b.acf.hdebut);
+    return dateA - dateB;
+  });
+}

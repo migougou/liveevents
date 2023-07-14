@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { View, ImageBackground, ScrollView, Text } from "react-native";
 
-import { trieArtistes, formatDate } from "../utilities";
+import { trieArtistes, formatDate, filterArtistesByScene } from "../utilities";
 import SceneButton from './SceneButton';
 import ArtistCard from './ArtistCard';
 import styles from "./styles"
@@ -11,7 +11,7 @@ const Accueil = ({ artistes }) => {
   const [scenesArray, setScenesArray] = useState(artistes);
   const [displayArray, setDisplayArray] = useState(scenesArray);
   const [isAllSelected, setIsAllSelected] = useState(true);
-
+  const sortedDisplayArray = trieArtistes(displayArray);
   const scenes = [
     { name: "Tous", scene: "" },
     { name: "Beta", scene: "Scène Beta" },
@@ -55,31 +55,11 @@ const Accueil = ({ artistes }) => {
   }, [displayArray, scenesArray]);
 
   function SceneArray(selectedScene) {
-    const updatedArtistes = filterArtistesByScene(selectedScene, artistes);
-    const sortedArtistes = trieArtistes(updatedArtistes);
-    setScenesArray(sortedArtistes);
+    let updatedArtistes = filterArtistesByScene(selectedScene, artistes);
+    updatedArtistes = trieArtistes(updatedArtistes);
+    setScenesArray(updatedArtistes);
     setIsAllSelected(selectedScene === "");
   }
-
-  function filterArtistesByScene(selectedScene, artistes) {
-    const currentDate = new Date();
-    const currentTime = currentDate.getTime();
-  
-    const updatedArtistes = artistes.filter((artiste) => {
-      const sceneArtiste = artiste.acf.scene;
-      const eventDateTime = formatDate(artiste.acf.date, artiste.acf.hdebut);
-  
-      return selectedScene === "" || sceneArtiste === selectedScene && eventDateTime > currentTime;
-    });
-  
-    return updatedArtistes;
-  }  
-
-  const sortedDisplayArray = displayArray.sort((a, b) => {
-    const dateA = formatDate(a.acf.date, a.acf.hdebut);
-    const dateB = formatDate(b.acf.date, b.acf.hdebut);
-    return dateA - dateB;
-  });
 
   return (
     <View style={styles.container}>
