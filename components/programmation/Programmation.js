@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, FlatList, Text } from "react-native";
+import { View, FlatList, Text, ScrollView } from "react-native";
 import { SearchBar, CheckBox } from "react-native-elements";
 
 import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, stylesArrayFilter, sceneArrayFilter } from "../utilities.js"
@@ -94,15 +94,17 @@ const Programmation = ({ artistes, navigation }) => {
         />
       </View>
       {filtre ? (
-        <FilterCheckList
-          title="Filtres"
-          subTitle1="Styles"
-          data1={stylesArray}
-          renderCheckbox1={renderCheckbox(stylesArray, setStylesArray)}
-          subTitle2="Scènes"
-          data2={scenesArray}
-          renderCheckbox2={renderCheckbox(scenesArray, setScenesArray)}
-        />
+        <ScrollView vertical>
+          <FilterCheckList
+            title="Filtres"
+            subTitle1="Styles"
+            data1={stylesArray}
+            renderCheckbox1={renderCheckbox(stylesArray, setStylesArray)}
+            subTitle2="Scènes"
+            data2={scenesArray}
+            renderCheckbox2={renderCheckbox(scenesArray, setScenesArray)}
+          />
+        </ScrollView>
       ) : (
         <View style={{ flex: 1 }}>
           {recherche && (
