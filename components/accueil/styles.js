@@ -51,19 +51,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  informationText: {
-    fontSize: 20,
-    color: "#293133",
-  },
-
-  informationTitle: {
-    fontSize: 25,
-    fontWeight: "bold",
-    color: "#000000",
-    marginBottom: 15,
-    textAlign: "center",
-  },
-
   overlay: {
     position: "absolute",
     top: 0,

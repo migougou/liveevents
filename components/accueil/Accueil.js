@@ -125,19 +125,6 @@ const Accueil = ({ artistes }) => {
             </View>
           ))}
         </ScrollView>
-        <View style={styles.boxInformation}>
-          <Text style={styles.informationTitle}>
-            Informations
-          </Text>
-          <Text style={styles.informationText}>
-            Retrouvez la liste des artistes ainsi que les horaires et les
-            différentes scènes dans la rubrique programmation.
-          </Text>
-          <Text style={styles.informationText}>
-            Une carte est également disponible pour retrouver l'emplacement des
-            scènes, restaurants etc ...
-          </Text>
-        </View>
       </ScrollView>
     </View>
   );  
