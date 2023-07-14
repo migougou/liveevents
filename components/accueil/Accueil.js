@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { View, ImageBackground, ScrollView, Text, TouchableOpacity } from "react-native";
+import { View, ImageBackground, ScrollView, Text } from "react-native";
 
 import { trieArtistes, formatDate } from "../utilities";
-import Countdown from "./Countdown";
+import SceneButton from './SceneButton';
+import ArtistCard from './ArtistCard';
 import styles from "./styles"
 
 
@@ -90,40 +91,12 @@ const Accueil = ({ artistes }) => {
           <View>
             <Text style={styles.scenesText}> Scènes </Text>
             <View style={styles.scenesView}>
-              {scenes.map((scene) => (
-                <TouchableOpacity
-                  key={scene.name}
-                  onPress={() => SceneArray(scene.scene)}
-                  style={styles.button}
-                >
-                  <Text style={styles.buttonText}>{scene.name}</Text>
-                </TouchableOpacity>
-              ))}
+              {scenes.map((scene) => <SceneButton key={scene.name} scene={scene} onClick={SceneArray} />)}
             </View>
           </View>
         </ImageBackground>
         <ScrollView horizontal>
-          {sortedDisplayArray.map((artiste) => (
-            <View key={artiste.id} style={styles.card}>
-              <ImageBackground source={{ uri: artiste.acf.imageurl }} style={styles.image}>
-                <View style={styles.overlay}>
-                  <Text style={styles.timer}>
-                    <Countdown date={artiste.acf.date} start={artiste.acf.hdebut} end={artiste.acf.hfin}/>
-                  </Text>
-                </View>
-                <View style={styles.textContainer}>
-                  <Text style={styles.artist}>{artiste.acf.artiste}</Text>
-                  <Text style={styles.infoCarte}>{artiste.acf.scene}</Text>
-                  <Text style={styles.infoCarte}>
-                    {artiste.acf.date.slice(6, 8)} Juin
-                  </Text>
-                  <Text style={styles.infoCarte}>
-                    {artiste.acf.hdebut.slice(0, 5)} - {artiste.acf.hfin.slice(0, 5)}
-                  </Text>
-                </View>
-              </ImageBackground>
-            </View>
-          ))}
+          {sortedDisplayArray.map((artiste) => <ArtistCard key={artiste.id} artiste={artiste} />)}
         </ScrollView>
       </ScrollView>
     </View>
