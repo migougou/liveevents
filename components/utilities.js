@@ -288,4 +288,4 @@ export const formatDate = (date, time) => {
  * @param {string} suffix - Le suffixe à ajouter au mot au pluriel (par défaut: 's').
  * @returns {string} La chaîne de caractères résultante.
  */ 
-export const pluralize = (count, unit, suffix = 's') => `${count} ${unit}${count !== 1 ? suffix : ''}`;
+export const pluralize = (count, unit, suffix = 's') => `${count} ${unit}${count > 1 ? suffix : ''}`;

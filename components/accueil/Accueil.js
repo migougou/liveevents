@@ -31,6 +31,10 @@ const Accueil = ({ artistes }) => {
   }, [scenesArray, isAllSelected]);
 
   useEffect(() => {
+    if (isAllSelected) {
+      return
+    }
+
     const interval = setInterval(() => {
       const currentDate = new Date();
       const currentTime = currentDate.getTime();
@@ -104,7 +108,7 @@ const Accueil = ({ artistes }) => {
               <ImageBackground source={{ uri: artiste.acf.imageurl }} style={styles.image}>
                 <View style={styles.overlay}>
                   <Text style={styles.timer}>
-                    <Countdown date={artiste.acf.date} time={artiste.acf.hdebut}/>
+                    <Countdown date={artiste.acf.date} start={artiste.acf.hdebut} end={artiste.acf.hfin}/>
                   </Text>
                 </View>
                 <View style={styles.textContainer}>
