@@ -1,11 +1,9 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { View, ImageBackground, ScrollView, Text } from "react-native";
-
 import { trieArtistes, formatDate, filterArtistesByScene } from "../utilities";
 import SceneButton from './SceneButton';
 import ArtistCard from './ArtistCard';
 import styles from "./styles"
-
 
 const Accueil = ({ artistes }) => {
   const [scenesArray, setScenesArray] = useState(artistes);
@@ -54,12 +52,13 @@ const Accueil = ({ artistes }) => {
     return () => clearInterval(interval);
   }, [displayArray, scenesArray]);
 
-  function SceneArray(selectedScene) {
+  // 
+  const SceneArray = useCallback((selectedScene) => {
     let updatedArtistes = filterArtistesByScene(selectedScene, artistes);
     updatedArtistes = trieArtistes(updatedArtistes);
     setScenesArray(updatedArtistes);
     setIsAllSelected(selectedScene === "");
-  }
+  }, [artistes]);
 
   return (
     <View style={styles.container}>
@@ -83,4 +82,4 @@ const Accueil = ({ artistes }) => {
   );  
 };
 
-export default Accueil;
+export default React.memo(Accueil);

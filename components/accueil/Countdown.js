@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Text } from "react-native";
 import { formatDate, pluralize } from "../utilities";
 
@@ -36,7 +36,7 @@ const Countdown = ({ date, start, end }) => {
     return () => clearInterval(interval);
   }, []);
 
-  const getDisplayText = () => {
+  const getDisplayText = useCallback(() => {
     let result = "";
 
     if (now > endDateTime) {
@@ -58,9 +58,9 @@ const Countdown = ({ date, start, end }) => {
     }
 
     return result;
-  };
+  }, [now, startDateTime, endDateTime, countdownTime]);
 
   return <Text>{getDisplayText()}</Text>;
 };
 
-export default Countdown;
+export default React.memo(Countdown);
