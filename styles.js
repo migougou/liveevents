@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const s_app = StyleSheet.create({
+const styles = StyleSheet.create({
   loading: {
     flex: 1,
     justifyContent: "center",
@@ -14,6 +14,11 @@ const s_app = StyleSheet.create({
     marginRight: "auto",
     color: "red",
   },
+  tabBarButton: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
-export default s_app;
+export default styles;

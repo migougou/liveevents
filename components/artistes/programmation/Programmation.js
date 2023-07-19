@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { View, FlatList, Text, ScrollView } from "react-native";
 import { SearchBar, CheckBox } from "react-native-elements";
 
-import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, stylesArrayFilter, sceneArrayFilter } from "../utilities.js"
-import CarteArtiste from "../carte_artiste/CarteArtiste";
+import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, stylesArrayFilter, sceneArrayFilter, inversionLogique } from "../../utilities.js"
+import CarteArtiste from "../carte_artiste/CarteArtiste.js";
 
-import IconToggleButton from "./IconToggleButton";
-import DayButton from "./DayButton";
-import FilterCheckList from "./FilterCheckList";
+import IconToggleButton from "./IconToggleButton.js";
+import DayButton from "./DayButton.js";
+import FilterCheckList from "./FilterCheckList.js";
 import styles from "./styles.js";
 
 const Programmation = ({ artistes, navigation }) => {
@@ -63,8 +63,8 @@ const Programmation = ({ artistes, navigation }) => {
     <View style={{ flex: 1 }}>
       <View style={styles.topBar}>
         <IconToggleButton
-          source={require("../../icones/rechercher.png")}
-          altSource={require("../../icones/croix.png")}
+          source={require("../../../icones/rechercher.png")}
+          altSource={require("../../../icones/croix.png")}
           onPress={() => {
             setRecherche(!recherche);
             if (filtre) setFiltre(false);
@@ -84,8 +84,8 @@ const Programmation = ({ artistes, navigation }) => {
           onPress={() => setJour("dimanche")}
         />
         <IconToggleButton
-          source={require("../../icones/filtre.png")}
-          altSource={require("../../icones/croix.png")}
+          source={require("../../../icones/filtre.png")}
+          altSource={require("../../../icones/croix.png")}
           onPress={() => {
             setFiltre(!filtre);
             if (recherche) setRecherche(false);
@@ -94,17 +94,15 @@ const Programmation = ({ artistes, navigation }) => {
         />
       </View>
       {filtre ? (
-        <ScrollView vertical>
-          <FilterCheckList
-            title="Filtres"
-            subTitle1="Styles"
-            data1={stylesArray}
-            renderCheckbox1={renderCheckbox(stylesArray, setStylesArray)}
-            subTitle2="Scènes"
-            data2={scenesArray}
-            renderCheckbox2={renderCheckbox(scenesArray, setScenesArray)}
-          />
-        </ScrollView>
+        <FilterCheckList
+          title="Filtres"
+          subTitle1="Styles"
+          data1={stylesArray}
+          renderCheckbox1={renderCheckbox(stylesArray, setStylesArray)}
+          subTitle2="Scènes"
+          data2={scenesArray}
+          renderCheckbox2={renderCheckbox(scenesArray, setScenesArray)}
+        />
       ) : (
         <View style={{ flex: 1 }}>
           {recherche && (

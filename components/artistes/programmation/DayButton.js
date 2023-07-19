@@ -1,5 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
+
 import styles from "./styles.js";
 
 const DayButton = ({ label, date, selected, onPress }) => {
