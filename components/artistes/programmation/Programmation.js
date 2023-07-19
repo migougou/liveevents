@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, FlatList, Text, ScrollView } from "react-native";
+import { View, FlatList, Text } from "react-native";
 import { SearchBar, CheckBox } from "react-native-elements";
 
 import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, stylesArrayFilter, sceneArrayFilter, inversionLogique } from "../../utilities.js"

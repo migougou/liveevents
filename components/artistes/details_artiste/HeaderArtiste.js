@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+
 import styles from "./styles"
 
 const HeaderArtiste = ({ artiste, navigation }) => (
@@ -13,3 +13,13 @@ const HeaderArtiste = ({ artiste, navigation }) => (
 );
 
 export default HeaderArtiste;
+
+/*
+import Icon from "react-native-vector-icons/FontAwesome";
+
+    <View style={styles.backButtonContainer}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Icon name="chevron-left" size={20} color="white" />
+      </TouchableOpacity>
+    </View>
+*/

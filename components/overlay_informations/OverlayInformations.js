@@ -4,8 +4,9 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/core";
 
 import { handleOpenDetailsInformations } from "../utilities.js"
-import styles from "./styles";
 import CarouselInformations from "./CarouselInformations";
+
+import styles from "./styles";
 
 const OverlayInformations = ({
   informationsBanales,

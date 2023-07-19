@@ -1,9 +1,10 @@
 import React, { useMemo } from "react";
 import { ScrollView } from "react-native";
 
+import DescriptionArtiste from "./DescriptionArtiste";
 import HeaderArtiste from "./HeaderArtiste";
 import InfoArtiste from "./InfoArtiste";
-import DescriptionArtiste from "./DescriptionArtiste";
+
 
 const DetailsArtiste = ({ route, navigation }) => {
   const { artiste } = route.params;

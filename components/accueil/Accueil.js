@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { View, ImageBackground, ScrollView, Text } from "react-native";
+
 import { trieArtistes, formatDate, filterArtistesByScene } from "../utilities";
+
 import SceneButton from './SceneButton';
 import ArtistCard from './ArtistCard';
 import styles from "./styles"

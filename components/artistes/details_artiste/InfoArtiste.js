@@ -3,6 +3,7 @@ import React from "react";
 
 import moment from "moment";
 import "moment/locale/fr";
+
 import styles from "./styles"
 
 const InfoArtiste = ({ artiste, hmdebut, hmfin }) => (

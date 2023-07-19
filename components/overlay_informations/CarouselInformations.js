@@ -5,6 +5,7 @@ import Carousel from "react-native-reanimated-carousel";
 import moment from "moment";
 
 import { handleOpenDetails, compteurPage } from "../utilities.js"
+
 import styles from "./styles";
 
 const screenWidth = Dimensions.get("window").width;

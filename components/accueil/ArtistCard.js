@@ -1,4 +1,5 @@
 import { View, Text, ImageBackground } from 'react-native';
+
 import Countdown from './Countdown';
 import styles from './styles';
 

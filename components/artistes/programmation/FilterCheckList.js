@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
+
 import styles from "./styles.js";
 
 const FilterCheckList = ({ title, subTitle1, data1, renderCheckbox1, subTitle2, data2, renderCheckbox2 }) => {

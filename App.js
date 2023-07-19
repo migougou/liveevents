@@ -7,7 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import axios from "axios";
 
 
-import { Accueil, Carte, Partenaires, Billetterie, OverlayInformations, DetailsInformations } from "./components";
+import { Accueil, Carte, Billetterie, OverlayInformations } from "./components";
 import ArtistesStack from "./components/navigation/ArtistesStack";
 import Header from "./components/navigation/Header";
 import styles from "./styles.js";

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Text } from "react-native";
+
 import { formatDate, pluralize } from "../utilities";
 
 const Countdown = ({ date, start, end }) => {
