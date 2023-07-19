@@ -24,11 +24,11 @@ const filterURLs = {
 };
 
 const localData = {
-  artistes: require("./wordpressArtistes.json"),
-  localisations: require("./wordpressLocalisations.json"),
-  partenaires: require("./wordpressPartenaires.json"),
-  informations: require("./wordpressInformations.json"),
-  faq: require("./wordpressFAQ.json"),
+  artistes: require("./local_data/wordpressArtistes.json"),
+  localisations: require("./local_data/wordpressLocalisations.json"),
+  partenaires: require("./local_data/wordpressPartenaires.json"),
+  informations: require("./local_data/wordpressInformations.json"),
+  faq: require("./local_data/wordpressFAQ.json"),
 };
 
 const LOADING_INTERVAL = 500;
