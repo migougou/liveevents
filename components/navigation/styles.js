@@ -10,30 +10,24 @@ const styles = StyleSheet.create({
         width: "100%",
     },
     headerImageLogo: {
-        flexDirection: "row",
-        marginEnd: "auto",
-        marginStart: "auto",
-        paddingLeft: screenWidth * 0.055,
+        alignItems: "center",
+        marginEnd: screenWidth * 0.055,
+        marginStart: screenWidth * 0.055,
+        flex: 1,
     },
     headerImageLogoAdjust: {
         width: screenWidth * 0.1,
         height: screenWidth * 0.1,
         resizeMode: "contain",
-        alignItems: "center",
     },
-    headerImageRight: {
-        flexDirection: "row",
-    },
-    headerImageRightNotif: {
+    headerImageNotif: {
         width: screenWidth * 0.08,
         height: screenWidth * 0.08,
         resizeMode: "contain",
-        alignItems: "center",
-        marginRight: 15,
     },
-    headerImageRightDrapeau: {
-        width: screenWidth * 0.06,
-        height: screenWidth * 0.06,
+    headerImageDrapeau: {
+        width: screenWidth * 0.07,
+        height: screenWidth * 0.07,
         resizeMode: "contain",
         marginTop: "auto",
         marginBottom: "auto",

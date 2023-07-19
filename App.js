@@ -1,16 +1,19 @@
-import { Text, View, StatusBar } from "react-native";
+import { Text, View, StatusBar, Pressable } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Overlay } from "react-native-elements";
 import { useEffect, useState } from "react";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import axios from "axios";
+
 
 import { Accueil, Carte, Partenaires, Billetterie, OverlayInformations, DetailsInformations } from "./components";
 import ArtistesStack from "./components/navigation/ArtistesStack";
 import Header from "./components/navigation/Header";
 import styles from "./styles.js";
 
-const Drawer = createDrawerNavigator();
+const Tab = createBottomTabNavigator();
+
 
 const filterURLs = {
   faq: "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts?_embed&per_page=100&categories=21",
@@ -160,11 +163,8 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor={"white"} barStyle="dark-content" />
-      <Overlay
-        isVisible={overlayVisible}
-        onBackdropPress={() => overlayInfoLogic()}
-      >
+      <StatusBar backgroundColor={"black"}/>
+      <Overlay isVisible={overlayVisible} onBackdropPress={() => overlayInfoLogic()}>
         <OverlayInformations
           informationsBanales={informationsBanales}
           informationsImportantes={informationsImportantes}
@@ -172,30 +172,50 @@ export default function App() {
           setChoixInfo={setChoixInfo}
         />
       </Overlay>
-      <Drawer.Navigator
-        initialRouteName="Accueil"
-        screenOptions={{
-          headerTitle: () => <Header
-            informationType={informationType}
-            nombreInfoBanales={nombreInfoBanales}
-            nombreInfoImportantes={nombreInfoImportantes}
-            overlayInfoLogic={overlayInfoLogic} />
-        }}
+      <Tab.Navigator 
+        initialRouteName="Accueil" 
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ color = '#e91e63', size }) => {
+            let iconName;
+      
+            if (route.name === "Map") {
+              iconName = "map";
+            } else if (route.name === "Artistes") {
+              iconName = "musical-notes";
+            } else if (route.name === "Accueil") {
+              iconName = "home";
+            } else if (route.name === "Billeterie") {
+              iconName = "wallet";
+            } else if (route.name === "Menu") {
+              iconName = "menu";
+            }
+      
+            return <Ionicons name={iconName} size={size} color={color}/>;
+          },
+          tabBarButton: (props) => (<Pressable {...props} style={({ pressed }) => [styles.tabBarButton, { opacity: pressed ? 0.5 : 1}]}/>),
+          headerTitle: () => <Header 
+            informationType={informationType} 
+            nombreInfoBanales={nombreInfoBanales} 
+            nombreInfoImportantes={nombreInfoImportantes} 
+            overlayInfoLogic={overlayInfoLogic}
+          />,
+          tabBarActiveTintColor: '#e91e63',
+        })}
       >
-        <Drawer.Screen name="Accueil" >
-          {(props) => <Accueil {...props} artistes={artistes} />}
-        </Drawer.Screen>
-        <Drawer.Screen name="Artistes">
-          {(props) => <ArtistesStack {...props} artistes={artistes} />}
-        </Drawer.Screen>
-        <Drawer.Screen name="Carte">
-          {(props) => <Carte {...props} localisations={localisations} />}
-        </Drawer.Screen>
-        <Drawer.Screen name="Billetterie" component={Billetterie} />
-        <Drawer.Screen name="Partenaires">
-          {(props) => <Partenaires {...props} partenaires={partenaires} />}
-        </Drawer.Screen>
-        <Drawer.Screen name="DetailsInformations" options={{ drawerItemStyle: { display: "none" } }}        >
+        
+        <Tab.Screen name="Map">{(props) => <Carte {...props} localisations={localisations} />}</Tab.Screen>
+        <Tab.Screen name="Artistes">{(props) => <ArtistesStack {...props} artistes={artistes} />}</Tab.Screen>
+        <Tab.Screen name="Accueil">{(props) => <Accueil {...props} artistes={artistes} />}</Tab.Screen>
+        <Tab.Screen name="Billeterie" component={Billetterie} />
+        <Tab.Screen name="Menu">{(props) => <Accueil {...props} artistes={artistes} />}</Tab.Screen>
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+
+/*
+        <Drawer.Screen name="Partenaires">{(props) => <Partenaires {...props} partenaires={partenaires} />}</Drawer.Screen>
+        <Drawer.Screen name="DetailsInformations" options={{ drawerItemStyle: { display: "none" } }}>
           {(props) => (
             <DetailsInformations
               {...props}
@@ -206,8 +226,4 @@ export default function App() {
               changementInformation={changementInformation}
             />
           )}
-        </Drawer.Screen>
-      </Drawer.Navigator>
-    </NavigationContainer>
-  );
-}
+*/
