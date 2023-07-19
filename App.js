@@ -205,9 +205,17 @@ export default function App() {
         <Tab.Screen name="Artistes">{(props) => <ArtistesStack {...props} artistes={artistes} />}</Tab.Screen>
         <Tab.Screen name="Accueil">{(props) => <Accueil {...props} artistes={artistes} />}</Tab.Screen>
         <Tab.Screen name="Billeterie" component={Billetterie} />
-        <Tab.Screen name="Menu">{(props) => <Accueil {...props} artistes={artistes} />}</Tab.Screen>
+        <Tab.Screen name="Menu" component={HomeScreen}></Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
+  );
+}
+
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Home!</Text>
+    </View>
   );
 }
 
