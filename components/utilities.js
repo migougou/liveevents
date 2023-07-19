@@ -1,3 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
+
 /**
  * Filtre les artistes en fonction des filtres séléctionnés (programmation musicaux et scènes)
  *
@@ -307,3 +310,56 @@ export const trieArtistes = (displayArray) => {
     return dateA - dateB;
   });
 }
+// Utilise AsyncStorage pour stocker une valeur liée à une clé dans les données en cache 
+export const storeData = async (value, key) => {
+  try {
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem(key, jsonValue);
+  } catch (e) {
+    console.log("erreur :" + e)
+  }
+};
+
+// Utilise AsyncStorage pour récupérer des données en cache liées à une clé dans une constante
+export const getData = async (key, setData) => {
+  try {
+    const jsonValue = await AsyncStorage.getItem(key);
+    setData(jsonValue != null ? JSON.parse(jsonValue) : '');
+  } catch (e) {
+    console.log("erreur :" + e);
+  }
+};
+
+// Utilise AsyncStorage pour supprimer les données en cache liées à une clé
+export const cleanData = async (key) => {
+  try {
+    await AsyncStorage.removeItem(key);
+  } catch (e) {
+    console.log("erreur: " + e);
+  }
+};
+
+// Utilise AsyncStorage pour supprimer toutes les données en cache
+export const cleanAllData = async () => {
+  try {
+    await AsyncStorage.clear();
+  } catch (e) {
+    console.log("erreur: " + e);
+  }
+};
+
+
+// Permet de tester si un identifant et mot de passe est bien dans la base de donnée
+export const checkUserCredentials = (username, password) => {
+  return axios
+    .post('https://cchost.bmcorp.fr/LiveEvents/wp-json/api/v1/token', {
+      username,
+      password,
+    })
+    .then((response) => {
+      console.log('Tu es connecté: ' + response);
+    })
+    .catch((error) => {
+      console.log('Tu n\'es pas connecté: ' + error);
+    });
+};
