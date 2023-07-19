@@ -7,6 +7,8 @@ import SceneButton from './SceneButton';
 import ArtistCard from './ArtistCard';
 import styles from "./styles"
 
+const image = require("../../images/festival.jpg")
+
 const Accueil = ({ artistes }) => {
   const [scenesArray, setScenesArray] = useState(artistes);
   const [displayArray, setDisplayArray] = useState(scenesArray);
@@ -64,21 +66,14 @@ const Accueil = ({ artistes }) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView vertical>
-        <ImageBackground source={require("../../images/festival.jpg")}>
-          <View>
-            <Text style={styles.titleText}> Nation Sounds </Text>
-          </View>
-          <View>
-            <Text style={styles.scenesText}> Scènes </Text>
-            <View style={styles.scenesView}>
-              {scenes.map((scene) => <SceneButton key={scene.name} scene={scene} onClick={SceneArray} />)}
-            </View>
-          </View>
-        </ImageBackground>
-        <ScrollView horizontal>
-          {sortedDisplayArray.map((artiste) => <ArtistCard key={artiste.id} artiste={artiste} />)}
-        </ScrollView>
+      <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+      <View><Text style={styles.titleText}> Nation Sounds </Text></View>
+      <View style={styles.scenesView}>
+        {scenes.map((scene) => <SceneButton key={scene.name} scene={scene} onClick={SceneArray} />)}
+      </View>
+      </ImageBackground>
+      <ScrollView horizontal>
+        {sortedDisplayArray.map((artiste) => <ArtistCard key={artiste.id} artiste={artiste} />)}
       </ScrollView>
     </View>
   );  

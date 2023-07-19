@@ -31,17 +31,22 @@ const styles = StyleSheet.create({
 
   card: {
     width: 230,
-    margin: 7,
   },
 
   container: {
     backgroundColor: "#fff",
+    flex: 1,
   },
 
   image: {
     width: "100%",
     height: 330,
     resizeMode: "cover",
+  },
+
+  imageBackground: {
+    flex: 1,
+    justifyContent: 'center',
   },
 
   infoCarte: {
@@ -60,20 +65,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  scenesText: {
-    fontSize: 22,
-    marginLeft: 5,
-    color: "#fff",
-    textAlign: "center",
-    fontWeight: "bold",
-    backgroundColor: "rgba(100, 100, 100, 0.5)",
-    borderRadius: 100,
-  },
-
   scenesView: {
     flexDirection: "row",
-    justifyContent: "center",
-    margin: 4,
+    justifyContent: "flex-end",
+    position: "absolute",
+    backgroundColor: "rgba(100, 100, 100, 0.8)",
+    borderRadius: 10,
+    bottom: 5,
+    right: 5,
   },
 
   searchBar: {
