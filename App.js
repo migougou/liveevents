@@ -6,14 +6,12 @@ import { useEffect, useState } from "react";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import axios from "axios";
 
-
 import { Accueil, Carte, Billetterie, OverlayInformations } from "./components";
 import ArtistesStack from "./components/navigation/ArtistesStack";
 import Header from "./components/navigation/Header";
 import styles from "./styles.js";
 
 const Tab = createBottomTabNavigator();
-
 
 const filterURLs = {
   faq: "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts?_embed&per_page=100&categories=21",
