@@ -48,7 +48,7 @@ export const filtreArtistes = (arrayArtistes, arrayScenes, arrayStyles) => {
  * @returns {Array} La liste des artistes filtrée en fonction du jour sélectionné.
  */
 export const filtreJour = (arrayArtistes, jour) => {
-  return arrayArtistes.filter(({ acf }) => acf.date === (jour === "samedi" ? "20230714" : "20230715"));
+  return arrayArtistes.filter(({ acf }) => acf.date === (jour === "samedi" ? "20230720" : "20230721"));
 };
 
 /**
