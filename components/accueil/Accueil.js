@@ -56,7 +56,6 @@ const Accueil = ({ artistes }) => {
     return () => clearInterval(interval);
   }, [displayArray, scenesArray]);
 
-  // 
   const SceneArray = useCallback((selectedScene) => {
     let updatedArtistes = filterArtistesByScene(selectedScene, artistes);
     updatedArtistes = trieArtistes(updatedArtistes);
