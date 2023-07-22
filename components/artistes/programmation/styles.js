@@ -1,25 +1,24 @@
-import { StyleSheet, Dimensions } from "react-native";
-
-const screenWidth = Dimensions.get("window").width;
+import { StyleSheet } from "react-native";
+import { wp, hp } from '../../dimensions';
 
 const styles = StyleSheet.create({
   topBar: {
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: "#C0C0C0",
-    paddingVertical: screenWidth * 0.015,
+    paddingVertical: hp('1.5'),
   },
   icone: {
-    height: screenWidth * 0.1,
-    width: screenWidth * 0.1,
-    marginHorizontal: screenWidth * 0.02,
+    height: wp('10'),
+    width: wp('10'),
+    marginHorizontal: wp('2'),
   },
   text: {
     alignItems: "center",
   },
   selectText: {
     alignItems: "center",
-    borderBottomWidth: screenWidth * 0.007,
+    borderBottomWidth: wp('0.7'),
     borderBottomColor: "#000",
   },
   checkbox: {
@@ -27,12 +26,12 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: "center",
-    marginVertical: screenWidth * 0.03,
-    fontSize: screenWidth * 0.05,
+    marginVertical: wp('3'),
+    fontSize: wp('5'),
   },
   subTitle: {
-    marginStart: screenWidth * 0.05,
-    marginTop: screenWidth * 0.03,
+    marginStart: wp('5'),
+    marginTop: wp('3'),
   },
 });
 

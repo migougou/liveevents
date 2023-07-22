@@ -43,7 +43,7 @@ const Programmation = ({ artistes, navigation }) => {
    * @returns {function} Une fonction qui prend un objet item et renvoie un composant CheckBox.
    */
   const renderCheckbox = (array, setArray) => ({ item }) => (
-    <View>
+    <View style={{flex: 1}}>
       <CheckBox
         title={item.style || item.scene}
         checked={item.selected}
