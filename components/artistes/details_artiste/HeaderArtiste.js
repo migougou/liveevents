@@ -1,10 +1,15 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from "./styles"
 
 const HeaderArtiste = ({ artiste, navigation }) => (
   <View>
+    <View style={styles.backButtonContainer}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Ionicons name="chevron-back" size={30} color="white" />
+      </TouchableOpacity>
+    </View>
     <Image style={styles.format} source={{ uri: artiste.acf.imageurl }} />
     <View style={styles.nomArtiste}>
       <Text style={styles.sizeArtiste}>{artiste.acf.artiste}</Text>
@@ -13,13 +18,3 @@ const HeaderArtiste = ({ artiste, navigation }) => (
 );
 
 export default HeaderArtiste;
-
-/*
-import Icon from "react-native-vector-icons/FontAwesome";
-
-    <View style={styles.backButtonContainer}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Icon name="chevron-left" size={20} color="white" />
-      </TouchableOpacity>
-    </View>
-*/

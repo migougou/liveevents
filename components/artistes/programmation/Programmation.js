@@ -120,12 +120,7 @@ const Programmation = ({ artistes, navigation }) => {
           <FlatList
             data={filterArtistes}
             renderItem={({ item }) => (
-              <CarteArtiste
-                item={item}
-                onPress={() =>
-                  navigation.navigate("Details de l'artiste", { artiste: item })
-                }
-              />
+              <CarteArtiste item={item} onPress={() => navigation.navigate("Details de l'artiste", { artiste: item })}/>
             )}
             keyExtractor={(item) => item.id}
             style={styles.list}
