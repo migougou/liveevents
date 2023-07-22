@@ -171,7 +171,8 @@ export default function App() {
         />
       </Overlay>
       <Tab.Navigator 
-        initialRouteName="Accueil" 
+        backBehavior="initialRoute"
+        initialRouteName="Accueil"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color = '#e91e63', size }) => {
             let iconName;

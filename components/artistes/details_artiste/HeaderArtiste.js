@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import styles from "./styles"
 
 const HeaderArtiste = ({ artiste, navigation }) => (
