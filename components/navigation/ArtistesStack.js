@@ -7,10 +7,8 @@ const Stack = createStackNavigator();
 
 const ArtistesStack = ({ artistes }) => {
     return (
-        <Stack.Navigator initialRouteName="Programmation">
-            <Stack.Screen name="Programmation">
-                {(props) => <Programmation {...props} artistes={artistes} />}
-            </Stack.Screen>
+        <Stack.Navigator initialRouteName="Programmation" screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Programmation">{(props) => <Programmation {...props} artistes={artistes} />}</Stack.Screen>
             <Stack.Screen name="Details de l'artiste" component={DetailsArtiste} />
         </Stack.Navigator>
     );
