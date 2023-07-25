@@ -363,3 +363,33 @@ export const checkUserCredentials = (username, password) => {
       console.log('Tu n\'es pas connecté: ' + error);
     });
 };
+
+/**
+ * Formate une date au format "AAAAmmjj" en "jj Mois".
+ * @param {string} dateString - La chaîne de date au format "AAAAmmjj".
+ * @returns {string} La date formatée au format "jj Mois".
+ */
+export const setUpDate = (dateString) => {
+  const months = [
+    "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet",
+    "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+  ];
+
+  const monthIndex = parseInt(dateString.slice(4, 6)) - 1;
+  const day = dateString.slice(6, 8);
+
+  // Formatage de la date en "jj Mois"
+  const formattedDate = `${parseInt(day)} ${months[monthIndex]}`;
+  return formattedDate;
+}
+
+/**
+ * Transforme une heure au format "HH:mm:ss" en une chaîne d'heure formatée "HHhmm".
+ * @param {string} timeString - L'heure au format "HH:mm:ss".
+ * @returns {string} L'heure formatée au format "HHhmm".
+ */
+export const setUpTime = (timeString) => {
+  const [hours, minutes] = timeString.split(":");
+  const formattedTime = `${hours}h${minutes}`;
+  return formattedTime;
+};
