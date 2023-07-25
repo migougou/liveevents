@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, ImageBackground, ScrollView, Text } from "react-native";
+import { View, ImageBackground, ScrollView, Text, TouchableOpacity } from "react-native";
 
 import { trieArtistes, formatDate, filterArtistesByScene } from "../utilities";
 
@@ -67,7 +67,7 @@ const Accueil = ({ artistes }) => {
     <View style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
       <View><Text style={styles.titleText}> Nation Sounds </Text></View>
-      <View style={styles.scenesView}>
+      <View style={styles.scenesButton}>
         {scenes.map((scene) => <SceneButton key={scene.name} scene={scene} onClick={SceneArray} />)}
       </View>
       </ImageBackground>

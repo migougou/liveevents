@@ -1,24 +1,25 @@
 import { StyleSheet } from "react-native";
+import { hp, wp } from "../dimensions"
 
 const styles = StyleSheet.create({
-  artist: {
+  nomArtiste: {
+    flex: 1,
+    justifyContent: 'center',
     color: "white",
     fontSize: 18,
+    marginBottom: hp(0.5),
     fontWeight: "bold",
-    marginBottom: 5,
+    textAlign: "center",
   },
 
-  button: {
-    backgroundColor: "#fff",
-    padding: 7,
-    margin: 3,
-    borderRadius: 10,
-    borderWidth: 2,
-  },
-
-  buttonText: {
-    color: "black",
+  infoArtiste: {
+    flex: 1,
+    justifyContent: 'center',
+    color: "white",
+    fontSize: 16,
+    marginBottom: hp(0.3),
     fontWeight: "bold",
+    textAlign: "center",
   },
 
   boxInformation: {
@@ -29,18 +30,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
 
-  card: {
-    width: 230,
-  },
-
   container: {
     backgroundColor: "#fff",
     flex: 1,
   },
 
   image: {
-    width: "100%",
-    height: 330,
+    width: wp(100),
+    height: hp(43),
     resizeMode: "cover",
   },
 
@@ -49,25 +46,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  infoCarte: {
-    color: "white",
-    fontSize: 16,
-    marginBottom: 3,
-    fontWeight: "bold",
-  },
-
   overlay: {
     position: "absolute",
     top: 0,
     backgroundColor: "rgba(0, 0, 0, 0.3)",
-    width: "100%",
-    height: "auto",
+    width: wp(100),
     textAlign: "center",
   },
 
-  scenesView: {
+  scenesButton: {
     flexDirection: "row",
-    justifyContent: "flex-end",
+    justifyContent: "center",
     position: "absolute",
     backgroundColor: "rgba(100, 100, 100, 0.8)",
     borderRadius: 10,
@@ -75,24 +64,32 @@ const styles = StyleSheet.create({
     right: 5,
   },
 
-  searchBar: {
-    resizeMode: "cover",
-    height: "auto",
+  buttonText: {
+    color: "black",
+    fontWeight: "bold",
+  },
+
+  button: {
+    flex: 1,
+    backgroundColor: "#fff",
+    padding: 7,
+    margin: 3,
+    borderRadius: 10,
+    borderWidth: 2,
   },
 
   textContainer: {
     position: "absolute",
     bottom: 0,
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    padding: 10,
-    width: "100%",
+    padding: hp(0.1),
+    width: wp(100),
   },
 
   timer: {
     color: "white",
-    fontSize: 16,
     fontWeight: "bold",
-    marginBottom: 5,
+    marginBottom: hp(0.25),
     textAlign: "center",
   },
 
@@ -103,6 +100,23 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontStyle: "italic",
     margin: 10,
+  },
+
+  cardContainer: {
+    flexDirection: 'row',
+    marginBottom: 10,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+  },
+
+  infoContainer: {
+    flex: 1,
+    padding: 10,
   },
 });
 
