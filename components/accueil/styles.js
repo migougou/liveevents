@@ -56,26 +56,32 @@ const styles = StyleSheet.create({
 
   scenesButton: {
     flexDirection: "row",
-    justifyContent: "center",
-    position: "absolute",
+    justifyContent: "space-around",
+    alignItems: "center",
     backgroundColor: "rgba(100, 100, 100, 0.8)",
-    borderRadius: 10,
+    padding: 10,
+    marginHorizontal: wp(2),
+    position: "absolute",
     bottom: 5,
-    right: 5,
+    width: wp(96),
+    height: hp(6),
   },
-
-  buttonText: {
-    color: "black",
-    fontWeight: "bold",
-  },
-
+  
   button: {
-    flex: 1,
-    backgroundColor: "#fff",
-    padding: 7,
-    margin: 3,
-    borderRadius: 10,
+    backgroundColor: "#F9A825",
+    paddingVertical: hp(1),
+    paddingHorizontal: wp(2),
     borderWidth: 2,
+    borderColor: "#B28704",
+    minWidth: wp(15),
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  
+  buttonText: {
+    color: "#FFFFFF",
+    fontWeight: "bold",
+    fontSize: wp(3),
   },
 
   textContainer: {
