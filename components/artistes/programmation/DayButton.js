@@ -3,11 +3,10 @@ import { Text, TouchableOpacity } from 'react-native';
 
 import styles from "./styles.js";
 
-const DayButton = ({ label, date, selected, onPress }) => {
+const DayButton = ({ label, selected, onPress }) => {
   return (
-    <TouchableOpacity style={styles.text} onPress={onPress}>
-      <Text>{label}</Text>
-      <Text style={selected ? styles.selectText : styles.select}>{date}</Text>
+    <TouchableOpacity style={[styles.dayButton, selected ? styles.selectedDayButton : {}]} onPress={onPress}>
+      <Text style={[styles.dayButtonText, selected ? styles.selectedDayButtonText : {}]}>{label}</Text>
     </TouchableOpacity>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Text, Image, View, TouchableOpacity } from "react-native";
 
+import { setUpDate, setUpTime } from '../../utilities';
 import styles from "./styles";
 
 const CarteArtiste = ({ item, onPress }) => {
@@ -26,11 +27,11 @@ const CarteArtiste = ({ item, onPress }) => {
     <TouchableOpacity onPress={onPress} style={styles.format}>
       <Image source={{ uri: item.acf.imageurl }} style={styles.icone} />
       <View style={styles.formatAdjust}>
-        <Text>{nom}</Text>
-        <Text>
-          {hmdebut} - {hmfin}
+        <Text style={styles.text}>{nom}</Text>
+        <Text style={styles.text}>
+          De {setUpTime(hmdebut)} à {setUpTime(hmfin)}
         </Text>
-        <Text>
+        <Text style={styles.text}>
           {scene} / {style_musical}
         </Text>
       </View>

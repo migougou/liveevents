@@ -43,24 +43,26 @@ const Programmation = ({ artistes, navigation }) => {
    * @returns {function} Une fonction qui prend un objet item et renvoie un composant CheckBox.
    */
   const renderCheckbox = (array, setArray) => ({ item }) => (
-    <View style={{flex: 1}}>
+    <View style={styles.checkboxContainer}>
       <CheckBox
         title={item.style || item.scene}
         checked={item.selected}
         onPress={() => {
           inversionLogique(item.id, array, setArray);
         }}
-        style={styles.checkbox}
+        containerStyle={{backgroundColor: '#333333', borderWidth: 2, borderColor: '#e91e63'}}
+        textStyle={styles.checkboxTitle}
         checkedIcon="music"
-        checkedColor="#6DBD38"
+        checkedColor="#e91e63"
         uncheckedIcon="music"
-        uncheckedColor="#CACACA"
+        uncheckedColor="#333333"
+        wrapperStyle="#e91e63"
       />
     </View>
   );
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.root}>
       <View style={styles.topBar}>
         <IconToggleButton
           source={require("../../../icones/rechercher.png")}
@@ -73,13 +75,13 @@ const Programmation = ({ artistes, navigation }) => {
         />
         <DayButton
           label="SAMEDI"
-          date="10 Juin"
+          date="01 Août"
           selected={jour === "samedi"}
           onPress={() => setJour("samedi")}
         />
         <DayButton
           label="DIMANCHE"
-          date="11 Juin"
+          date="02 Août"
           selected={jour === "dimanche"}
           onPress={() => setJour("dimanche")}
         />
@@ -108,7 +110,6 @@ const Programmation = ({ artistes, navigation }) => {
           {recherche && (
             <SearchBar
               placeholder="Nom de l'artiste"
-              lightTheme
               round
               value={rechercher}
               onChangeText={(text) => setRechercher(text)}
