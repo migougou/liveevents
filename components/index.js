@@ -11,3 +11,8 @@ export { default as Partenaires } from "./menu/partenaires/Partenaires";
 
 export { default as OverlayInformations } from "./overlay_informations/OverlayInformations";
 export { default as DetailsInformations } from "./details_informations/DetailsInformations";
+
+export { default as ArtistesStack } from "./navigation/ArtistesStack";
+export { default as PlusStack } from "./navigation/PlusStack";
+
+export { default as Header } from "./header/Header"

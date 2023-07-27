@@ -4,7 +4,12 @@ import { Badge } from "react-native-elements";
 
 import styles from "./styles";
 
-const Header = ({informationType, nombreInfoBanales, nombreInfoImportantes, overlayInfoLogic}) => {
+const Header = ({
+  informationType,
+  nombreInfoBanales,
+  nombreInfoImportantes,
+  overlayInfoLogic,
+}) => {
   return (
     <View style={styles.header}>
       <Image
@@ -18,7 +23,11 @@ const Header = ({informationType, nombreInfoBanales, nombreInfoImportantes, over
         />
       </View>
       <View>
-        <TouchableOpacity onPress={() => {overlayInfoLogic()}}>
+        <TouchableOpacity
+          onPress={() => {
+            overlayInfoLogic();
+          }}
+        >
           <Image
             source={
               informationType
