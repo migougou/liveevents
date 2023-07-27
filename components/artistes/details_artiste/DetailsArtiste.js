@@ -5,7 +5,6 @@ import DescriptionArtiste from "./DescriptionArtiste";
 import HeaderArtiste from "./HeaderArtiste";
 import InfoArtiste from "./InfoArtiste";
 
-
 const DetailsArtiste = ({ route, navigation }) => {
   const { artiste } = route.params;
 

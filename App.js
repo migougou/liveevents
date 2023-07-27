@@ -1,14 +1,15 @@
+import { useEffect, useState } from "react";
 import { Text, View, StatusBar, Pressable } from "react-native";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import { Overlay } from "react-native-elements";
-import { useEffect, useState } from "react";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import axios from "axios";
 
-import { Accueil, Carte, Billetterie, OverlayInformations } from "./components";
-import ArtistesStack from "./components/navigation/ArtistesStack";
-import Header from "./components/navigation/Header";
+import { Accueil, Carte, Billetterie, OverlayInformations, ArtistesStack, PlusStack, Header } from "./components";
 import styles from "./styles.js";
 
 const Tab = createBottomTabNavigator();
@@ -161,7 +162,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor={"black"}/>
+      <StatusBar backgroundColor={"black"} />
       <Overlay isVisible={overlayVisible} onBackdropPress={() => overlayInfoLogic()}>
         <OverlayInformations
           informationsBanales={informationsBanales}
@@ -176,7 +177,7 @@ export default function App() {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color = '#e91e63', size }) => {
             let iconName;
-      
+
             if (route.name === "Map") {
               iconName = "map";
             } else if (route.name === "Artistes") {
@@ -185,28 +186,28 @@ export default function App() {
               iconName = "home";
             } else if (route.name === "Billeterie") {
               iconName = "wallet";
-            } else if (route.name === "Menu") {
+            } else if (route.name === "Plus") {
               iconName = "menu";
             }
-      
-            return <Ionicons name={iconName} size={size} color={color}/>;
+
+            return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarButton: (props) => (<Pressable {...props} style={({ pressed }) => [styles.tabBarButton, { opacity: pressed ? 0.5 : 1}]}/>),
-          headerTitle: () => <Header 
-            informationType={informationType} 
-            nombreInfoBanales={nombreInfoBanales} 
-            nombreInfoImportantes={nombreInfoImportantes} 
+          tabBarButton: (props) => (<Pressable {...props} style={({ pressed }) => [styles.tabBarButton, { opacity: pressed ? 0.5 : 1 }]} />),
+          headerTitle: () => <Header
+            informationType={informationType}
+            nombreInfoBanales={nombreInfoBanales}
+            nombreInfoImportantes={nombreInfoImportantes}
             overlayInfoLogic={overlayInfoLogic}
           />,
           tabBarActiveTintColor: '#e91e63',
         })}
       >
-        
+
         <Tab.Screen name="Map">{(props) => <Carte {...props} localisations={localisations} />}</Tab.Screen>
         <Tab.Screen name="Artistes">{(props) => <ArtistesStack {...props} artistes={artistes} />}</Tab.Screen>
         <Tab.Screen name="Accueil">{(props) => <Accueil {...props} artistes={artistes} />}</Tab.Screen>
         <Tab.Screen name="Billeterie" component={Billetterie} />
-        <Tab.Screen name="Menu" component={HomeScreen}></Tab.Screen>
+        <Tab.Screen name="Plus" component={PlusStack} />
       </Tab.Navigator>
     </NavigationContainer>
   );

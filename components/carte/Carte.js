@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import MapView, { Marker, Callout } from "react-native-maps"
 import { View, Text, Image } from "react-native";
 import { CheckBox } from "react-native-elements";
-import MapView, { Marker, Callout } from "react-native-maps";
+import styles from "./styles";
+//import Geolocation from "react-native-geolocation-service";
+//import OpenSettings from "react-native-open-settings";
 
-import styles from "./styles"
 
 const WCIcon = require("../../icones/toilet-icon.png");
 const sceneIcon = require("../../icones/scene.png");
@@ -36,11 +38,10 @@ const Carte = ({ localisations }) => {
     }
   };
 
-  useEffect(() => {
-    const trieLocalisations = localisations.map((localisation) => {});
-  });
+
 
   return (
+
     <View style={styles.container}>
       <MapView
         style={styles.map}
@@ -124,6 +125,7 @@ const Carte = ({ localisations }) => {
         </View>
       </View>
     </View>
+
   );
 };
 
