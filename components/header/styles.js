@@ -1,37 +1,35 @@
-import { StyleSheet, Dimensions } from "react-native";
-
-const screenWidth = Dimensions.get("window").width;
+import { StyleSheet } from "react-native";
+import { wp, hp } from "../dimensions";
 
 const styles = StyleSheet.create({
-    header: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        width: "100%",
-    },
-    headerImageLogo: {
-        alignItems: "center",
-        marginEnd: screenWidth * 0.055,
-        marginStart: screenWidth * 0.055,
-        flex: 1,
-    },
-    headerImageLogoAdjust: {
-        width: screenWidth * 0.1,
-        height: screenWidth * 0.1,
-        resizeMode: "contain",
-    },
-    headerImageNotif: {
-        width: screenWidth * 0.08,
-        height: screenWidth * 0.08,
-        resizeMode: "contain",
-    },
-    headerImageDrapeau: {
-        width: screenWidth * 0.07,
-        height: screenWidth * 0.07,
-        resizeMode: "contain",
-        marginTop: "auto",
-        marginBottom: "auto",
-    },
-})
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    backgroundColor: "#333333",
+    paddingHorizontal: wp(4),
+  },
+  logoImage: {
+    width: wp(10),
+    height: hp(10),
+    resizeMode: "contain",
+  },
+  notificationImage: {
+    width: wp(8),
+    height: hp(5),
+    resizeMode: "contain",
+  },
+  flagImage: {
+    width: wp(7),
+    height: wp(7),
+    resizeMode: "contain",
+  },
+  badgeStyle: {
+    position: "absolute", 
+    top: 0,
+    right: -wp(2), 
+  },
+});
 
 export default styles;

@@ -1,50 +1,26 @@
 import React from "react";
-import { TouchableOpacity, Image, View } from "react-native";
+import { Image, View, TouchableOpacity } from "react-native";
 import { Badge } from "react-native-elements";
-
 import styles from "./styles";
 
-const Header = ({
-  informationType,
-  nombreInfoBanales,
-  nombreInfoImportantes,
-  overlayInfoLogic,
-}) => {
-  return (
-    <View style={styles.header}>
-      <Image
-        source={require("../../icones/france.png")}
-        style={styles.headerImageDrapeau}
+const logoPays = require("../../icones/france.png");
+const logoConcert = require("../../icones/concert.png");
+const notification = require("../../icones/notification.png");
+const notificationImportante = require("../../icones/notificationImportante.png");
+
+const Header = ({ informationType, nombreInfoBanales, nombreInfoImportantes, overlayInfoLogic }) => (
+  <View style={styles.header}>
+    <Image source={logoPays} style={styles.flagImage} />
+    <Image source={logoConcert} style={styles.logoImage} />
+    <TouchableOpacity onPress={overlayInfoLogic}>
+      <Image source={informationType ? notification : notificationImportante} style={styles.notificationImage} />
+      <Badge
+        status={informationType ? "primary" : "error"}
+        value={informationType ? nombreInfoBanales : nombreInfoImportantes}
+        containerStyle={styles.badgeStyle}
       />
-      <View style={styles.headerImageLogo}>
-        <Image
-          source={require("../../icones/concert.png")}
-          style={styles.headerImageLogoAdjust}
-        />
-      </View>
-      <View>
-        <TouchableOpacity
-          onPress={() => {
-            overlayInfoLogic();
-          }}
-        >
-          <Image
-            source={
-              informationType
-                ? require("../../icones/notification.png")
-                : require("../../icones/notificationImportante.png")
-            }
-            style={styles.headerImageNotif}
-          />
-        </TouchableOpacity>
-        <Badge
-          status={informationType ? "primary" : "error"}
-          value={informationType ? nombreInfoBanales : nombreInfoImportantes}
-          containerStyle={{ position: "absolute", left: 20 }}
-        />
-      </View>
-    </View>
-  );
-};
+    </TouchableOpacity>
+  </View>
+);
 
 export default Header;

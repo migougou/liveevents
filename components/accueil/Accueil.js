@@ -66,10 +66,9 @@ const Accueil = ({ artistes }) => {
   return (
     <View style={styles.container}>
       <View style={styles.background}>
-      <View><Text style={styles.titleText}> Nation Sounds </Text></View>
-      <View style={styles.scenesButton}>
+        <View style={styles.scenesButton}>
         {scenes.map((scene) => <SceneButton key={scene.name} scene={scene} onClick={SceneArray} />)}
-      </View>
+        </View>
       </View>
       <ScrollView horizontal>
         {sortedDisplayArray.map((artiste) => <ArtistCard key={artiste.id} artiste={artiste} />)}
@@ -79,3 +78,5 @@ const Accueil = ({ artistes }) => {
 };
 
 export default React.memo(Accueil);
+
+// <Text style={styles.titleText}> Nation Sounds </Text>

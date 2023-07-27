@@ -31,22 +31,19 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    backgroundColor: "#fff",
+    backgroundColor: "#333333",
     flex: 1,
   },
 
   image: {
     width: wp(100),
-    height: hp(43),
+    height: hp(40),
     resizeMode: "cover",
-    borderRightColor: "#e91e63",
-    borderRightWidth: 9,
   },
 
   background: {
     width: wp(100),
     height: hp(43),
-    backgroundColor: "#333333",
   },
 
   imageBackground: {
@@ -62,6 +59,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     borderColor: "#e91e63",
     borderWidth: 1,
+    borderRadius: 10,
   },
 
   scenesButton: {
