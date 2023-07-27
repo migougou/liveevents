@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   nomArtiste: {
     flex: 1,
     justifyContent: 'center',
-    color: "white",
+    color: "#e91e63",
     fontSize: 18,
     marginBottom: hp(0.5),
     fontWeight: "bold",
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   infoArtiste: {
     flex: 1,
     justifyContent: 'center',
-    color: "white",
+    color: "#e91e63",
     fontSize: 16,
     marginBottom: hp(0.3),
     fontWeight: "bold",
@@ -39,6 +39,14 @@ const styles = StyleSheet.create({
     width: wp(100),
     height: hp(43),
     resizeMode: "cover",
+    borderRightColor: "#e91e63",
+    borderRightWidth: 9,
+  },
+
+  background: {
+    width: wp(100),
+    height: hp(43),
+    backgroundColor: "#333333",
   },
 
   imageBackground: {
@@ -49,37 +57,30 @@ const styles = StyleSheet.create({
   overlay: {
     position: "absolute",
     top: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    backgroundColor: "rgba(0.2, 0.2, 0.2, 0.6)",
     width: wp(100),
     textAlign: "center",
+    borderColor: "#e91e63",
+    borderWidth: 1,
   },
 
   scenesButton: {
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "rgba(100, 100, 100, 0.8)",
+    backgroundColor: "#333333",
     padding: 10,
     marginHorizontal: wp(2),
     position: "absolute",
     bottom: 5,
     width: wp(96),
     height: hp(6),
-  },
-  
-  button: {
-    backgroundColor: "#F9A825",
-    paddingVertical: hp(1),
-    paddingHorizontal: wp(2),
+    borderColor: "#e91e63",
     borderWidth: 2,
-    borderColor: "#B28704",
-    minWidth: wp(15),
-    justifyContent: "center",
-    alignItems: "center",
   },
   
   buttonText: {
-    color: "#FFFFFF",
+    color: "#e91e63",
     fontWeight: "bold",
     fontSize: wp(3),
   },
@@ -87,13 +88,15 @@ const styles = StyleSheet.create({
   textContainer: {
     position: "absolute",
     bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    backgroundColor: "rgba(0.2, 0.2, 0.2, 0.5)",
     padding: hp(0.1),
     width: wp(100),
+    borderColor: "#e91e63",
+    borderWidth: 1,
   },
 
   timer: {
-    color: "white",
+    color: "#e91e63",
     fontWeight: "bold",
     marginBottom: hp(0.25),
     textAlign: "center",
@@ -101,10 +104,9 @@ const styles = StyleSheet.create({
 
   titleText: {
     textAlign: "center",
-    color: "#fff",
+    color: "#e91e63",
     fontSize: 25,
     fontWeight: "bold",
-    fontStyle: "italic",
     margin: 10,
   },
 
