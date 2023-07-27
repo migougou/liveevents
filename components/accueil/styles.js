@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  /*
   overlay: {
     position: "absolute",
     top: 0,
@@ -61,6 +62,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
   },
+  */
 
   scenesButton: {
     flexDirection: "row",

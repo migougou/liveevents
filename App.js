@@ -204,6 +204,10 @@ export default function App() {
               tabBarButton: (props) => (<Pressable {...props} style={({ pressed }) => [styles.tabBarButton, { opacity: pressed ? 0.5 : 1 }]} />),
               headerShown: false,
               tabBarActiveTintColor: '#e91e63',
+              tabBarInactiveTintColor: '#ffffff',
+              tabBarStyle: {
+                backgroundColor: '#333333',
+              },
             })}
           >
     
