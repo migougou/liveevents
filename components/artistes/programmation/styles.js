@@ -42,12 +42,15 @@ const styles = StyleSheet.create({
     color: '#e91e63',
   },
 
-  checkboxContainer: {
-    flex: 1,
-  },
-
   checkboxTitle: {
     color: '#e91e63',
+  },
+
+  checkboxContainer: {
+    backgroundColor: '#ffffff', 
+    borderWidth: 2, 
+    borderColor: '#e91e63',
+    borderRadius: 20,
   },
 
   title: {
@@ -56,13 +59,8 @@ const styles = StyleSheet.create({
     fontSize: wp('5'),
     color: '#e91e63',
     backgroundColor: '#333333',
-  },
-
-  subTitle: {
-    marginStart: wp('5'),
-    marginTop: wp('3'),
-    color: '#e91e63',
-    backgroundColor: '#333333',
+    borderWidth: 2,
+    borderColor: '#e91e63',
   },
 
   dayButton: {
@@ -89,6 +87,11 @@ const styles = StyleSheet.create({
 
   selectedDayButtonText: {
     color: '#333333',
+  },
+
+  filterContainer: {
+    flexDirection: 'row', 
+    flexWrap: 'wrap',
   },
 });
 

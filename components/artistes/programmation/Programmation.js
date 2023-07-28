@@ -43,14 +43,14 @@ const Programmation = ({ artistes, navigation }) => {
    * @returns {function} Une fonction qui prend un objet item et renvoie un composant CheckBox.
    */
   const renderCheckbox = (array, setArray) => ({ item }) => (
-    <View style={styles.checkboxContainer}>
+    <View>
       <CheckBox
         title={item.style || item.scene}
         checked={item.selected}
         onPress={() => {
           inversionLogique(item.id, array, setArray);
         }}
-        containerStyle={{backgroundColor: '#333333', borderWidth: 2, borderColor: '#e91e63'}}
+        containerStyle={styles.checkboxContainer}
         textStyle={styles.checkboxTitle}
         checkedIcon="music"
         checkedColor="#e91e63"
@@ -97,11 +97,10 @@ const Programmation = ({ artistes, navigation }) => {
       </View>
       {filtre ? (
         <FilterCheckList
-          title="Filtres"
-          subTitle1="Styles"
+          title1="Styles"
           data1={stylesArray}
           renderCheckbox1={renderCheckbox(stylesArray, setStylesArray)}
-          subTitle2="Scènes"
+          title2="Scènes"
           data2={scenesArray}
           renderCheckbox2={renderCheckbox(scenesArray, setScenesArray)}
         />

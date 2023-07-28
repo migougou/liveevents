@@ -6,12 +6,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     elevation: 5,
     shadowColor: "#52006A",
-    marginVertical: hp('2'),
+    marginVertical: hp('0.5'),
     marginHorizontal: wp('2'),
     borderRadius: wp('3'),
-    backgroundColor: '#333333',
+    backgroundColor: '#ffffff',
     borderColor: '#e91e63',
-    borderWidth: 1,
+    borderWidth: 2,
   },
 
   formatAdjust: {

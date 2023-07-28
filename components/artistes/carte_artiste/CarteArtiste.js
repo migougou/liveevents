@@ -32,7 +32,7 @@ const CarteArtiste = ({ item, onPress }) => {
           De {setUpTime(hmdebut)} à {setUpTime(hmfin)}
         </Text>
         <Text style={styles.text}>
-          {scene} / {style_musical}
+          Scène {scene} || Groupe {style_musical}
         </Text>
       </View>
     </TouchableOpacity>
