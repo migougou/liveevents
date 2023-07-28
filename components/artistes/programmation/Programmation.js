@@ -47,9 +47,7 @@ const Programmation = ({ artistes, navigation }) => {
       <CheckBox
         title={item.style || item.scene}
         checked={item.selected}
-        onPress={() => {
-          inversionLogique(item.id, array, setArray);
-        }}
+        onPress={() => { inversionLogique(item.id, array, setArray) }}
         containerStyle={styles.checkboxContainer}
         textStyle={styles.checkboxTitle}
         checkedIcon="music"

@@ -9,7 +9,7 @@ const HeaderArtiste = ({ artiste, navigation }) => (
   <View>
     <View style={styles.backButtonContainer}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Ionicons name="chevron-back" size={30} color="white" />
+        <Ionicons name="chevron-back" size={30} color="#e91e63" />
       </TouchableOpacity>
     </View>
     <Image style={styles.format} source={{ uri: artiste.acf.imageurl }} />
