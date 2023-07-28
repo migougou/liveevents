@@ -10876,12 +10876,12 @@
         },
         "modified": "2023-04-24T09:26:11",
         "modified_gmt": "2023-04-24T07:26:11",
-        "slug": "contrebande-habstrakt-b2b-asdek-b2b-basstrick",
+        "slug": "contrebande",
         "status": "publish",
         "type": "post",
         "link": "https://cchost.bmcorp.fr/LiveEvents/contrebande-habstrakt-b2b-asdek-b2b-basstrick/",
         "title": {
-            "rendered": "CONTREBANDE (HABSTRAKT b2b ASDEK b2b BASSTRICK)"
+            "rendered": "CONTREBANDE"
         },
         "content": {
             "rendered": "",
@@ -10904,7 +10904,7 @@
         ],
         "tags": [],
         "acf": {
-            "artiste": "CONTREBANDE (HABSTRAKT b2b ASDEK b2b BASSTRICK)",
+            "artiste": "CONTREBANDE",
             "style_musical": "Electro",
             "origine": "FRANCE",
             "scene": "Scène Epsilon",
