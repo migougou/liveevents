@@ -1,7 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { DetailsArtiste, Programmation } from "../../components";
+import DetailsArtiste from "../artistes/details_artiste/DetailsArtiste";
+import Programmation from "../artistes/programmation/Programmation";
 
 const Stack = createStackNavigator();
 
