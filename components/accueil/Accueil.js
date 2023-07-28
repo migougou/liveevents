@@ -9,7 +9,7 @@ import styles from "./styles"
 
 const image = require("../../images/festival.jpg")
 
-const Accueil = ({ artistes }) => {
+const Accueil = ({ artistes, navigation }) => {
   const [scenesArray, setScenesArray] = useState(artistes);
   const [displayArray, setDisplayArray] = useState(scenesArray);
   const [isAllSelected, setIsAllSelected] = useState(true);
@@ -67,11 +67,11 @@ const Accueil = ({ artistes }) => {
     <View style={styles.container}>
       <View style={styles.background}>
         <View style={styles.scenesButton}>
-        {scenes.map((scene) => <SceneButton key={scene.name} scene={scene} onClick={SceneArray} />)}
+          {scenes.map((scene) => <SceneButton key={scene.name} scene={scene} onClick={SceneArray} />)}
         </View>
       </View>
       <ScrollView horizontal>
-        {sortedDisplayArray.map((artiste) => <ArtistCard key={artiste.id} artiste={artiste} />)}
+        {sortedDisplayArray.map((artiste) => <ArtistCard key={artiste.id} artiste={artiste} navigation={navigation}/>)}
       </ScrollView>
     </View>
   );  
@@ -79,4 +79,8 @@ const Accueil = ({ artistes }) => {
 
 export default React.memo(Accueil);
 
-// <Text style={styles.titleText}> Nation Sounds </Text>
+/*
+      <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+        <Text style={styles.titleText}> Nation Sounds </Text>
+      </ImageBackground>
+*/

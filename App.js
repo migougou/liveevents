@@ -205,14 +205,22 @@ export default function App() {
               headerShown: false,
               tabBarActiveTintColor: '#e91e63',
               tabBarInactiveTintColor: '#ffffff',
-              tabBarStyle: {
-                backgroundColor: '#333333',
-              },
+              tabBarStyle: { backgroundColor: '#333333'},
             })}
           >
     
             <Tab.Screen name="Map">{(props) => <Carte {...props} localisations={localisations} />}</Tab.Screen>
-            <Tab.Screen name="Artistes">{(props) => <ArtistesStack {...props} artistes={artistes} />}</Tab.Screen>
+            <Tab.Screen 
+              name="Artistes" 
+              children={(props) => <ArtistesStack {...props} artistes={artistes} />}
+              listeners={({ navigation }) => ({ tabPress: event => { 
+                event.preventDefault();           
+                navigation.reset({
+                  index: 0,
+                  routes: [{ name: 'Artistes', params: { screen: 'Programmation' }}],
+                });
+              }})}
+            />
             <Tab.Screen name="Accueil">{(props) => <Accueil {...props} artistes={artistes} />}</Tab.Screen>
             <Tab.Screen name="Billeterie" component={Billetterie} />
             <Tab.Screen name="Plus" component={PlusStack} />
