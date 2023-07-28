@@ -13,6 +13,8 @@ const Accueil = ({ artistes, navigation }) => {
   const [scenesArray, setScenesArray] = useState(artistes);
   const [displayArray, setDisplayArray] = useState(scenesArray);
   const [isAllSelected, setIsAllSelected] = useState(true);
+  const [selectedScene, setSelectedScene] = useState("Tous");
+
   const sortedDisplayArray = trieArtistes(displayArray);
   const scenes = [
     { name: "Tous", scene: "" },
@@ -56,18 +58,27 @@ const Accueil = ({ artistes, navigation }) => {
     return () => clearInterval(interval);
   }, [displayArray, scenesArray]);
 
-  const SceneArray = useCallback((selectedScene) => {
-    let updatedArtistes = filterArtistesByScene(selectedScene, artistes);
+  const SceneArray = useCallback((selectedSceneName) => {
+    let updatedArtistes = filterArtistesByScene(selectedSceneName === "Tous" ? "" : selectedSceneName, artistes);
     updatedArtistes = trieArtistes(updatedArtistes);
     setScenesArray(updatedArtistes);
-    setIsAllSelected(selectedScene === "");
+    setIsAllSelected(selectedSceneName === "Tous");
+
+    setSelectedScene(selectedSceneName);
   }, [artistes]);
 
   return (
     <View style={styles.container}>
       <View style={styles.background}>
         <View style={styles.scenesButton}>
-          {scenes.map((scene) => <SceneButton key={scene.name} scene={scene} onClick={SceneArray} />)}
+          {scenes.map((scene) => (
+            <SceneButton
+              key={scene.name}
+              scene={scene}
+              isSelected={scene.name === selectedScene}
+              onClick={SceneArray} 
+            />
+          ))}
         </View>
       </View>
       <ScrollView horizontal>

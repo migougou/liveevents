@@ -84,6 +84,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: wp(3),
   },
+  
+  buttonTextSelected: {
+    color: "#333333",
+    fontWeight: "bold",
+    fontSize: wp(3),
+    backgroundColor: "#e91e63",
+    borderRadius: 10,
+    paddingHorizontal: wp(5),
+  },
 
   textContainer: {
     position: "absolute",
