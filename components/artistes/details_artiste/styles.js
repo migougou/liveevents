@@ -1,105 +1,114 @@
 import { StyleSheet, Dimensions } from "react-native";
-
-const screenWidth = Dimensions.get("window").width;
+import { wp, hp } from "../../dimensions"
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#333333',
+  },
+
+  card: {
+    padding: 15,
+    backgroundColor: '#FFFFFF',
+    margin: 10,
+    borderRadius: 10,
+  },
+
   backButtonContainer: {
     position: "absolute",
-    top: 20,
-    left: 20,
+    top: 10,
+    left: 10,
     zIndex: 1,
   },
+
   format: {
     flexDirection: "row",
-    width: screenWidth * 1,
-    height: screenWidth * 1,
+    width: wp(100),
+    height: hp(50),
   },
+
   nomArtiste: {
     position: "absolute",
-    top: 350,
-    left: 10,
-  },
-  sizeArtiste: {
-    fontSize: 25,
-    color: "white",
+    bottom: 10,
+    left: 0,
+    right: 0,
     fontWeight: "bold",
+    fontSize: 25,
+    color: "#e91e63",
+    textAlign: "center",
+    textShadowColor: '#333333',
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 3,
+  },
+
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 
   info: {
     fontSize: 18,
-    marginStart: 10,
     fontWeight: "bold",
+    color: "#e91e63",
+    textShadowColor: '#333333',
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 1,
   },
 
-  infos: {
+  centerInfo: {
     fontSize: 18,
-    marginStart: 10,
+    fontWeight: "bold",
+    color: "#333333",
+    marginTop: 10,
+    textAlign: 'center',
+    textShadowColor: '#e91e63',
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 1,
   },
 
-  styleContainer: {
-    padding: 10,
-    backgroundColor: "white",
-    borderRadius: 10,
-    borderColor: "blue",
-    borderWidth: 2,
-    marginBottom: 10,
-    marginStart: 10,
-  },
-  styleOrigineContainer: {
-    flexDirection: "row",
-    marginVertical: 25,
-  },
-  styleOrigine: {
-    padding: 10,
-    backgroundColor: "white",
-    borderRadius: 10,
-    borderColor: "violet",
-    borderWidth: 2,
-    marginBottom: 10,
-    marginStart: 10,
-  },
-  style: {
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  descriptionContainer: {
-    backgroundColor: "white",
-    padding: 10,
-    marginHorizontal: 10,
-    borderRadius: 10,
+  localiserContainer: {
+    justifyContent: "center",
     alignItems: "center",
     marginTop: 40,
-    marginBottom: screenWidth * 0.1,
   },
-  description: {
-    fontSize: 18,
-    textAlign: "center",
+
+  descriptionContainer: {
+    paddingHorizontal: 10,
+    paddingBottom: 10,
+    marginTop: 20,
   },
+
   descriptionStyle: {
+    color: '#FFFFFF',
     fontSize: 16,
+    lineHeight: 24,
+    textAlign: 'justify',
   },
-  localiserContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    marginTop: 40,
-    marginStart: 10,
-  },
+
   buttonText: {
     color: "white",
     fontSize: 20,
     fontWeight: "bold",
   },
+
   button: {
     width: 180,
     height: 50,
     marginStart: 10,
     marginBottom: 20,
-    backgroundColor: "red",
+    backgroundColor: "#e91e63",
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",
   },
-});
 
+  chevronContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 52.5,
+    alignItems: 'center',
+  },
+});
 
 export default styles;

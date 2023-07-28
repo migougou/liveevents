@@ -13,9 +13,7 @@ const HeaderArtiste = ({ artiste, navigation }) => (
       </TouchableOpacity>
     </View>
     <Image style={styles.format} source={{ uri: artiste.acf.imageurl }} />
-    <View style={styles.nomArtiste}>
-      <Text style={styles.sizeArtiste}>{artiste.acf.artiste}</Text>
-    </View>
+    <Text style={styles.nomArtiste}>{artiste.acf.artiste}</Text>
   </View>
 );
 

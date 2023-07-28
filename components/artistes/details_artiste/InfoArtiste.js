@@ -1,33 +1,18 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-import moment from "moment";
-import "moment/locale/fr";
+import { setUpDate, setUpTime } from "../../utilities";
 
 import styles from "./styles"
 
 const InfoArtiste = ({ artiste, hmdebut, hmfin }) => (
-  <View>
-    <View style={styles.styleOrigineContainer}>
-      <View style={styles.styleContainer}>
-        <Text style={styles.style}>{artiste.acf.style_musical}</Text>
+  <View style={styles.container}>
+    <View style={styles.card}>
+      <View style={styles.row}>
+        <Text style={styles.info}>Catégorie : {artiste.acf.style_musical}</Text>
+        <Text style={styles.info}>Pays : {artiste.acf.origine}</Text>
       </View>
-      <View style={styles.styleOrigine}>
-        <Text style={styles.style}>{artiste.acf.origine}</Text>
-      </View>
-    </View>
-    <View>
-      <Text style={styles.info}>
-        {moment(artiste.acf.date)
-          .format("dddd D MMMM")
-          .charAt(0)
-          .toUpperCase() +
-          moment(artiste.acf.date).format("dddd D MMMM").slice(1)}
-      </Text>
-      <Text style={styles.infos}>
-        {hmdebut} - {hmfin}
-      </Text>
-      <Text style={styles.infos}>{artiste.acf.scene}</Text>
+      <Text style={styles.centerInfo}>Concert le {setUpDate(artiste.acf.date)} de {setUpTime(hmdebut)} à {setUpTime(hmfin)} sur la scène {artiste.acf.scene}</Text>
     </View>
   </View>
 );
