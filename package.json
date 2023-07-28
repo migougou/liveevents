@@ -38,7 +38,8 @@
     "react-native-screens": "~3.20.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-woocommerce-api": "^1.8.8",
-    "@react-native-async-storage/async-storage": "1.17.11"
+    "@react-native-async-storage/async-storage": "1.17.11",
+    "expo-updates": "~0.16.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
