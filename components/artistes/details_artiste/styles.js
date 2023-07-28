@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   localiserContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 40,
+    marginTop: hp(1),
   },
 
   descriptionContainer: {
