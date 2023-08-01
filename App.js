@@ -163,7 +163,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor={"#333333"} />
+      <StatusBar backgroundColor={"#e91e63"} />
       <SafeAreaProvider>
         <SafeAreaView style={{ flex: 1 }}>
           <Header
