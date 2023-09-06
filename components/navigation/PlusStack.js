@@ -7,6 +7,8 @@ import Services from "../plus/Services";
 import Objets from "../plus/Objets";
 import Restaurant from "../plus/Restaurant";
 import Contact from "../plus/Contact";
+import Partenaires from "../plus/Partenaires";
+import Billetterie from "../billetterie/Billetterie";
 
 const Stack = createStackNavigator();
 
@@ -19,6 +21,8 @@ function PlusStack() {
       <Stack.Screen name="Objets" component={Objets} />
       <Stack.Screen name="Restaurant" component={Restaurant} />
       <Stack.Screen name="Contact" component={Contact} />
+      <Stack.Screen name="Partenaires" component={Partenaires} />
+      <Stack.Screen name="Billetterie" component={Billetterie} />
     </Stack.Navigator>
   );
 }
