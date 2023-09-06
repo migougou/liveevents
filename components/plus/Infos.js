@@ -1,110 +1,73 @@
-import React from "react";
-import { Text, View, Image, StyleSheet, SafeAreaView, Button } from "react-native";
-import { useNavigation } from "@react-navigation/core";
+import React, { useState } from "react";
+import { Text, View, TouchableOpacity, SafeAreaView, ScrollView } from "react-native";
 
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import Footer from "../footer/footer";
+import styles from "./styles";
 
-const Logo = require("../../icones/concert.png");
+const wordpressPlus = require("../../local_data/wordpressPlus.json");
 
-const Infos = () => {
-  const navigation = useNavigation();
+const sousCategoriesIcon = {
+  Horaires: "clock",
+  Accès: "map-pin",
+  Transports: "car-side",
+  Accessibilités: "accessible-icon",
+};
 
-  const handleContact = () => {
-    navigation.navigate("Contact");
-    // Logique à exécuter lors du clic sur le bouton "Nous Contacter"
-    // Afficher une fenêtre modale de contact
-  };
+const Infos = ({ navigation }) => {
+  const horairesAccesTemporaire = [];
+
+  wordpressPlus.forEach((info) => {
+    const categoryInfo = info.acf.categories_infos;
+
+    if (categoryInfo === "Horaires et Accès") {
+      horairesAccesTemporaire.push(info);
+    }
+  });
+
+  const [isExpanded, setisExpanded] = useState(horairesAccesTemporaire.map(() => false));
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>HORAIRE & ACCES</Text>
+        <Text style={styles.title}>HORAIRE & ACCÈS</Text>
       </View>
-      <View style={styles.content}>
-        <View style={styles.section}>
-          <FontAwesome
-            name="clock-o"
-            size={20}
-            color="black"
-            style={styles.icon}
-          />
-          <Text style={styles.sectionTitle}>Horaires</Text>
+      <ScrollView>
+        <View style={styles.content}>
+          {horairesAccesTemporaire.map((info, index) => (
+            <View key={index}>
+              <View style={styles.section}>
+                <FontAwesome5 name={sousCategoriesIcon[info.acf.sous_categories]} size={20} color="black" style={styles.icon} />
+                <Text style={styles.sectionTitle}>{info.acf.sous_categories}</Text>
+              </View>
+              <View style={styles.contentText}>
+                <Text>
+                  {isExpanded[index] ? info.acf.texte_info : info.acf.texte_info.slice(0, 150) + (info.acf.texte_info.length > 150 ? "..." : "")}
+                </Text>
+                {info.acf.texte_info.length > 150 && (
+                  <Text
+                    style={styles.voirPlus}
+                    onPress={() => {
+                      const cloneIsExpanded = [...isExpanded];
+                      cloneIsExpanded[index] = !cloneIsExpanded[index];
+                      setisExpanded(cloneIsExpanded);
+                    }}
+                  >
+                    {isExpanded[index] ? "Voir moins" : "Voir plus"}
+                  </Text>
+                )}
+              </View>
+            </View>
+          ))}
         </View>
-        <View style={styles.section}>
-          <FontAwesome
-            name="map-pin"
-            size={20}
-            color="black"
-            style={styles.icon}
-          />
-          <Text style={styles.sectionTitle}>Accès</Text>
-        </View>
-        <View style={styles.section}>
-          <FontAwesome5
-            name="car-side"
-            size={20}
-            color="black"
-            style={styles.icon}
-          />
-          <Text style={styles.sectionTitle}>Transports</Text>
-        </View>
-        <View style={styles.section}>
-          <MaterialCommunityIcons
-            name="wheelchair-accessibility"
-            size={20}
-            color="black"
-            style={styles.icon}
-          />
-          <Text style={styles.sectionTitle}>Accessibilité</Text>
-        </View>
-      </View>
-      <View style={styles.button}>
-        <Button title="Nous Contacter" onPress={() => handleContact()} />
-      </View>
-      <Footer />
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Contact")}>
+            <Text style={styles.buttonText}>Nous Contacter</Text>
+        </TouchableOpacity>
+        <Footer />
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
 export default Infos;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  header: {
-    alignItems: "center",
-    marginTop: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  content: {
-    flex: 1,
-    padding: 10,
-    marginHorizontal: 10,
-  },
-  section: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
-  },
-  icon: {
-    marginRight: 10,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  button: {
-    marginHorizontal: 100,
-    alignSelf: "stretch",
-    justifyContent: "flex-end",
-    marginBottom: 10,
-  },
-});

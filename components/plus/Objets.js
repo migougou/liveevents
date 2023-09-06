@@ -1,86 +1,71 @@
-import React from "react";
-import { Text, View, Image, StyleSheet, SafeAreaView, Button } from "react-native";
-import { useNavigation } from "@react-navigation/core";
+import React, { useState } from "react";
+import { Text, View, TouchableOpacity, SafeAreaView, ScrollView, Image } from "react-native";
 
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import Entypo from "react-native-vector-icons/Entypo";
-
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import Footer from "../footer/footer";
+import styles from "./styles.js";
 
-const Logo = require("../../icones/concert.png");
+const wordpressPlus = require("../../local_data/wordpressPlus.json");
 
-const Objets = () => {
-  const navigation = useNavigation();
+const sousCategoriesIcon = {
+  'Objets Trouvés': 'box-open',
+  'Objets interdits': 'ban',
+};
 
-  const handleContact = () => {
-    navigation.navigate("Contact");
-    // Logique à exécuter lors du clic sur le bouton "Nous Contacter"
-    // Afficher une fenêtre modale de contact
-  };
+const Objets = ({ navigation }) => {
+  const objetsTemporaire = [];
+
+  wordpressPlus.forEach((info) => {
+    const categoryInfo = info.acf.categories_infos;
+
+    if (categoryInfo === "Objets trouvés et interdits") {
+      objetsTemporaire.push(info);
+    }
+  });
+
+  const [isExpanded, setisExpanded] = useState(objetsTemporaire.map(() => false));
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>OBJETS TROUVES & INTERDITS</Text>
+        <Text style={styles.title}>Services</Text>
       </View>
-      <View style={styles.content}>
-        <View style={styles.section}>
-          <Entypo name="dropbox" size={20} color="black" style={styles.icon} />
-          <Text style={styles.sectionTitle}>Objets trouvés</Text>
+      <ScrollView>
+        <View style={styles.content}>
+          {objetsTemporaire.map((info, index) => (
+            <View key={index}>
+              <View style={styles.section}>
+                <FontAwesome5 name={sousCategoriesIcon[info.acf.sous_categories]} size={20} color="black" style={styles.icon} />
+                <Text style={styles.sectionTitle}>{info.acf.sous_categories}</Text>
+              </View>
+              <View style={styles.contentText}>
+                <Text>
+                  {isExpanded[index] ? info.acf.texte_info : info.acf.texte_info.slice(0, 150) + (info.acf.texte_info.length > 150 ? "..." : "")}
+                </Text>
+                {info.acf.texte_info.length > 150 && (
+                  <Text
+                    style={styles.voirPlus}
+                    onPress={() => {
+                      const cloneIsExpanded = [...isExpanded];
+                      cloneIsExpanded[index] = !cloneIsExpanded[index];
+                      setisExpanded(cloneIsExpanded);
+                    }}
+                  >
+                    {isExpanded[index] ? "Voir moins" : "Voir plus"}
+                  </Text>
+                )}
+              </View>
+            </View>
+          ))
+          }
         </View>
-        <View style={styles.section}>
-          <MaterialIcons
-            name="do-not-disturb"
-            size={20}
-            color="black"
-            style={styles.icon}
-          />
-          <Text style={styles.sectionTitle}>Objets interdits</Text>
-        </View>
-      </View>
-      <View style={styles.button}>
-        <Button title="Nous Contacter" onPress={() => handleContact()} />
-      </View>
-      <Footer />
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Contact")}>
+            <Text style={styles.buttonText}>Nous Contacter</Text>
+        </TouchableOpacity>
+        <Footer />
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
 export default Objets;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  header: {
-    alignItems: "center",
-    marginTop: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  content: {
-    flex: 1,
-    padding: 10,
-    marginHorizontal: 10,
-  },
-  section: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
-  },
-  icon: {
-    marginRight: 10,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  button: {
-    marginHorizontal: 100,
-    alignSelf: "stretch",
-    justifyContent: "flex-end",
-    marginBottom: 10,
-  },
-});

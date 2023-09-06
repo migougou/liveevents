@@ -232,7 +232,6 @@ export default function App() {
 }
 
 /*
-        <Drawer.Screen name="Partenaires">{(props) => <Partenaires {...props} partenaires={partenaires} />}</Drawer.Screen>
         <Drawer.Screen name="DetailsInformations" options={{ drawerItemStyle: { display: "none" } }}>
           {(props) => (
             <DetailsInformations
