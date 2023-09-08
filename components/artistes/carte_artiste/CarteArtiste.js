@@ -9,7 +9,7 @@ const CarteArtiste = ({ item, onPress }) => {
   const hmfin = item.acf.hfin.slice(0, 5);
   const scene = item.acf.scene;
   const style_musical = item.acf.style_musical;
-  const [nom, setNom] = useState(item.title.rendered);
+  const [nom, setNom] = useState(item.acf.artiste);
 
   // quand on fait une requete, les apostrophes deviennent des &rsquo; qui ne sont pas retransforme en apostrophes, on le fait donc ici
   useEffect(() => {
@@ -32,7 +32,7 @@ const CarteArtiste = ({ item, onPress }) => {
           De {setUpTime(hmdebut)} à {setUpTime(hmfin)}
         </Text>
         <Text style={styles.text}>
-          Scène {scene} || Groupe {style_musical}
+          Scène {scene} || Style {style_musical}
         </Text>
       </View>
     </TouchableOpacity>

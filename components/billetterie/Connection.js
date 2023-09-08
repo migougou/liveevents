@@ -7,7 +7,7 @@ import { checkUserCredentials } from '../utilities';
 const Connection = ({ setConnection }) => {
 
   const [motDePasse, setMotDePasse] = useState('');
-  const [identifiant, setIdentifiant] = useState('');
+  const [email, setEmail] = useState('');
   const [showMotDePasse, setShowMotDePasse] = useState(false);
 
   const toggleMotDePasseVisibility = () => {
@@ -21,10 +21,10 @@ const Connection = ({ setConnection }) => {
       </View>
       <Text style={styles.buttonCompte}>Se connecter :</Text>
       <TextInput
-        value={identifiant}
-        onChangeText={setIdentifiant}
+        value={email}
+        onChangeText={setEmail}
         style={styles.buttonCompte}
-        placeholder="Identifiant"
+        placeholder="Email"
       />
       <View style={[styles.button, styles.buttonCompte]}>
         <TextInput
@@ -38,7 +38,7 @@ const Connection = ({ setConnection }) => {
           onPress={toggleMotDePasseVisibility}
         />
       </View>
-      <Button title='Valider' onPress={() => checkUserCredentials(identifiant, motDePasse)} />
+      <Button title='Valider' onPress={() => checkUserCredentials(email, motDePasse)} />
     </View>
   );
 };

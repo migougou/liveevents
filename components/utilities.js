@@ -51,7 +51,7 @@ export const filtreArtistes = (arrayArtistes, arrayScenes, arrayStyles) => {
  * @returns {Array} La liste des artistes filtrée en fonction du jour sélectionné.
  */
 export const filtreJour = (arrayArtistes, jour) => {
-  return arrayArtistes.filter(({ acf }) => acf.date === (jour === "samedi" ? "20230801" : "20230802"));
+  return arrayArtistes.filter(({ acf }) => acf.date === (jour === "samedi" ? "20230610" : "20230611"));
 };
 
 /**
@@ -69,7 +69,7 @@ export const trieHeures = (arrayArtistes) => {
 
     // Si les heures sont les mêmes, trier par ordre alphabétique
     if (aHour === bHour) {
-      return a.title.rendered.localeCompare(b.title.rendered);
+      return a.acf.artiste.localeCompare(b.acf.artiste);
     }
 
     // Trier les artistes par heure de début
@@ -274,7 +274,7 @@ export const formatDate = (date, time) => {
  * @param {string} unit - Le mot concerné.
  * @param {string} suffix - Le suffixe à ajouter au mot au pluriel (par défaut: 's').
  * @returns {string} La chaîne de caractères résultante.
- */ 
+ */
 export const pluralize = (count, unit, suffix = 's') => `${count} ${unit}${count > 1 ? suffix : ''}`;
 
 /**
@@ -350,18 +350,21 @@ export const cleanAllData = async () => {
 
 
 // Permet de tester si un identifant et mot de passe est bien dans la base de donnée
-export const checkUserCredentials = (username, password) => {
-  return axios
-    .post('https://cchost.bmcorp.fr/LiveEvents/wp-json/api/v1/token', {
-      username,
-      password,
-    })
-    .then((response) => {
-      console.log('Tu es connecté: ' + response);
-    })
-    .catch((error) => {
-      console.log('Tu n\'es pas connecté: ' + error);
-    });
+export const checkUserCredentials = async (email, motdepasse) => {
+  try {
+    const response = await axios
+      .post('http://cchost.freeboxos.fr:5001/clients-test', {
+        email,
+        motdepasse,
+      });
+    console.log(response.data.message);
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+    } else {
+      console.log('Erreur inattendue: ' + error.message);
+    }
+  }
 };
 
 /**
