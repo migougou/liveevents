@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import WooCommerceAPI from 'react-native-woocommerce-api';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
@@ -40,26 +40,16 @@ const Billetterie = () => {
         payment_method_title: "Direct Bank Transfer",
         set_paid: true,
         billing: {
-            first_name: "John",
-            last_name: "Doe",
-            address_1: "969 Market",
+            first_name: "Johnathan",
+            last_name: "Dole",
+            address_1: "62 rue ardoin",
             address_2: "",
-            city: "San Francisco",
-            state: "CA",
-            postcode: "94103",
-            country: "US",
+            city: "Saint-Ouen",
+            state: "Seine-Saint-Denis",
+            postcode: "93300",
+            country: "France",
             email: "john.doe@example.com",
             phone: "(555) 555-5555"
-        },
-        shipping: {
-            first_name: "John",
-            last_name: "Doe",
-            address_1: "969 Market",
-            address_2: "",
-            city: "San Francisco",
-            state: "CA",
-            postcode: "94103",
-            country: "US"
         },
         line_items: [
             {
@@ -123,10 +113,7 @@ const Billetterie = () => {
 
     return (
         <View style={{ flex: 1 }}>
-            {/* <Button title={'Voir les produits'} onPress={getProducts} buttonStyle={{ margin: 20 }} />
-            <Button title={'Voir les commandes'} onPress={getOrders} buttonStyle={{ margin: 20 }} />
-            <Button title={'Envoyer une nouvelle commande'} onPress={testOrder} buttonStyle={{ margin: 20 }} />
-            <ScrollView><Text>{JSON.stringify(productData)}</Text></ScrollView> */}
+            {/* <Button title={'Envoyer une nouvelle commande'} onPress={testOrder} buttonStyle={{ margin: 20 }} /> */}
             <Tab.Navigator initialRouteName='Billets'>
                 <Tab.Screen name="Panier" >
                     {(props) => <Panier {...props} productsData={productsData} panierData={panierData} setPanierData={setPanierData} />}

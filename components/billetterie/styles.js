@@ -1,6 +1,6 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet } from "react-native";
 
-const screenWidth = Dimensions.get("window").width;
+import { wp } from '../dimensions';
 
 const styles = StyleSheet.create({
   loading: {
@@ -13,26 +13,26 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     elevation: 5,
     shadowColor: "#52006A",
-    marginVertical: screenWidth * 0.02,
-    marginHorizontal: screenWidth * 0.02,
-    borderRadius: screenWidth * 0.03,
+    marginVertical: wp('2'),
+    marginHorizontal: wp('2'),
+    borderRadius: wp('3'),
     backgroundColor: "white",
 
   },
   formatAdjust: {
-    marginVertical: screenWidth * 0.01,
-    marginHorizontal: screenWidth * 0.02,
-    maxWidth: screenWidth * 0.8,
+    marginVertical: wp('1'),
+    marginHorizontal: wp('2'),
+    maxWidth: wp('70'),
   },
   icone: {
-    height: screenWidth * 0.3,
-    borderTopLeftRadius: screenWidth * 0.03,
-    borderTopRightRadius: screenWidth * 0.0,
-    borderBottomLeftRadius: screenWidth * 0.03,
-    borderBottomRightRadius: screenWidth * 0.0,
+    width: wp('25'),
+    borderTopLeftRadius: wp('3'),
+    borderTopRightRadius: wp('0'),
+    borderBottomLeftRadius: wp('3'),
+    borderBottomRightRadius: wp('0'),
   },
   titre: {
-    fontSize: screenWidth * 0.05
+    fontSize: wp('5'),
   },
   button: {
     flexDirection: 'row',
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonCompte: {
-    margin: screenWidth * 0.05,
+    margin: wp('5'),
   },
 });
 
