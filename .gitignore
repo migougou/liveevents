@@ -1,6 +1,6 @@
 node_modules
 settings.json
-**/__pycache__/
+__pycache__/
 
 # Création automatique d'un dossier .idea avec des fichiers .xml pour une raison inconnue (Benjamin)
 .idea
