@@ -12,6 +12,7 @@ import axios from "axios";
 
 import { Accueil, Carte, Billetterie, OverlayInformations, ArtistesStack, PlusStack, Header } from "./components";
 import styles from "./styles.js";
+import { C1, C2 } from "./components/colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -163,7 +164,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor={"#e91e63"} />
+      <StatusBar backgroundColor={C1} />
       <SafeAreaProvider>
         <SafeAreaView style={{ flex: 1 }}>
           <Header
@@ -184,7 +185,7 @@ export default function App() {
             backBehavior="initialRoute"
             initialRouteName="Accueil"
             screenOptions={({ route }) => ({
-              tabBarIcon: ({ color = '#e91e63', size }) => {
+              tabBarIcon: ({ color = C1, size }) => {
                 let iconName;
     
                 if (route.name === "Map") {
@@ -203,9 +204,9 @@ export default function App() {
               },
               tabBarButton: (props) => (<Pressable {...props} style={({ pressed }) => [styles.tabBarButton, { opacity: pressed ? 0.5 : 1 }]} />),
               headerShown: false,
-              tabBarActiveTintColor: '#e91e63',
+              tabBarActiveTintColor: C1,
               tabBarInactiveTintColor: '#ffffff',
-              tabBarStyle: { backgroundColor: '#333333'},
+              tabBarStyle: { backgroundColor: C2},
             })}
           >
     

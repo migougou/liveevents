@@ -5,6 +5,7 @@ import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 import Footer from "../footer/footer";
 import styles from "./styles";
+import { C1, C2 } from "../colors";
 
 const categories = [
   { title: "HORAIRE & ACCÈS",             icon: "map-pin",      keyName: "horaires",            pageName: "Infos"},
@@ -28,7 +29,7 @@ const Plus = ({navigation}) => {
               <TouchableOpacity key={category.keyName} onPress={() => navigation.navigate(category.pageName)}>
                 <View style={styles.sousText}>
                   <View style={styles.sousTextIcon}>
-                    <FontAwesome5 style={styles.iconPlus} name={category.icon} size={20} color="#e91e63" />
+                    <FontAwesome5 style={styles.iconPlus} name={category.icon} size={20} color={C1} />
                   </View>
                   <Text style={styles.sousTextTitle}>{category.title}</Text>
                 </View>

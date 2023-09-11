@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { wp, hp } from "../dimensions.js";
+import { C1, C2 } from "../colors.js";
 
 const styles = StyleSheet.create({
   backButtonContainer: {
@@ -24,18 +25,18 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     marginHorizontal: hp(12.5),
     marginVertical: wp(5),
-    backgroundColor: "#e91e63",
+    backgroundColor: C1,
     padding: 10,
     borderRadius: 10,
     alignItems: "center",
   },
   buttonText: {
-    color: "#333333",
+    color: C2,
     fontWeight: "bold",
   },
   container: {
     flex: 1,
-    backgroundColor: "#333333",
+    backgroundColor: C2,
   },
   containerPartenaires: {
     flexDirection: "row",
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#e91e63",
+    backgroundColor: C1,
     borderRadius: 20,
     marginHorizontal: wp(10),
     marginVertical: hp(15),
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
-    backgroundColor: "#e91e63",
+    backgroundColor: C1,
     padding: hp(1.5),
     marginHorizontal: wp(2),
     borderRadius: 10,
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
   contentText: {
     backgroundColor: "white",
     borderRadius: 10,
-    borderColor: "#e91e63",
+    borderColor: C1,
     borderWidth: 2,
     alignItems: "flex-start",
   },
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginRight: hp(1.5),
-    color: "#e91e63",
+    color: C1,
   },
   iconPlus: {
     width: 30,
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
   },
   infosContainer: {
     padding: hp(1.5),
-    backgroundColor: "#333333",
+    backgroundColor: C2,
     borderRadius: 10,
     borderColor: "black",
     borderWidth: 2,
@@ -116,13 +117,13 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     marginHorizontal: hp(12.5),
     marginVertical: wp(5),
-    backgroundColor: "#333333",
+    backgroundColor: C2,
     padding: 10,
     borderRadius: 10,
     alignItems: "center",
   },
   plusButtonText: {
-    color: "#e91e63",
+    color: C1,
     fontWeight: "bold",
   },
   plusTitle: {
@@ -139,10 +140,10 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#e91e63",
+    color: C1,
   },
   separator: {
-    borderBottomColor: "#e91e63",
+    borderBottomColor: C1,
     borderBottomWidth: 1,
     marginBottom: wp(3),
   },
@@ -157,14 +158,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingBottom: 10,
     height: 30,
-    color: "#e91e63",
+    color: C1,
   },
   textInfos: {
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: wp(8),
     textAlign: "center",
-    color: "#e91e63",
+    color: C1,
   },
   textSousTitre: {
     fontWeight: "bold",
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#e91e63",
+    color: C1,
   },
   titleContact: {
     fontSize: 20,
@@ -180,7 +181,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   voirPlus: {
-    color: "#e91e63",
+    color: C1,
     marginTop: hp(1.5),
     alignSelf: "center",
     fontWeight: "bold",

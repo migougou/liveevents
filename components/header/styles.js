@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { wp, hp } from "../dimensions";
+import { C1, C2 } from "../colors";
 
 const styles = StyleSheet.create({
   header: {
@@ -7,7 +8,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     width: "100%",
-    backgroundColor: "#333333",
+    backgroundColor: C2,
     paddingHorizontal: wp(4),
   },
   logoImage: {
@@ -26,9 +27,9 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   badgeStyle: {
-    position: "absolute", 
+    position: "absolute",
     top: 0,
-    right: -wp(2), 
+    right: -wp(2),
   },
 });
 
