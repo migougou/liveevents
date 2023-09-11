@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { View, ImageBackground, ScrollView, Text, TouchableOpacity } from "react-native";
+import { View, ScrollView } from "react-native";
 
 import { trieArtistes, formatDate, filterArtistesByScene } from "../utilities";
 
 import SceneButton from './SceneButton';
 import ArtistCard from './ArtistCard';
 import styles from "./styles"
-
-const image = require("../../images/festival.jpg")
 
 const Accueil = ({ artistes, navigation }) => {
   const [scenesArray, setScenesArray] = useState(artistes);
@@ -36,9 +34,8 @@ const Accueil = ({ artistes, navigation }) => {
   }, [scenesArray, isAllSelected]);
 
   useEffect(() => {
-    if (isAllSelected) {
-      return
-    }
+    if (isAllSelected) return;
+
 
     const interval = setInterval(() => {
       const currentDate = new Date();
@@ -89,9 +86,3 @@ const Accueil = ({ artistes, navigation }) => {
 };
 
 export default React.memo(Accueil);
-
-/*
-      <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-        <Text style={styles.titleText}> Nation Sounds </Text>
-      </ImageBackground>
-*/
