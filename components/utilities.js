@@ -283,17 +283,27 @@ export const pluralize = (count, unit, suffix = 's') => `${count} ${unit}${count
  * @param {Array} artistes - Le tableau contenant tous les artistes.
  * @returns {Array} Un tableau contenant uniquement les artistes qui se produisent sur la scène sélectionnée et dont les concerts ont lieu dans le futur.
  * @note Dans le cas de "Tous" (correspondant à ""), tous les artistes sont renvoyés
+ * @note Si tous les artistes d'une scène ont effectué leur concert, on les renvoit tous
  */
 export const filterArtistesByScene = (selectedScene, artistes) => {
   const currentDate = new Date();
   const currentTime = currentDate.getTime();
 
-  const updatedArtistes = artistes.filter((artiste) => {
+  let updatedArtistes = artistes.filter((artiste) => {
     const sceneArtiste = artiste.acf.scene;
     const eventDateTime = formatDate(artiste.acf.date, artiste.acf.hdebut);
 
     return selectedScene === "" || sceneArtiste === selectedScene && eventDateTime > currentTime;
   });
+
+  if (updatedArtistes.length == 0) {
+    updatedArtistes = artistes.filter((artiste) => {
+      const sceneArtiste = artiste.acf.scene;
+
+      return sceneArtiste === selectedScene;
+    })
+  }
+
 
   return updatedArtistes;
 }
@@ -307,6 +317,7 @@ export const trieArtistes = (displayArray) => {
   return displayArray.sort((a, b) => {
     const dateA = formatDate(a.acf.date, a.acf.hdebut);
     const dateB = formatDate(b.acf.date, b.acf.hdebut);
+
     return dateA - dateB;
   });
 }
