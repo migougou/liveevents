@@ -29,4 +29,4 @@ VALUES
     (3, 'Artiste 3', 'Rap', 'Canada', 'Scène 1', '2023-08-18', '21:00', '23:00', 'Description de l''artiste 3', 'image3.jpg'),
     (4, 'Artiste 4', 'Électro', 'Allemagne', 'Scène 3', '2023-08-19', '22:30', '00:30', 'Description de l''artiste 4', 'image4.jpg');
 	
-DROP TABLE IF EXISTS artistes.artistes;	
+DROP TABLE IF EXISTS artistes.artistes;
