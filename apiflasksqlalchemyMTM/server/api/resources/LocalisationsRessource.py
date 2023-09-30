@@ -27,6 +27,9 @@ class LocalisationsResource(GenericResource):
     return self.transform_data(data)
 
   def transform_data(self, input_data):
+    # Suppression de toutes les localisations dans la base de données si il y en a déjà
+    if len(self.serviceController.selectLocalisations()) > 0:
+      self.serviceController.deleteAll()
     """
     Transforme les données d'entrée en un format spécifique en extrayant les informations essentielles.
     """

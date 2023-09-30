@@ -37,3 +37,15 @@ class LocalisationsController(object):
         else:
             a = False
         return a
+    
+        # Méthode pour supprimer toutes les données du schéma artistes
+    def deleteAll(self):
+        bReturn = False  # Valeur par défaut de la variable de retour
+        try:
+            self.orm.session.query(Localisations).delete()  # Supprimer tous les enregistrements de la table Localisations
+            self.orm.session.commit()  # Validation des changements dans la base de données
+            bReturn = True
+        except Exception as e:
+            print("Erreur lors de la suppression :", str(e))  # Gestion des erreurs lors de la suppression
+            self.orm.session.rollback()  # Annulation des changements en cas d'erreur
+        return bReturn
