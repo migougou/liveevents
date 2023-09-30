@@ -37,7 +37,6 @@ class LocalisationsResource(GenericResource):
 
     for item in input_data:
       location_data = {
-        "id": item["id"],
         "localisation": item["acf"]["localisation"],
         "lattitude": item["acf"]["latitude"],
         "longitude": item["acf"]["longitude"],
