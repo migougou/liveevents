@@ -40,7 +40,7 @@ class LocalisationsResource(GenericResource):
         "longitude": item["acf"]["longitude"],
         "description": item["acf"]["description"]
       }
-
+      self.serviceController.insertLocalisations(location_data)
       output_data.append(location_data)
 
     return output_data
