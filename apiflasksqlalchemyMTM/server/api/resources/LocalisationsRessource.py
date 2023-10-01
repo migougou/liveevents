@@ -27,12 +27,13 @@ class LocalisationsResource(GenericResource):
     return self.transform_data(data)
 
   def transform_data(self, input_data):
-    # Suppression de toutes les localisations dans la base de données si il y en a déjà
-    if len(self.serviceController.selectLocalisations()) > 0:
-      self.serviceController.deleteAll()
     """
     Transforme les données d'entrée en un format spécifique en extrayant les informations essentielles.
     """
+
+    # Suppression de toutes les localisations dans la base de données si il y en a déjà
+    if len(self.serviceController.selectLocalisations()) > 0: self.serviceController.deleteAll()
+
     output_data = []
 
     for item in input_data:
@@ -42,6 +43,7 @@ class LocalisationsResource(GenericResource):
         "longitude": item["acf"]["longitude"],
         "description": item["acf"]["description"]
       }
+
       self.serviceController.insertLocalisations(location_data)
       output_data.append(location_data)
 
