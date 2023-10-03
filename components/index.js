@@ -7,8 +7,6 @@ export { default as Accueil } from "./accueil/Accueil";
 
 export { default as Billetterie } from "./billetterie/Billetterie";
 
-export { default as Partenaires } from "./menu/partenaires/Partenaires";
-
 export { default as OverlayInformations } from "./overlay_informations/OverlayInformations";
 export { default as DetailsInformations } from "./details_informations/DetailsInformations";
 

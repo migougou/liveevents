@@ -3,12 +3,14 @@ import { View, FlatList, Text } from "react-native";
 import { SearchBar, CheckBox } from "react-native-elements";
 
 import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, stylesArrayFilter, sceneArrayFilter, inversionLogique } from "../../utilities.js"
+import { C1, C2 } from "../../colors.js";
 import CarteArtiste from "../carte_artiste/CarteArtiste.js";
 
 import IconToggleButton from "./IconToggleButton.js";
 import DayButton from "./DayButton.js";
 import FilterCheckList from "./FilterCheckList.js";
 import styles from "./styles.js";
+
 
 const Programmation = ({ artistes, navigation }) => {
   const [filterArtistes, setFilterArtistes] = useState([]);
@@ -51,10 +53,10 @@ const Programmation = ({ artistes, navigation }) => {
         containerStyle={styles.checkboxContainer}
         textStyle={styles.checkboxTitle}
         checkedIcon="music"
-        checkedColor="#e91e63"
+        checkedColor={C1}
         uncheckedIcon="music"
-        uncheckedColor="#333333"
-        wrapperStyle="#e91e63"
+        uncheckedColor={C2}
+        wrapperStyle={C1}
       />
     </View>
   );

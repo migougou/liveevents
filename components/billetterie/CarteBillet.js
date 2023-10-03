@@ -30,7 +30,7 @@ const CarteBillet = ({ item, setPanierData }) => {
       } else {
         panier.push(ajoutProduit)
       }
-      setPanierData(jsonValue)
+      setPanierData(panier)
       // Stocker la valeur mise à jour dans AsyncStorage
       await AsyncStorage.setItem(key, JSON.stringify(panier));
     } catch (e) {

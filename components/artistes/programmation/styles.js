@@ -1,21 +1,22 @@
 import { StyleSheet } from "react-native";
-import { wp, hp } from '../../dimensions';
+import { wp, hp } from "../../dimensions";
+import { C1, C2 } from "../../colors";
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: '#333333',
+    backgroundColor: C2,
   },
 
   topBar: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#333333",
-    paddingVertical: hp('1.5'),
-    paddingHorizontal: wp('2'),
+    backgroundColor: C2,
+    paddingVertical: hp("1.5"),
+    paddingHorizontal: wp("2"),
     borderBottomWidth: 0.5,
-    borderBottomColor: '#333',
+    borderBottomColor: "#333",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
@@ -25,49 +26,49 @@ const styles = StyleSheet.create({
   },
 
   icone: {
-    height: wp('10'),
-    width: wp('10'),
-    marginHorizontal: wp('2'),
+    height: wp("10"),
+    width: wp("10"),
+    marginHorizontal: wp("2"),
   },
 
   text: {
     alignItems: "center",
-    color: '#e91e63',
+    color: C1,
   },
 
   selectText: {
     alignItems: "center",
-    borderBottomWidth: wp('0.7'),
+    borderBottomWidth: wp("0.7"),
     borderBottomColor: "#000",
-    color: '#e91e63',
+    color: C1,
   },
 
   checkboxTitle: {
-    color: '#e91e63',
+    color: C1,
   },
 
   checkboxContainer: {
-    backgroundColor: '#ffffff', 
-    borderWidth: 2, 
-    borderColor: '#e91e63',
+    backgroundColor: "#ffffff",
+    borderWidth: 2,
+    borderColor: C1,
     borderRadius: 20,
   },
 
   title: {
     textAlign: "center",
-    marginVertical: wp('3'),
-    fontSize: wp('5'),
-    color: '#e91e63',
-    backgroundColor: '#333333',
+    marginVertical: wp("3"),
+    fontSize: wp("5"),
+    color: C1,
+    backgroundColor: C2,
     borderWidth: 2,
-    borderColor: '#e91e63',
+    borderColor: C1,
   },
 
   dayButton: {
-    padding: wp('2'),
-    borderRadius: wp('2'),
-    backgroundColor: '#333333',
-    marginHorizontal: wp('2'),
+    padding: wp("2"),
+    borderRadius: wp("2"),
+    backgroundColor: C2,
+    marginHorizontal: wp("2"),
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.23,
@@ -76,22 +77,22 @@ const styles = StyleSheet.create({
   },
 
   selectedDayButton: {
-    backgroundColor: '#e91e63',
+    backgroundColor: C1,
   },
 
   dayButtonText: {
-    fontSize: wp('4'),
-    fontWeight: '600',
-    color: '#e91e63',
+    fontSize: wp("4"),
+    fontWeight: "600",
+    color: C1,
   },
 
   selectedDayButtonText: {
-    color: '#333333',
+    color: C2,
   },
 
   filterContainer: {
-    flexDirection: 'row', 
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
 });
 

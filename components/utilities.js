@@ -51,7 +51,7 @@ export const filtreArtistes = (arrayArtistes, arrayScenes, arrayStyles) => {
  * @returns {Array} La liste des artistes filtrée en fonction du jour sélectionné.
  */
 export const filtreJour = (arrayArtistes, jour) => {
-  return arrayArtistes.filter(({ acf }) => acf.date === (jour === "samedi" ? "20230801" : "20230802"));
+  return arrayArtistes.filter(({ acf }) => acf.date === (jour === "samedi" ? "20230610" : "20230611"));
 };
 
 /**
@@ -69,7 +69,7 @@ export const trieHeures = (arrayArtistes) => {
 
     // Si les heures sont les mêmes, trier par ordre alphabétique
     if (aHour === bHour) {
-      return a.title.rendered.localeCompare(b.title.rendered);
+      return a.acf.artiste.localeCompare(b.acf.artiste);
     }
 
     // Trier les artistes par heure de début
@@ -274,7 +274,7 @@ export const formatDate = (date, time) => {
  * @param {string} unit - Le mot concerné.
  * @param {string} suffix - Le suffixe à ajouter au mot au pluriel (par défaut: 's').
  * @returns {string} La chaîne de caractères résultante.
- */ 
+ */
 export const pluralize = (count, unit, suffix = 's') => `${count} ${unit}${count > 1 ? suffix : ''}`;
 
 /**
@@ -283,17 +283,27 @@ export const pluralize = (count, unit, suffix = 's') => `${count} ${unit}${count
  * @param {Array} artistes - Le tableau contenant tous les artistes.
  * @returns {Array} Un tableau contenant uniquement les artistes qui se produisent sur la scène sélectionnée et dont les concerts ont lieu dans le futur.
  * @note Dans le cas de "Tous" (correspondant à ""), tous les artistes sont renvoyés
+ * @note Si tous les artistes d'une scène ont effectué leur concert, on les renvoit tous
  */
 export const filterArtistesByScene = (selectedScene, artistes) => {
   const currentDate = new Date();
   const currentTime = currentDate.getTime();
 
-  const updatedArtistes = artistes.filter((artiste) => {
+  let updatedArtistes = artistes.filter((artiste) => {
     const sceneArtiste = artiste.acf.scene;
     const eventDateTime = formatDate(artiste.acf.date, artiste.acf.hdebut);
 
     return selectedScene === "" || sceneArtiste === selectedScene && eventDateTime > currentTime;
   });
+
+  if (updatedArtistes.length == 0) {
+    updatedArtistes = artistes.filter((artiste) => {
+      const sceneArtiste = artiste.acf.scene;
+
+      return sceneArtiste === selectedScene;
+    })
+  }
+
 
   return updatedArtistes;
 }
@@ -307,6 +317,7 @@ export const trieArtistes = (displayArray) => {
   return displayArray.sort((a, b) => {
     const dateA = formatDate(a.acf.date, a.acf.hdebut);
     const dateB = formatDate(b.acf.date, b.acf.hdebut);
+
     return dateA - dateB;
   });
 }
@@ -350,18 +361,21 @@ export const cleanAllData = async () => {
 
 
 // Permet de tester si un identifant et mot de passe est bien dans la base de donnée
-export const checkUserCredentials = (username, password) => {
-  return axios
-    .post('https://cchost.bmcorp.fr/LiveEvents/wp-json/api/v1/token', {
-      username,
-      password,
-    })
-    .then((response) => {
-      console.log('Tu es connecté: ' + response);
-    })
-    .catch((error) => {
-      console.log('Tu n\'es pas connecté: ' + error);
-    });
+export const checkUserCredentials = async (email, motdepasse) => {
+  try {
+    const response = await axios
+      .post('http://cchost.freeboxos.fr:5001/clients-test', {
+        email,
+        motdepasse,
+      });
+    console.log(response.data.message);
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+    } else {
+      console.log('Erreur inattendue: ' + error.message);
+    }
+  }
 };
 
 /**

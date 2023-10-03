@@ -19,11 +19,3 @@ const ArtistCard = ({ id, artiste, navigation }) => (
 );
 
 export default ArtistCard;
-
-/*
-      <View style={styles.overlay}>
-        <Text style={styles.timer}>
-          <Countdown date={artiste.acf.date} start={artiste.acf.hdebut} end={artiste.acf.hfin}/>
-        </Text>
-      </View>
-*/

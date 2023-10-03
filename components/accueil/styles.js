@@ -1,11 +1,12 @@
 import { StyleSheet } from "react-native";
-import { hp, wp } from "../dimensions"
+import { hp, wp } from "../dimensions";
+import { C1, C2 } from "../colors";
 
 const styles = StyleSheet.create({
   nomArtiste: {
     flex: 1,
-    justifyContent: 'center',
-    color: "#e91e63",
+    justifyContent: "center",
+    color: C1,
     fontSize: 18,
     marginBottom: hp(0.5),
     fontWeight: "bold",
@@ -14,8 +15,8 @@ const styles = StyleSheet.create({
 
   infoArtiste: {
     flex: 1,
-    justifyContent: 'center',
-    color: "#e91e63",
+    justifyContent: "center",
+    color: C1,
     fontSize: 16,
     marginBottom: hp(0.3),
     fontWeight: "bold",
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    backgroundColor: "#333333",
+    backgroundColor: C2,
     flex: 1,
   },
 
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
 
   imageBackground: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 
   /*
@@ -68,28 +69,28 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "#333333",
+    backgroundColor: C2,
     padding: 10,
     marginHorizontal: wp(2),
     position: "absolute",
     bottom: 5,
     width: wp(96),
     height: hp(6),
-    borderColor: "#e91e63",
+    borderColor: C1,
     borderWidth: 2,
   },
-  
+
   buttonText: {
-    color: "#e91e63",
+    color: C1,
     fontWeight: "bold",
     fontSize: wp(3),
   },
-  
+
   buttonTextSelected: {
-    color: "#333333",
+    color: C2,
     fontWeight: "bold",
     fontSize: wp(3),
-    backgroundColor: "#e91e63",
+    backgroundColor: C1,
     borderRadius: 10,
     paddingHorizontal: wp(5),
   },
@@ -100,12 +101,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0.2, 0.2, 0.2, 0.5)",
     padding: hp(0.1),
     width: wp(100),
-    borderColor: "#e91e63",
+    borderColor: C1,
     borderWidth: 1,
   },
 
   timer: {
-    color: "#e91e63",
+    color: C1,
     fontWeight: "bold",
     marginBottom: hp(0.25),
     textAlign: "center",
@@ -113,18 +114,18 @@ const styles = StyleSheet.create({
 
   titleText: {
     textAlign: "center",
-    color: "#e91e63",
+    color: C1,
     fontSize: 25,
     fontWeight: "bold",
     margin: 10,
   },
 
   cardContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: 10,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 10,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,
     shadowRadius: 2,

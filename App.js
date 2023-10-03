@@ -12,13 +12,13 @@ import axios from "axios";
 
 import { Accueil, Carte, Billetterie, OverlayInformations, ArtistesStack, PlusStack, Header } from "./components";
 import styles from "./styles.js";
+import { C1, C2 } from "./components/colors";
 
 const Tab = createBottomTabNavigator();
 
 const filterURLs = {
   faq: "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts?_embed&per_page=100&categories=21",
   informations: "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts?_embed&per_page=100&categories=20",
-  partenaires: "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts?_embed&per_page=100&categories=19",
   artistes: "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts?_embed&per_page=100&categories=18",
   localisations: "https://cchost.bmcorp.fr/LiveEvents/wp-json/wp/v2/posts?_embed&per_page=100&categories=17",
 };
@@ -26,7 +26,6 @@ const filterURLs = {
 const localData = {
   artistes: require("./local_data/wordpressArtistes.json"),
   localisations: require("./local_data/wordpressLocalisations.json"),
-  partenaires: require("./local_data/wordpressPartenaires.json"),
   informations: require("./local_data/wordpressInformations.json"),
   faq: require("./local_data/wordpressFAQ.json"),
 };
@@ -37,7 +36,6 @@ const FETCH_INTERVAL = 30000;
 export default function App() {
   const [artistes, setArtistes] = useState([]);
   const [localisations, setLocalisations] = useState([]);
-  const [partenaires, setPartenaires] = useState([]);
   const [informations, setInformations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingText, setLoadingText] = useState("Loading");
@@ -80,7 +78,6 @@ export default function App() {
   useEffect(() => {
     setArtistes(localData.artistes);
     setLocalisations(localData.localisations);
-    setPartenaires(localData.partenaires);
     setInformations(localData.informations);
     setLoading(false);
   }, []);
@@ -101,14 +98,14 @@ export default function App() {
   useEffect(() => {
     let infoBanales = [];
     let infoImportantes = [];
+
     informations.filter((information) => {
       const infoLevel = information.acf.niveaudimportance;
-      if (infoLevel === "banale") {
-        infoBanales.push(information);
-      } else if (infoLevel === "important") {
-        infoImportantes.push(information);
-      }
+
+      if (infoLevel === "banale") infoBanales.push(information);
+      if (infoLevel === "important") infoImportantes.push(information);
     });
+
     setInformationsBanales(infoBanales);
     setInformationsImportantes(infoImportantes);
   }, [informations]);
@@ -163,7 +160,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor={"#e91e63"} />
+      <StatusBar backgroundColor={C1} />
       <SafeAreaProvider>
         <SafeAreaView style={{ flex: 1 }}>
           <Header
@@ -184,7 +181,7 @@ export default function App() {
             backBehavior="initialRoute"
             initialRouteName="Accueil"
             screenOptions={({ route }) => ({
-              tabBarIcon: ({ color = '#e91e63', size }) => {
+              tabBarIcon: ({ color = C1, size }) => {
                 let iconName;
     
                 if (route.name === "Map") {
@@ -203,9 +200,9 @@ export default function App() {
               },
               tabBarButton: (props) => (<Pressable {...props} style={({ pressed }) => [styles.tabBarButton, { opacity: pressed ? 0.5 : 1 }]} />),
               headerShown: false,
-              tabBarActiveTintColor: '#e91e63',
+              tabBarActiveTintColor: C1,
               tabBarInactiveTintColor: '#ffffff',
-              tabBarStyle: { backgroundColor: '#333333'},
+              tabBarStyle: { backgroundColor: C2},
             })}
           >
     
@@ -215,9 +212,7 @@ export default function App() {
               children={(props) => <ArtistesStack {...props} artistes={artistes} />}
               listeners={({ navigation }) => ({ tabPress: event => { 
                 event.preventDefault();           
-                navigation.reset({
-                  index: 0,
-                  routes: [{ name: 'Artistes', params: { screen: 'Programmation' }}],
+                navigation.reset({ index: 0, routes: [{ name: 'Artistes', params: { screen: 'Programmation' }}],
                 });
               }})}
             />
@@ -232,7 +227,6 @@ export default function App() {
 }
 
 /*
-        <Drawer.Screen name="Partenaires">{(props) => <Partenaires {...props} partenaires={partenaires} />}</Drawer.Screen>
         <Drawer.Screen name="DetailsInformations" options={{ drawerItemStyle: { display: "none" } }}>
           {(props) => (
             <DetailsInformations
