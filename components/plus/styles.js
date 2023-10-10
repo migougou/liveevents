@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   containerPartenaires: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     alignItems: "center",
     padding: hp(2),
   },
@@ -95,14 +95,16 @@ const styles = StyleSheet.create({
     width: 30,
   },
   image: {
-    width: wp(13),
-    height: hp(6.5),
-    marginBottom: wp(2),
+    width: wp(20),
+    height: hp(10),
+    resizeMode: "contain",
   },
   imgContainer: {
-    width: "38%",
-    aspectRatio: 1.3,
-    marginVertical: hp(0.7),
+    alignItems: "center",
+    justifyContent: "center",
+    width: "40%",
+    padding: hp(2),
+    margin: hp(1),
     backgroundColor: "rgba(255, 255, 255, 0.7)",
   },
   infosContainer: {
