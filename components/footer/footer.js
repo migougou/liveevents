@@ -22,7 +22,7 @@ const Footer = () => {
     <View style={styles.footer}>
       <View style={styles.diversesPages}>
         <Text style={styles.textFooter} onPress={() => navigation.navigate("Billetterie")}>Billets</Text>
-        <Text style={styles.textFooter}>F.A.Q.</Text>
+        <Text style={styles.textFooter} onPress={() => navigation.navigate("FAQ")}>F.A.Q.</Text>
         <Text style={styles.textFooter} onPress={() => navigation.navigate("Partenaires")}>Partenariats</Text>
       </View>
       <View style={styles.reseauxSociaux}>
