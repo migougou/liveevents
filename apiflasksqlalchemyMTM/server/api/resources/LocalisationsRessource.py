@@ -1,7 +1,7 @@
 from generic.GenericResource import GenericResource
 from orm.controller.LocalisationsController import LocalisationsController
 
-# Classe pour la ressource Clients, dérivée de la ressource générique
+# Classe pour la ressource Localisations, dérivée de la ressource générique
 class LocalisationsResource(GenericResource):
 
   def __init__(self):

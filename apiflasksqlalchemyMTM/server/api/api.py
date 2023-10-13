@@ -2,10 +2,13 @@
 
 from flask import Flask
 from flask_restful import Api
+
 from .resources.ArtistesResource import ArtistesResource
 from .resources.ClientsResource import ClientsResource
 from .resources.ClientsTestResource import ClientsTestResource
 from .resources.LocalisationsRessource import LocalisationsResource
+from .resources.PlusRessource import PlusRessource
+
 from werkzeug.routing import BaseConverter
 
 class TextConverter(BaseConverter):
@@ -29,3 +32,6 @@ api.add_resource(ClientsTestResource, '/clients-test', '/clients-test/<email:ema
 
 # Ajout de la ressources Localisations à l'API avec l'endpoint /localisations
 api.add_resource(LocalisationsResource, '/localisations')
+
+# Ajout de la ressources Plus à l'API avec l'endpoint /localisations
+api.add_resource(PlusRessource, '/plus')
