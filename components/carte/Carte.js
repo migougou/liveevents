@@ -82,6 +82,7 @@ const Carte = ({ localisations }) => {
                 scene: !prevState.scene,
               }))
             }
+            checkedColor="#4AA3A2"
           />
         </View>
         <View style={styles.legendItem}>
@@ -95,6 +96,7 @@ const Carte = ({ localisations }) => {
                 WC: !prevState.WC,
               }))
             }
+            checkedColor="#4AA3A2"
           />
         </View>
         <View style={styles.legendItem}>
@@ -108,6 +110,7 @@ const Carte = ({ localisations }) => {
                 assistance: !prevState.assistance,
               }))
             }
+            checkedColor="#4AA3A2"
           />
         </View>
         <View style={styles.legendItem}>
@@ -121,6 +124,7 @@ const Carte = ({ localisations }) => {
                 restaurant: !prevState.restaurant,
               }))
             }
+            checkedColor="#4AA3A2"
           />
         </View>
       </View>

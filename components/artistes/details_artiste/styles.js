@@ -1,11 +1,11 @@
 import { StyleSheet, Dimensions } from "react-native";
 import { wp, hp } from "../../dimensions"
-import { C1, C2 } from "../../colors";
+import { C1, C2, C3, C4, C5, C6, C7 } from "../../colors";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: C2,
+    backgroundColor: C7,
   },
 
   card: {
@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     margin: 10,
     borderRadius: 10,
+    borderColor : C5,
+    borderWidth : 2,
   },
 
   backButtonContainer: {
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
     right: 0,
     fontWeight: "bold",
     fontSize: 25,
-    color: C1,
+    color: C3,
     textAlign: "center",
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
   info: {
     fontSize: 18,
     fontWeight: "bold",
-    color: C1,
+    color: C7,
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 1,
@@ -59,10 +61,10 @@ const styles = StyleSheet.create({
   centerInfo: {
     fontSize: 18,
     fontWeight: "bold",
-    color: C2,
+    color: C7,
     marginTop: 10,
     textAlign: "center",
-    textShadowColor: C1,
+    textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 1,
   },
@@ -87,9 +89,12 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    color: "white",
+    color: C3,
     fontSize: 20,
     fontWeight: "bold",
+    textShadowColor: C2,
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 3,
   },
 
   button: {
@@ -97,7 +102,9 @@ const styles = StyleSheet.create({
     height: 50,
     marginStart: 10,
     marginBottom: 20,
-    backgroundColor: C1,
+    backgroundColor: "white",
+    borderColor : C5,
+    borderWidth : 2,
     borderRadius: 5,
     alignItems: "center",
     justifyContent: "center",

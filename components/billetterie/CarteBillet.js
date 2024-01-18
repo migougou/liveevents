@@ -41,7 +41,7 @@ const CarteBillet = ({ item, setPanierData }) => {
   const descriptionFormate = removePTags(item.description);
   return (
     <View style={styles.format}>
-      <Image source={{ uri: item.images[0].src }} style={styles.icone} />
+      <Image source={{ uri: item?.images[0]?.src }} style={styles.icone} />
       <View style={styles.formatAdjust}>
         <Text style={styles.titre}>{item.name}</Text>
         <Text>{descriptionFormate}</Text>

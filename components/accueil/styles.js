@@ -1,26 +1,32 @@
 import { StyleSheet } from "react-native";
 import { hp, wp } from "../dimensions";
-import { C1, C2 } from "../colors";
+import { C1, C2, C3, C4, C5, C6, C7 } from "../colors";
 
 const styles = StyleSheet.create({
   nomArtiste: {
     flex: 1,
     justifyContent: "center",
-    color: C1,
+    color: C3,
     fontSize: 18,
     marginBottom: hp(0.5),
     fontWeight: "bold",
     textAlign: "center",
+    textShadowColor: C2,
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 3,
   },
 
   infoArtiste: {
     flex: 1,
     justifyContent: "center",
-    color: C1,
+    color: C7,
     fontSize: 16,
     marginBottom: hp(0.3),
     fontWeight: "bold",
     textAlign: "center",
+    textShadowColor: C2,
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 3,
   },
 
   boxInformation: {
@@ -32,7 +38,7 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    backgroundColor: C2,
+    backgroundColor: C7,
     flex: 1,
   },
 
@@ -69,19 +75,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: C2,
+    backgroundColor: "white",
     padding: 10,
     marginHorizontal: wp(2),
     position: "absolute",
     bottom: 5,
     width: wp(96),
     height: hp(6),
-    borderColor: C1,
-    borderWidth: 2,
+    borderColor: C3,
+    borderRadius: 10,
+    borderWidth : 2,
   },
 
   buttonText: {
-    color: C1,
+    color: C3,
     fontWeight: "bold",
     fontSize: wp(3),
   },
@@ -90,9 +97,11 @@ const styles = StyleSheet.create({
     color: C2,
     fontWeight: "bold",
     fontSize: wp(3),
-    backgroundColor: C1,
     borderRadius: 10,
     paddingHorizontal: wp(5),
+    backgroundColor: C5,
+    borderColor : C3,
+    borderWidth : 1,
   },
 
   textContainer: {
@@ -101,15 +110,18 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0.2, 0.2, 0.2, 0.5)",
     padding: hp(0.1),
     width: wp(100),
-    borderColor: C1,
+    borderColor: C3,
     borderWidth: 1,
   },
 
   timer: {
-    color: C1,
+    color: C3,
     fontWeight: "bold",
     marginBottom: hp(0.25),
     textAlign: "center",
+    textShadowColor: C2,
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 3,
   },
 
   titleText: {

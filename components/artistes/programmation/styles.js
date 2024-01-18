@@ -1,22 +1,23 @@
 import { StyleSheet } from "react-native";
 import { wp, hp } from "../../dimensions";
-import { C1, C2 } from "../../colors";
+import { C1, C2, C3, C4, C5, C6, C7 } from "../../colors";
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: C2,
+    backgroundColor: C7,
   },
 
   topBar: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: C2,
+    backgroundColor: C6,
     paddingVertical: hp("1.5"),
     paddingHorizontal: wp("2"),
-    borderBottomWidth: 0.5,
-    borderBottomColor: "#333",
+    borderRadius: 10,
+    borderColor : C3,
+    borderWidth : 2,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
 
   text: {
     alignItems: "center",
-    color: C1,
+    color: C2,
   },
 
   selectText: {
@@ -44,13 +45,13 @@ const styles = StyleSheet.create({
   },
 
   checkboxTitle: {
-    color: C1,
+    color: C7,
   },
 
   checkboxContainer: {
     backgroundColor: "#ffffff",
     borderWidth: 2,
-    borderColor: C1,
+    borderColor: C5,
     borderRadius: 20,
   },
 
@@ -58,10 +59,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginVertical: wp("3"),
     fontSize: wp("5"),
-    color: C1,
-    backgroundColor: C2,
+    color: C3,
+    backgroundColor: C6,
     borderWidth: 2,
-    borderColor: C1,
+    borderColor: C3,
   },
 
   dayButton: {
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     borderRadius: wp("2"),
     backgroundColor: C2,
     marginHorizontal: wp("2"),
-    shadowColor: "#000",
+    shadowColor: C1,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
@@ -77,17 +78,23 @@ const styles = StyleSheet.create({
   },
 
   selectedDayButton: {
-    backgroundColor: C1,
+    backgroundColor: C5,
+    borderRadius: 10,
+    borderColor : C3,
+    borderWidth : 2,
   },
 
   dayButtonText: {
     fontSize: wp("4"),
     fontWeight: "600",
-    color: C1,
+    color: C6,
+    textShadowColor: C2,
+    textShadowOffset: { width: -1, height: 1 },
+    textShadowRadius: 3,
   },
 
   selectedDayButtonText: {
-    color: C2,
+    color: C3,
   },
 
   filterContainer: {

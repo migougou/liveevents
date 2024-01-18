@@ -3,7 +3,7 @@ import { View, FlatList, Text } from "react-native";
 import { SearchBar, CheckBox } from "react-native-elements";
 
 import { filtreArtistes, filtreJour, trieHeures, rechercheNomArtiste, stylesArrayFilter, sceneArrayFilter, inversionLogique } from "../../utilities.js"
-import { C1, C2 } from "../../colors.js";
+import { C1, C2, C3, C4, C5, C6, C7 } from "../../colors";
 import CarteArtiste from "../carte_artiste/CarteArtiste.js";
 
 import IconToggleButton from "./IconToggleButton.js";
@@ -53,7 +53,7 @@ const Programmation = ({ artistes, navigation }) => {
         containerStyle={styles.checkboxContainer}
         textStyle={styles.checkboxTitle}
         checkedIcon="music"
-        checkedColor={C1}
+        checkedColor={C3}
         uncheckedIcon="music"
         uncheckedColor={C2}
         wrapperStyle={C1}
