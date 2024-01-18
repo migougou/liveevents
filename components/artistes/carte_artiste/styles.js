@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { wp, hp } from "../../dimensions";
-import { C1, C2 } from "../../colors";
+import { C1, C2, C3, C4, C5, C6, C7 } from "../../colors";
 
 const styles = StyleSheet.create({
   format: {
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     marginHorizontal: wp("2"),
     borderRadius: wp("3"),
     backgroundColor: "#ffffff",
-    borderColor: C1,
+    borderColor: C3,
     borderWidth: 2,
   },
 
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: wp("0"),
   },
   text: {
-    color: C1,
+    color: C3,
   },
 });
 

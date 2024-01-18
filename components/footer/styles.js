@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
+import { C1, C2, C3, C4, C5, C6, C7 } from "../colors";
 
 const styles = StyleSheet.create({
   footer: {
-    backgroundColor: "black",
+    backgroundColor: C2,
     paddingHorizontal: 20,
     paddingTop: 10,
   },

@@ -4,13 +4,13 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 import styles from "./styles";
-import { C1, C2 } from "../../colors";
+import { C1, C2, C3 } from "../../colors";
 
 const HeaderArtiste = ({ artiste, navigation }) => (
   <View>
     <View style={styles.backButtonContainer}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Ionicons name="chevron-back" size={30} color={C1} />
+        <Ionicons name="chevron-back" size={30} color={C3} />
       </TouchableOpacity>
     </View>
     <Image style={styles.format} source={{ uri: artiste.acf.imageurl }} />
