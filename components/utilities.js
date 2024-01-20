@@ -321,6 +321,7 @@ export const trieArtistes = (displayArray) => {
     return dateA - dateB;
   });
 }
+
 // Utilise AsyncStorage pour stocker une valeur liée à une clé dans les données en cache 
 export const storeData = async (value, key) => {
   try {
@@ -368,12 +369,12 @@ export const checkUserCredentials = async (email, motdepasse) => {
         email,
         motdepasse,
       });
-    console.log(response.data.message);
+    return response.data
   } catch (error) {
     if (error.response) {
-      console.log(error.response.data.message);
+      return { 'message': error.response.data.message };
     } else {
-      console.log('Erreur inattendue: ' + error.message);
+      return { 'message': 'Erreur inattendue: ' + error.message };
     }
   }
 };
@@ -407,3 +408,22 @@ export const setUpTime = (timeString) => {
   const formattedTime = `${hours}h${minutes}`;
   return formattedTime;
 };
+
+/**
+ * Permet de mettre à jour l'état de la liste des infos client.
+ * @param {json} data - Données client.
+ * @param {function} setInfosClient - Permet de mettre a jour les infos sur l'application.
+ */
+export const storeInfoClient = (data, setInfosClient) => {
+  storeData(data, "infosClient")
+  setInfosClient(data)
+}
+
+/**
+ * Permet de supprimer la liste des infos client.
+ * @param {function} setInfosClient - Permet de mettre a jour les infos sur l'application.
+ */
+export const deleteInfoClient = (setInfosClient) => {
+  cleanData("infosClient")
+  setInfosClient({})
+}

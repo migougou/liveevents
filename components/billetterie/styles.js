@@ -42,6 +42,12 @@ const styles = StyleSheet.create({
   buttonCompte: {
     margin: wp('5'),
   },
+  buttonDeleteContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%'
+  },
 });
 
 export default styles;
