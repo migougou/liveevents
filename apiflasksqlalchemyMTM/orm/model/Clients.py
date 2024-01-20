@@ -14,10 +14,10 @@ class Clients(Base):
   adresse = Column(Text, nullable=False)
   pays = Column(String(50), nullable=False)
   ville = Column(String(50), nullable=False)
-  codepostal = Column(Integer, nullable=False)
+  codepostal = Column(String(5), nullable=False)
   departement = Column(String(50), nullable=False)
   email = Column(String(100), nullable=False)
-  telephone = Column(BigInteger, nullable=False)
+  telephone = Column(String(10), nullable=False)
   motdepasse = Column(String(100), nullable=False)
   commandes = relationship('Commandes', secondary='clients.commandes_clients')
 

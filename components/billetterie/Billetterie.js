@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View } from 'react-native';
 import WooCommerceAPI from 'react-native-woocommerce-api';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import Panier from "./Panier"
-import Billets from "./Billets"
-import Compte from "./Compte"
+import Panier from "./panier/Panier"
+import Billets from "./billets/Billets"
+import Compte from "./compte/Compte"
 import styles from './styles';
-import { useNavigation } from '@react-navigation/core';
+import { getData, cleanData } from '../utilities';
 
 const Billetterie = () => {
 
@@ -15,9 +15,9 @@ const Billetterie = () => {
     const [panierData, setPanierData] = useState(null);
     const [ordersData, setOrdersData] = useState(null);
     const [loading, setLoading] = useState(false)
-    const navigation = useNavigation();
     const Tab = createMaterialTopTabNavigator();
     const [loadingText, setLoadingText] = useState("Loading");
+    const [infosClient, setInfosClient] = useState(null)
 
     useEffect(() => {
         setLoading(true)
@@ -32,32 +32,9 @@ const Billetterie = () => {
         };
         fetchWooCommerce("products", setProductsData, handleRequestComplete)
         fetchWooCommerce("orders", setOrdersData, handleRequestComplete)
+        getData("infosClient", setInfosClient)
+        getData('panier', setPanierData)
     }, [])
-
-
-    const data = {
-        payment_method: "bacs",
-        payment_method_title: "Direct Bank Transfer",
-        set_paid: true,
-        billing: {
-            first_name: "Johnathan",
-            last_name: "Dole",
-            address_1: "62 rue ardoin",
-            address_2: "",
-            city: "Saint-Ouen",
-            state: "Seine-Saint-Denis",
-            postcode: "93300",
-            country: "France",
-            email: "john.doe@example.com",
-            phone: "(555) 555-5555"
-        },
-        line_items: [
-            {
-                product_id: 542,
-                quantity: 1
-            }
-        ]
-    };
 
     const WooCommerce = new WooCommerceAPI({
         url: 'https://cchost.bmcorp.fr/LiveEvents',
@@ -82,15 +59,42 @@ const Billetterie = () => {
     }
 
     function testOrder() {
-        WooCommerce.post("orders", data)
-            .then((response) => {
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.log(error.response.data);
-            });
+        console.log('panierData', panierData);
+        console.log('infosClient', infosClient);
+        const dataCommande = {
+            payment_method: "bacs",
+            payment_method_title: "Direct Bank Transfer",
+            set_paid: true,
+            billing: {
+                first_name: infosClient.prenom,
+                last_name: infosClient.nom,
+                address_1: infosClient.addresse,
+                city: infosClient.ville,
+                state: infosClient.departement,
+                postcode: infosClient.codepostal,
+                country: infosClient.pays,
+                email: infosClient.email,
+                phone: infosClient.telephone
+            },
+            line_items: [
+                {
+                    product_id: panierData[0].id,
+                    quantity: panierData[0].quantite
+                }
+            ]
+        };
+        console.log('dataCommande', dataCommande);
+        // WooCommerce.post("orders", dataCommande)
+        //     .then((response) => {
+        //         console.log("ça marche" + response.data);
+        //         console.log("ça marche json" + JSON.stringify(response));
+        //         cleanData("panier")
+        //         setPanierData(null)
+        //     })
+        //     .catch((error) => {
+        //         console.log('erreur ' + error.response.data);
+        //     });
     }
-
 
     useEffect(() => {
         if (loading) {
@@ -116,13 +120,13 @@ const Billetterie = () => {
             {/* <Button title={'Envoyer une nouvelle commande'} onPress={testOrder} buttonStyle={{ margin: 20 }} /> */}
             <Tab.Navigator initialRouteName='Billets'>
                 <Tab.Screen name="Panier" >
-                    {(props) => <Panier {...props} productsData={productsData} panierData={panierData} setPanierData={setPanierData} />}
+                    {(props) => <Panier {...props} panierData={panierData} setPanierData={setPanierData} testOrder={testOrder} infosClient={infosClient} />}
                 </Tab.Screen>
                 <Tab.Screen name="Billets" >
                     {(props) => <Billets {...props} productsData={productsData} setPanierData={setPanierData} />}
                 </Tab.Screen>
                 <Tab.Screen name="Compte" >
-                    {(props) => <Compte {...props} />}
+                    {(props) => <Compte {...props} setInfosClient={setInfosClient} infosClient={infosClient} />}
                 </Tab.Screen>
             </Tab.Navigator>
         </View>

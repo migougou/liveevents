@@ -37,3 +37,16 @@ class ClientsController(object):
     res = self.orm.selectObjectByEmail(Clients, email)
     # Retourne les résultats de la sélection
     return res
+  
+  # Méthode pour insérer un nouvel artiste dans la base de données
+  def insertClients(self, data):
+      # Création d'une nouvelle instance d'Artistes à partir des données fournies
+      a = Clients(**data)
+      # Utilisation de l'Engine ORM pour ajouter le nouvel artiste à la base de données
+      res = self.orm.addObject(a)
+      # Si l'ajout a réussi, convertit le nouvel artiste en dictionnaire, sinon retourne False
+      if res:
+          a = a.to_dict()
+      else:
+          a = False
+      return a

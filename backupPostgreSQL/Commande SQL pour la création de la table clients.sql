@@ -11,10 +11,10 @@ CREATE TABLE IF NOT EXISTS clients.clients
     adresse text NOT NULL,
     pays character varying(50) NOT NULL,
     ville character varying(50) NOT NULL,
-    codepostal integer NOT NULL,
+    codepostal character varying(5) NOT NULL,
     departement character varying(50) NOT NULL,
     email character varying(100) NOT NULL,
-    telephone bigint NOT NULL,
+    telephone character varying(10) NOT NULL,
     motdepasse character varying(100) NOT NULL,
     PRIMARY KEY (id)
 );
@@ -58,9 +58,9 @@ BEGIN;
 
 INSERT INTO clients.clients (id, prenom, nom, adresse, pays, ville, codepostal, departement, email, telephone, motdepasse)
 	VALUES 
-	(1, 'John', 'Doe', '123 Main Street', 'France', 'Paris', 75001, 'Paris', 'john.doe@example.com', 0612345678, 'password'),
-	(2, 'Jane', 'Doe', '456 Elm Street', 'United States', 'New York', 10001, 'New York', 'jane.doe@example.com', 0123456789, 'password'),
-	(3, 'Pierre', 'Dupont', '789 Oak Street', 'Canada', 'Montreal', 65894, 'Quebec', 'pierre.dupont@example.com', 5141234567, 'password');
+	(1, 'John', 'Doe', '123 Main Street', 'France', 'Paris', '75001', 'Paris', 'john.doe@example.com', '0612345678', 'password'),
+	(2, 'Jane', 'Doe', '456 Elm Street', 'United States', 'New York', '10001', 'New York', 'jane.doe@example.com', '0123456789', 'password'),
+	(3, 'Pierre', 'Dupont', '789 Oak Street', 'Canada', 'Montreal', '65894', 'Quebec', 'pierre.dupont@example.com', '5141234567', 'password');
 	
 INSERT INTO clients.commandes (id)
 	VALUES (1), (2), (3), (4);
@@ -83,4 +83,6 @@ JOIN
 JOIN
     clients.commandes AS cs ON cc.clients_id = cs.id
 
-
+DELETE FROM clients.commandes_clients;
+DELETE FROM clients.commandes;
+DELETE FROM clients.clients;

@@ -1,8 +1,12 @@
+import hashlib
+
 from generic.GenericResource import GenericResource
 from orm.controller.ClientsController import ClientsController
 from flask import request
 
 # Classe pour la ressource Clients, dérivée de la ressource générique
+
+
 class ClientsTestResource(GenericResource):
 
     def __init__(self):
@@ -17,7 +21,7 @@ class ClientsTestResource(GenericResource):
     # Méthode GET pour récupérer les clients
     def get(self, email=None):
         res = []
-        #Requête client par id
+        # Requête client par id
         if email:
             client = self.serviceController.selectClientsByEmail(email)
             if client is None or client == []:
@@ -40,15 +44,22 @@ class ClientsTestResource(GenericResource):
     # Méthode POST pour ajouter un nouveau client
     def post(self):
         # Obtenir les paramètres de la requête POST
-        email = request.json.get('email')
+        email = request.json.get('email').lower()
         motdepasse = request.json.get('motdepasse')
+        motdepasse_crypte = hashlib.sha256(motdepasse.encode()).hexdigest()
 
         client = self.serviceController.selectClientsByEmail(email)
 
-        # Exemple de vérification factice (à remplacer par votre propre logique)
+        if client or client != []:
+            client_data = client.to_dict()
+            client_data.pop("motdepasse", None)
+
         if client is None or client == []:
-            return {'message': 'Cette adresse mail n''existe pas'}, 404
-        if email == client.email and motdepasse == client.motdepasse:
-            return {'message': f'Bienvenue {client.prenom} {client.nom}'}, 200
+            return {'message': 'Email ou mot de passe inexact'}, 404
+
+        client_data = client.to_dict()
+        client_data.pop("motdepasse", None)
+        if motdepasse_crypte != client.motdepasse:
+            return {'message': 'Email ou mot de passe inexact'}, 404
         else:
-            return {'message': 'Mot de passe invalide'}, 404
+            return {'message': f'Bienvenue {client.prenom} {client.nom}', 'data': client_data}, 200

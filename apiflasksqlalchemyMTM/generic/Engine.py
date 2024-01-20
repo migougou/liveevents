@@ -11,7 +11,7 @@ class Engine(object):
 
     def __init__(self, type, user, mdp, server, port, database):
         
-        self.engine = create_engine(f"{type}://{user}:{mdp}@{server}:{port}/{database}")
+        self.engine = create_engine(f"{type}://{user}:{mdp}@{server}:{port}/{database}", pool_size=1, max_overflow=50, pool_recycle=3600, pool_pre_ping=True)
         self.session = Session(self.engine)
 
     # Fonction qui initialise la base de données

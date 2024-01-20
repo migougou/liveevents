@@ -1,18 +1,37 @@
 import React, { useState } from 'react';
 import { Button, View, Text, TextInput } from 'react-native';
-import styles from './styles';
-import axios from 'axios';
-import { checkUserCredentials } from '../utilities';
+import styles from '../styles';
+import { checkUserCredentials, storeInfoClient } from '../../utilities';
 
-const Connection = ({ setConnection }) => {
+const Connection = ({ setConnection, setInfosClient }) => {
 
   const [motDePasse, setMotDePasse] = useState('');
   const [email, setEmail] = useState('');
   const [showMotDePasse, setShowMotDePasse] = useState(false);
+  const [message, setMessage] = useState('');
 
   const toggleMotDePasseVisibility = () => {
     setShowMotDePasse(!showMotDePasse);
   };
+
+  const validation = async (email, motDePasse) => {
+    if (!email || !motDePasse) {
+      setMessage('Il faut remplir les deux champs');
+      return;
+    }
+
+    try {
+      let utilisateur = await checkUserCredentials(email, motDePasse);
+      if (utilisateur.data) {
+        storeInfoClient(utilisateur.data, setInfosClient);
+        setConnection(false);
+      } else {
+        setMessage(utilisateur.message);
+      }
+    } catch (error) {
+      setMessage('Problème avec la requête serveur. Veuillez réessayer.');
+    }
+  }
 
   return (
     <View>
@@ -38,7 +57,8 @@ const Connection = ({ setConnection }) => {
           onPress={toggleMotDePasseVisibility}
         />
       </View>
-      <Button title='Valider' onPress={() => checkUserCredentials(email, motDePasse)} />
+      {message.length > 0 && <Text style={styles.message}>{message}</Text>}
+      <Button title='Valider' onPress={() => validation(email, motDePasse)} />
     </View>
   );
 };
