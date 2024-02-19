@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Text, View } from 'react-native';
-import { deleteInfoClient } from '../../utilities';
+import { deleteInfoClient, storeData } from '../../utilities';
+import axios from 'axios';
 
-const EspaceClient = ({ infosClient, setInfosClient }) => {
-  console.log(infosClient)
+const EspaceClient = ({ infosClient, setInfosClient, ordersData }) => {
+  const [ordersClient, setOrdersClient] = useState(null)
+
+  useEffect(() => {
+    axios.get(`http://cchost.freeboxos.fr:5001/clients/${infosClient?.id}`)
+    .then(response => {
+      setInfosClient(response.data)
+      storeData(response.data, "infosClient")
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }, [])
   return (
     <View>
       <View>

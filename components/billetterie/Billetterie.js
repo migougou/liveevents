@@ -8,6 +8,8 @@ import Billets from "./billets/Billets"
 import Compte from "./compte/Compte"
 import styles from './styles';
 import { getData, cleanData } from '../utilities';
+import axios from 'axios';
+import { set } from 'react-hook-form';
 
 const Billetterie = () => {
 
@@ -37,7 +39,7 @@ const Billetterie = () => {
     }, [])
 
     const WooCommerce = new WooCommerceAPI({
-        url: 'https://cchost.bmcorp.fr/LiveEvents',
+        url: 'https://dev-liveeventsmspr.pantheonsite.io',
         ssl: true,
         consumerKey: 'ck_6a4763ce4aa883cbb508176c5641f8faffcd9e1c',
         consumerSecret: 'cs_3c71ec52c41cf1353ba02b19fcc8da9b97d6158b',
@@ -59,6 +61,7 @@ const Billetterie = () => {
     }
 
     function testOrder() {
+        setLoading(true)
         console.log('panierData', panierData);
         console.log('infosClient', infosClient);
         const dataCommande = {
@@ -84,16 +87,20 @@ const Billetterie = () => {
             ]
         };
         console.log('dataCommande', dataCommande);
-        // WooCommerce.post("orders", dataCommande)
-        //     .then((response) => {
-        //         console.log("ça marche" + response.data);
-        //         console.log("ça marche json" + JSON.stringify(response));
-        //         cleanData("panier")
-        //         setPanierData(null)
-        //     })
-        //     .catch((error) => {
-        //         console.log('erreur ' + error.response.data);
-        //     });
+        WooCommerce.post("orders", dataCommande)
+            .then((response) => {
+                axios.put(`http://cchost.freeboxos.fr:5001/clients/${infosClient?.id}`, {"commandes" : response.id});
+                console.log("ça marche id" + response);
+                console.log("ça marche json" + JSON.stringify(response));
+                cleanData("panier")
+                setPanierData(null)
+            })
+            .catch((error) => {
+                console.log('erreur ' + error.response.data);
+            })
+            .finally(() => {
+                setLoading(false)
+            })
     }
 
     useEffect(() => {
@@ -126,7 +133,7 @@ const Billetterie = () => {
                     {(props) => <Billets {...props} productsData={productsData} setPanierData={setPanierData} />}
                 </Tab.Screen>
                 <Tab.Screen name="Compte" >
-                    {(props) => <Compte {...props} setInfosClient={setInfosClient} infosClient={infosClient} />}
+                    {(props) => <Compte {...props} setInfosClient={setInfosClient} infosClient={infosClient} ordersData={ordersData} />}
                 </Tab.Screen>
             </Tab.Navigator>
         </View>

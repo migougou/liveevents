@@ -57,3 +57,23 @@ class Engine(object):
         except:
             print("Error during suppresion")  # Gestion des erreurs lors de l'insertion
         return bReturn  # Retour du succès ou de l'échec de l'opération
+    
+    def updateObject(self, obj, id, data):
+        bReturn = False  # Valeur par défaut de la variable de retour
+        try:
+            # Recherche de l'objet par son ID
+            existing_obj = self.session.query(obj).filter_by(id=id).first()
+            if existing_obj:
+                # Mise à jour des champs de l'objet avec les données fournies
+                for key, value in data.items():
+                    if hasattr(existing_obj, key):
+                        setattr(existing_obj, key, value)
+                
+                self.session.commit()  # Validation des changements dans la base de données
+                bReturn = True
+            else:
+                print(f"Object with ID {id} not found.")
+        except Exception as e:
+            self.session.rollback()  # En cas d'erreur, annulation des changements
+            print(f"Error during update: {e}")
+        return bReturn  # Retour du succès ou de l'échec de l'opération

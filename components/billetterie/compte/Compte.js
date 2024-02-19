@@ -5,7 +5,7 @@ import Connection from './Connection';
 import Inscription from './Inscription';
 import EspaceClient from './EspaceClient';
 
-const Compte = ({ setInfosClient, infosClient }) => {
+const Compte = ({ setInfosClient, infosClient, ordersData }) => {
 
   const [connection, setConnection] = useState(false)
   const [inscription, setInscription] = useState(false)
@@ -34,7 +34,7 @@ const Compte = ({ setInfosClient, infosClient }) => {
           </View>
         </>
       ) :
-        <EspaceClient infosClient={infosClient} setInfosClient={setInfosClient} />}
+        <EspaceClient infosClient={infosClient} setInfosClient={setInfosClient} ordersData={ordersData} />}
     </View>
   );
 };

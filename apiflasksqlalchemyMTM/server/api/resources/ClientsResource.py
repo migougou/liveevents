@@ -77,3 +77,17 @@ class ClientsResource(GenericResource):
                 check = True
                 break
         return check
+
+    def put(self, client_id):
+        data = self.rebuild_params()
+        # Extraire commandes_ids de data
+        commandes_ids = data.get('commandes')
+
+        if commandes_ids is None:
+            return {'message': 'Aucune commande fournie'}, 400
+
+        update_result = self.serviceController.updateClientCommandes(client_id, commandes_ids)
+        if update_result:
+            return {'message': 'Client mis à jour avec succès'}, 200
+        else:
+            return {'message': 'La mise à jour a échoué'}, 500

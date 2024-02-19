@@ -20,20 +20,17 @@ class TextConverter(BaseConverter):
 
 # Initialisation de l'application Flask
 app = Flask("LiveEvents")
-# Permet de lire le style email dans l'url
-app.url_map.converters['email'] = TextConverter
 # Initialisation de l'API Flask-RESTful
 api = Api(app)
 
 # Ajout de la ressource Artistes à l'API avec l'endpoint /artistes
 api.add_resource(ArtistesResource, '/artistes')
 
-# Ajout de la ressource Artistes à l'API avec l'endpoint /artistes
+# Ajout de la ressource Client à l'API avec l'endpoint /clients
 api.add_resource(ClientsResource, '/clients', '/clients/<int:client_id>')
 
-# Ajout de la ressource Artistes à l'API avec l'endpoint /artistes
-api.add_resource(ClientsTestResource, '/clients-test',
-                 '/clients-test/<email:email>')
+# Ajout de la ressource Client à l'API avec l'endpoint /clients-test
+api.add_resource(ClientsTestResource, '/clients-test')
 
 # Ajout de la ressources Localisations à l'API avec l'endpoint /localisations
 api.add_resource(LocalisationsResource, '/localisations')
