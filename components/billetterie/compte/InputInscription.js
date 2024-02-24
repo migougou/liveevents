@@ -4,7 +4,7 @@ import { Controller } from 'react-hook-form';
 import { Input } from 'react-native-elements';
 import styles from '../styles';
 
-const InputInscription = ({ control, errors, inputData }) => {
+const InputInscription = ({ control, errors, inputData, }) => {
   const errorKey = inputData.name;
 
   return (
@@ -19,12 +19,15 @@ const InputInscription = ({ control, errors, inputData }) => {
             placeholder={inputData.placeholder}
             keyboardType={inputData.keyboardType}
             secureTextEntry={inputData.secureTextEntry}
+            style={styles.buttonInput}
+            containerStyle={styles.inputContainer} // Ajout du style container
+            inputContainerStyle={styles.input} // Ajout du style input container
           />
         )}
         name={inputData.name}
         rules={inputData.rules}
       />
-      {errors[errorKey] && <Text style={styles.errorText}>{errors[errorKey].message}</Text>}
+      {errors[errorKey] && <Text style={styles.errorMessage}>{errors[errorKey].message}</Text>}
     </>
   )
 }

@@ -28,7 +28,7 @@ const Objets = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Services</Text>
+        <Text style={styles.title}>Objets trouvés et interdits</Text>
       </View>
       <ScrollView>
         <View style={styles.content}>
@@ -40,20 +40,8 @@ const Objets = ({ navigation }) => {
               </View>
               <View style={styles.contentText}>
                 <Text>
-                  {isExpanded[index] ? info.acf.texte_info : info.acf.texte_info.slice(0, 150) + (info.acf.texte_info.length > 150 ? "..." : "")}
+                  {info.acf.texte_info}
                 </Text>
-                {info.acf.texte_info.length > 150 && (
-                  <Text
-                    style={styles.voirPlus}
-                    onPress={() => {
-                      const cloneIsExpanded = [...isExpanded];
-                      cloneIsExpanded[index] = !cloneIsExpanded[index];
-                      setisExpanded(cloneIsExpanded);
-                    }}
-                  >
-                    {isExpanded[index] ? "Voir moins" : "Voir plus"}
-                  </Text>
-                )}
               </View>
             </View>
           ))

@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, Button, View } from 'react-native';
 import ProduitPanier from './ProduitPanier';
 import { FlatList } from 'react-native';
+import styles from '../styles';
 
 const Panier = ({ panierData, setPanierData, testOrder, infosClient }) => {
 
@@ -10,7 +11,7 @@ const Panier = ({ panierData, setPanierData, testOrder, infosClient }) => {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={panierData}
         renderItem={({ item }) => <ProduitPanier item={item} setPanierData={setPanierData} />}

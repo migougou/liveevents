@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Button } from 'react-native';
+import { View, Button, TouchableOpacity, Text } from 'react-native';
 import styles from '../styles';
 import Connection from './Connection';
 import Inscription from './Inscription';
 import EspaceClient from './EspaceClient';
+import { C1, C2, C3, C4, C5, C6, C7 } from "../../colors";
 
 const Compte = ({ setInfosClient, infosClient, ordersData }) => {
 
@@ -23,15 +24,15 @@ const Compte = ({ setInfosClient, infosClient, ordersData }) => {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       {Object.keys(infosClient).length === 0 ? (
         <>
-          <View style={styles.buttonCompte}>
-            <Button title="se connecter" onPress={() => setConnection(true)} />
-          </View>
-          <View style={styles.buttonCompte}>
-            <Button title="s'inscrire" onPress={() => setInscription(true)} />
-          </View>
+      <TouchableOpacity style={styles.buttonCompte} onPress={() => setConnection(true)}>
+            <Text style={styles.textCompte}>se connecter</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonCompte} onPress={() => setInscription(true)}>
+            <Text style={styles.textCompte}>s'inscrire</Text>
+          </TouchableOpacity>
         </>
       ) :
         <EspaceClient infosClient={infosClient} setInfosClient={setInfosClient} ordersData={ordersData} />}

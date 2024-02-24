@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, View, Text, TextInput } from 'react-native';
+import { Button, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import styles from '../styles';
 import { checkUserCredentials, storeInfoClient } from '../../utilities';
 
@@ -34,31 +34,33 @@ const Connection = ({ setConnection, setInfosClient }) => {
   }
 
   return (
-    <View>
-      <View style={styles.buttonCompte}>
-        <Button title="retour" onPress={() => setConnection(false)} />
-      </View>
-      <Text style={styles.buttonCompte}>Se connecter :</Text>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.buttonCompte} onPress={() => setConnection(false)}>
+            <Text style={styles.textCompte}>Retour</Text>
+          </TouchableOpacity>
+      <Text  style={[styles.textLogin]}>Se connecter :</Text>
+      <View style={[styles.button, styles.buttonCompteConnect]}>
       <TextInput
         value={email}
         onChangeText={setEmail}
-        style={styles.buttonCompte}
         placeholder="Email"
       />
-      <View style={[styles.button, styles.buttonCompte]}>
+      </View>
+      <View style={[styles.button, styles.buttonCompteConnect]}>
         <TextInput
           secureTextEntry={!showMotDePasse}
           value={motDePasse}
           onChangeText={setMotDePasse}
           placeholder="Mot de passe"
         />
-        <Button
-          title={showMotDePasse ? 'Cacher' : 'Afficher'}
-          onPress={toggleMotDePasseVisibility}
-        />
+      <TouchableOpacity onPress={toggleMotDePasseVisibility}>
+            <Text style={styles.buttonCacher}>{showMotDePasse ? 'Cacher' : 'Afficher'}</Text>
+          </TouchableOpacity>
       </View>
-      {message.length > 0 && <Text style={styles.message}>{message}</Text>}
-      <Button title='Valider' onPress={() => validation(email, motDePasse)} />
+      {message.length > 0 && <Text style={styles.errorMessageConnect}>{message}</Text>}
+      <TouchableOpacity style={styles.buttonCompte}  onPress={() => validation(email, motDePasse)} >
+            <Text style={styles.textCompte}>Valider</Text>
+          </TouchableOpacity>
     </View>
   );
 };
