@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity, SafeAreaView, ScrollView  } from "react-n
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
 import Footer from "../footer/footer";
-import styles from "./styles";
+import styles from "./styles.js";
 
 const wordpressPlus = require("../../local_data/wordpressPlus.json");
 
@@ -62,7 +62,8 @@ const Services = ({ navigation }) => {
                 )}
               </View>
             </View>
-          ))}
+          ))
+          }
         </View>
           <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Contact")}>
             <Text style={styles.buttonText}>Nous Contacter</Text>

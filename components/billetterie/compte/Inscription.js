@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react';
-import { View, Text, Button, ScrollView } from 'react-native';
+import { View, Text, Button, ScrollView, TouchableOpacity } from 'react-native';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import styles from '../styles';
 import InputInscription from './InputInscription';
 import { storeInfoClient } from '../../utilities';
+import { color } from 'react-native-elements/dist/helpers';
 
 const Inscription = ({ setInscription, setInfosClient }) => {
   const { control, handleSubmit, formState: { errors }, watch } = useForm();
@@ -140,18 +141,21 @@ const Inscription = ({ setInscription, setInfosClient }) => {
   ]
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.buttonCompte}>
-        <Button title="Retour" onPress={() => setInscription(false)} />
-      </View>
-      <Text>S'inscrire</Text>
-      {inputData.map((item) => (<InputInscription key={item.id} control={control} errors={errors} inputData={item} />))}
-      {message.length > 0 && <Text style={styles.message}>{message}</Text>}
-      <View style={styles.buttonCompte}>
-        <Button title="Soumettre" onPress={handleSubmit(onSubmit)} />
+    <ScrollView >
+      <View style={styles.container}>
+      <TouchableOpacity style={styles.buttonCompte} onPress={() => setInscription(false)}>
+        <Text style={styles.textCompte}>Retour</Text>
+      </TouchableOpacity>
+      <Text style={[styles.textLogin, { marginBottom: 20 }]}>S'inscrire :</Text>
+      {inputData.map((item) => (<InputInscription key={item.id} control={control} errors={errors} inputData={item}/>))}
+      {message.length > 0 && <Text style={styles.errorMessage}>{message}</Text>}
+      <TouchableOpacity style={[styles.buttonCompte, {marginBottom: 10}]} onPress={handleSubmit(onSubmit)}>
+        <Text style={styles.textCompte}>Soumettre</Text>
+      </TouchableOpacity>
       </View>
     </ScrollView>
   );
 };
 
 export default Inscription;
+

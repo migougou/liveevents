@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View, TouchableOpacity, Image } from 'react-native';
 import { Text } from 'react-native';
 import styles from '../styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -29,13 +29,18 @@ const ProduitPanier = ({ item, setPanierData }) => {
 
   return (
     <View style={styles.format}>
+    <Image source={{ uri: item.image }} style={styles.icone} />
       <View style={styles.formatAdjust}>
         <Text style={styles.titre}>{item.name}</Text>
         <Text>{item.prix} €</Text>
         <Text>quantité : {item.quantite}</Text>
         <View style={styles.buttonDeleteContainer}>
-          <Button title={'Supprimer'} color={"red"} onPress={() => suppressionDuPanier('panier', 1)} />
-          <Button title={'Tout supprimer'} color={"red"} onPress={() => suppressionDuPanier('panier', item.quantite)} />
+          <TouchableOpacity style={styles.buttonPanier} onPress={() => suppressionDuPanier('panier', 1)}>
+            <Text style={styles.textPanier}>SUPPRIMER</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonPanier} onPress={() => suppressionDuPanier('panier', item.quantite)}>
+            <Text style={styles.textPanier}>TOUT SUPPRIMER</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

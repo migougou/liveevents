@@ -1,8 +1,10 @@
 import React from 'react';
-import { Button, Image, Text } from 'react-native';
+import { Image, Text, TouchableOpacity } from 'react-native';
 import { View } from 'react-native';
 import styles from '../styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 const CarteBillet = ({ item, setPanierData }) => {
 
@@ -17,6 +19,7 @@ const CarteBillet = ({ item, setPanierData }) => {
         prix: item.price,
         name: item.name,
         quantite: 1,
+        image: url
       }
       const jsonValue = await AsyncStorage.getItem(key);
       let panier = JSON.parse(jsonValue);
@@ -44,12 +47,14 @@ const CarteBillet = ({ item, setPanierData }) => {
   return (
     <View style={styles.format}>
       <Image source={{ uri: url }} style={styles.icone} />
-      <View style={styles.formatAdjust}>
+      <View style={styles.formatAdjustBillet}>
         <Text style={styles.titre}>{item.name}</Text>
         <Text>{descriptionFormate}</Text>
         <View style={styles.button}>
           <Text>{item.price} €</Text>
-          <Button title={'Ajouter au panier'} color={"#A416BB"} onPress={() => ajoutAuPanier('panier')} />
+          <TouchableOpacity style={styles.buttonBillets}  onPress={() => ajoutAuPanier('panier')}>
+            <Text style={styles.textCompte}>Ajouter au panier</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

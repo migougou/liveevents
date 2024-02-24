@@ -3,6 +3,7 @@ import { FlatList } from 'react-native';
 import { View } from 'react-native';
 import { Text } from 'react-native-elements';
 import CarteBillet from './CarteBillet';
+import styles from '../styles';
 
 const Billets = ({ productsData, setPanierData }) => {
 
@@ -13,7 +14,7 @@ const Billets = ({ productsData, setPanierData }) => {
   }, [])
 
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={reversedData}
         renderItem={({ item }) => <CarteBillet item={item} setPanierData={setPanierData} />}
