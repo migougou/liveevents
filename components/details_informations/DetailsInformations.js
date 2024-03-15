@@ -14,12 +14,7 @@ const DetailsInformations = ({
 
   return (
     <>
-      {affichageBoutton && (
-        <Button
-          title="Changement d'information"
-          onPress={changementInformation}
-        />
-      )}
+      {affichageBoutton && (<Button title="Changement d'information" onPress={changementInformation} />)}
       <CardInformation
         informationMap={
           choixInfo === "important"
