@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { View, ScrollView } from "react-native";
 
-import { trieArtistes, formatDate, filterArtistesByScene } from "../utilities";
+import { trieArtistes, filterArtistesByScene } from "../utilities";
 
 import SceneButton from './SceneButton';
 import ArtistCard from './ArtistCard';

@@ -3,9 +3,7 @@ import { TouchableOpacity, Text } from 'react-native';
 import styles from './styles';
 
 const SceneButton = ({ scene, isSelected, onClick }) => {
-  const handlePress = () => {
-    onClick(scene.name);
-  }
+  const handlePress = () => { onClick(scene.name); };
 
   return (
     <TouchableOpacity key={scene.name} onPress={handlePress}>
