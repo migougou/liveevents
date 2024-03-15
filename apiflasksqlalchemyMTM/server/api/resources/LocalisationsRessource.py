@@ -18,7 +18,7 @@ class LocalisationsResource(GenericResource):
     data = []
     for l in localisations:
       data.append(l.to_dict())
-    
+
     return data, 200
 
   def post(self):

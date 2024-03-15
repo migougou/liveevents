@@ -14,11 +14,11 @@ def sql_main():
     from sqlalchemy.orm import Session
 
     engine = create_engine("postgresql://postgres:projetliveevents@localhost:5432/LiveEvents")
-    
+
     session = Session(engine)
 
     req = text("""SELECT * FROM artistes.artistes""")
-    
+
     res = session.execute(req).all()
 
     print(res)

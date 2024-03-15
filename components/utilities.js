@@ -304,7 +304,6 @@ export const filterArtistesByScene = (selectedScene, artistes) => {
     })
   }
 
-
   return updatedArtistes;
 }
 

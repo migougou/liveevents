@@ -18,7 +18,7 @@ class PartenairesResource(GenericResource):
     data = []
     for l in partenaires:
       data.append(l.to_dict())
-    
+
     return data, 200
 
   def post(self):

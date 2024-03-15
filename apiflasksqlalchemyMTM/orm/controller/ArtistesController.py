@@ -12,7 +12,7 @@ class ArtistesController(object):
 
         # Création d'une instance de l'Engine ORM avec les informations de connexion à la base de données
         self.orm = Engine(type='postgresql', user='postgres', mdp='projetliveevents', server='localhost', port='5432', database='LiveEvents')
-    
+
     # Méthode pour initialiser les tables de la base de données pour les objets Artistes
     def init(self):
         self.orm.initializer(Artistes)
@@ -58,7 +58,7 @@ class ArtistesController(object):
         else:
             a = False
         return a
-    
+
     # Méthode pour sélectionner tous les styles musicaux dans la base de données
     def selectStylesMusicaux(self):
         res = []
@@ -79,7 +79,7 @@ class ArtistesController(object):
         else:
             a = False
         return a
-    
+
     # Méthode pour sélectionner toutes les origines dans la base de données
     def selectOrigines(self):
         res = []
@@ -100,7 +100,7 @@ class ArtistesController(object):
         else:
             a = False
         return a
-    
+
     # Méthode pour sélectionner la table de liaison styles musicaux - artistes dans la base de données
     def selectStylesMusicauxArtistes(self):
         res = []
@@ -121,7 +121,7 @@ class ArtistesController(object):
         else:
             a = False
         return a
-    
+
     # Méthode pour sélectionner toutes les liaisons origines - artistes dans la base de données
     def selectOriginesArtistes(self):
         res = []
@@ -142,7 +142,7 @@ class ArtistesController(object):
         else:
             a = False
         return a
-    
+
     # Méthode pour supprimer toutes les données du schéma artistes
     def deleteAll(self):
         bReturn = False  # Valeur par défaut de la variable de retour

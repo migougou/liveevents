@@ -18,7 +18,7 @@ class PlusRessource(GenericResource):
     data = []
     for p in plus:
       data.append(p.to_dict())
-    
+
     return data, 200
 
   def post(self):

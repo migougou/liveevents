@@ -12,7 +12,7 @@ class InformationsController(object):
 
         # Création d'une instance de l'Engine ORM avec les informations de connexion à la base de données
         self.orm = Engine(type='postgresql', user='postgres', mdp='projetliveevents', server='localhost', port='5432', database='LiveEvents')
-    
+
     # Méthode pour initialiser les tables de la base de données pour les objets Informations
     def init(self):
         self.orm.initializer(Informations)
@@ -37,7 +37,7 @@ class InformationsController(object):
         else:
             a = False
         return a
-    
+
         # Méthode pour supprimer toutes les données du schéma Informations
     def deleteAll(self):
         bReturn = False  # Valeur par défaut de la variable de retour

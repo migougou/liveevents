@@ -9,7 +9,7 @@ class ClientsController(object):
   def __init__(self):
     # Création d'une instance de l'Engine ORM avec les informations de connexion à la base de données
     self.orm = Engine(type='postgresql', user='postgres', mdp='projetliveevents', server='localhost', port='5432', database='LiveEvents')
-  
+
   # Méthode pour initialiser les tables de la base de données pour les objets Clients
   def init(self):
     self.orm.initializer(Clients)
@@ -21,7 +21,7 @@ class ClientsController(object):
     res = self.orm.selectObjects(Clients)
     # Retourne les résultats de la sélection
     return res
-  
+
   # Méthode pour sélectionner tous les clients dans la base de données
   def selectClientsById(self, client_id):
     res = []
@@ -37,7 +37,7 @@ class ClientsController(object):
     res = self.orm.selectObjectByEmail(Clients, email)
     # Retourne les résultats de la sélection
     return res
-  
+
   # Méthode pour insérer un nouvel artiste dans la base de données
   def insertClients(self, data):
       # Création d'une nouvelle instance d'Artistes à partir des données fournies
@@ -50,7 +50,7 @@ class ClientsController(object):
       else:
           a = False
       return a
-  
+
   def updateClientCommandes(self, client_id, commandes_ids):
       # Assurer la conversion de client_id en entier
       try:

@@ -18,7 +18,7 @@ class InformationsResource(GenericResource):
     data = []
     for i in info:
       data.append(i.to_dict())
-    
+
     return data, 200
 
   def post(self):

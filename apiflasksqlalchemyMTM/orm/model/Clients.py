@@ -36,7 +36,7 @@ class Clients(Base):
       'motdepasse' : self.motdepasse,
       'commandes' : [commande.id for commande in self.commandes],
     }
-  
+
 
 class Commandes(Base):
   __tablename__ = 'commandes'
@@ -46,7 +46,7 @@ class Commandes(Base):
 
   def to_dict(self):
     return {'id': self.id}
-    
+
 
 class CommandesClients(Base):
   __tablename__ = 'commandes_clients'

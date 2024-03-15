@@ -33,7 +33,7 @@ class ArtistesResource(GenericResource):
     def post(self):
         data = self.rebuild_params()
         res = []
-        
+
         if isinstance(data, list):
             if "acf" in data[0]:
                 nouvelles_donnees = self.mise_en_forme_donnees(data)
@@ -45,7 +45,7 @@ class ArtistesResource(GenericResource):
                 res = 2
         else:
             res = 1
-        
+
         if isinstance(res, int):
             return self.handle_error(res)
         elif(res == 1):
@@ -82,7 +82,7 @@ class ArtistesResource(GenericResource):
     def inserer_nouvelle_donnes(self, nouvelles_donnees):
         if len(self.serviceController.selectArtistes()) > 0:
             self.serviceController.deleteAll()
-        
+
         for nd in nouvelles_donnees:
             sceneid = self.trouver_ou_creer_une_scene(nd["scene"].upper())
             artisteid = len(self.serviceController.selectArtistes()) + 1
@@ -97,7 +97,7 @@ class ArtistesResource(GenericResource):
             }
             self.serviceController.insertArtistes(cleand)
             self.trouver_ou_creer_un_style_musical_et_une_origines(nd, artisteid)
-            
+
     def trouver_ou_creer_une_scene(self, scene_name):
         scenes = self.serviceController.selectScenes()
         for s in scenes:
