@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Text, View, TouchableOpacity, SafeAreaView, ScrollView, Image } from "react-native";
 
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import Footer from "../footer/Footer";
+import Footer from "../footer/footer";
 import styles from "./styles.js";
 
 const wordpressPlus = require("../../local_data/wordpressPlus.json");
 
 const sousCategoriesIcon = {
-  'Objets Trouvés': 'box-open',
+  'Objets trouvés': 'box-open',
   'Objets interdits': 'ban',
 };
 
@@ -40,6 +40,10 @@ const Objets = ({ navigation }) => {
                 <Text>
                   {info.acf.texte_info}
                 </Text>
+                 {/* Ajouter l'image uniquement si la catégorie est "Objets interdits" */}
+                 {info.acf.sous_categories === 'Objets interdits' && (
+                  <Image source={require('../../images/objets-interdits.png')} style={styles.imageObjetsInt} />
+                )}
               </View>
             </View>
           ))

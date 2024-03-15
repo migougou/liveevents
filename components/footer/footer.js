@@ -6,10 +6,16 @@ import styles from "./styles";
 const Facebook = require("../../icones/facebook.png");
 const Instagram = require("../../icones/instagram.png");
 const Twitter = require("../../icones/twitter.png");
+const Youtube = require("../../icones/youtube.png");
+const Snapchat = require("../../icones/snapchat.png");
+const Linkedin = require("../../icones/linkedin.png");
 
 const openFacebookPage = () =>              { Linking.openURL("https://www.facebook.com") };
 const openInstagramPage = () =>             { Linking.openURL("https://www.instagram.com") };
 const openTwitterPage = () =>               { Linking.openURL("https://www.twitter.com") };
+const openYoutubePage = () =>               { Linking.openURL("https://www.youtube.com") };
+const openSnapchatPage = () =>               { Linking.openURL("https://www.snapchat.com") };
+const openLinkedinPage = () =>               { Linking.openURL("https://www.linkedin.com") };
 const openPrivacyPage = () =>               { Linking.openURL("https://www.livenation.fr/privacy") };
 const openTermsPage = () =>                 { Linking.openURL("https://www.livenation.fr/terms") };
 const openCookiesPage = () =>               { Linking.openURL("https://www.livenation.fr/cookies") };
@@ -34,6 +40,15 @@ const Footer = () => {
         </TouchableOpacity>
         <TouchableOpacity onPress={openTwitterPage}>
           <Image source={Twitter} style={styles.imgReseau} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={openYoutubePage}>
+          <Image source={Youtube} style={styles.imgReseau} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={openSnapchatPage}>
+          <Image source={Snapchat} style={styles.imgReseau} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={openLinkedinPage}>
+          <Image source={Linkedin} style={styles.imgReseau} />
         </TouchableOpacity>
       </View>
       <View style={styles.separator} />

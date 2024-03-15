@@ -108,6 +108,11 @@ const styles = StyleSheet.create({
     height: hp(10),
     resizeMode: "contain",
   },
+  imageObjetsInt: {
+    width: wp(90),
+    height: hp(28),
+    resizeMode: "contain",
+  },
   imgContainer: {
     alignItems: "center",
     justifyContent: "center",

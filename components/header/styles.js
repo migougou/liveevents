@@ -9,11 +9,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "100%",
     backgroundColor: C2,
-    paddingHorizontal: wp(4),
+    paddingHorizontal: wp(3),
   },
   logoImage: {
-    width: wp(10),
-    height: hp(10),
+    width: 90,
+    height: 90,
     resizeMode: "contain",
   },
   notificationImage: {
@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   flagImage: {
-    width: wp(7),
-    height: wp(7),
+    width: wp(8),
+    height: wp(8),
     resizeMode: "contain",
   },
   badgeStyle: {
