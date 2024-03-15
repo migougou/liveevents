@@ -4,8 +4,6 @@ import { View } from 'react-native';
 import styles from '../styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-
 const CarteBillet = ({ item, setPanierData }) => {
 
   const removePTags = (description) => {

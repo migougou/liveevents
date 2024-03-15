@@ -6,7 +6,6 @@ import { premiereLettreMajuscule } from "../utilities";
 
 import styles from "./styles";
 
-
 const CardInformation = ({ informationMap, typeInfo }) => {
   const typeInfoCapitalize = premiereLettreMajuscule(typeInfo);
 

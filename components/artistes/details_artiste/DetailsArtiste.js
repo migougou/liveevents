@@ -16,7 +16,7 @@ const DetailsArtiste = ({ route, navigation }) => {
 
   const hmdebut = useMemo(() => hdebut.slice(0, 5), [hdebut]);
   const hmfin = useMemo(() => hfin.slice(0, 5), [hfin]);
-    
+
   return (
     <ScrollView>
       <HeaderArtiste artiste={artiste} navigation={navigation}/>

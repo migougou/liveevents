@@ -6,7 +6,6 @@ import styles from "./styles";
 //import Geolocation from "react-native-geolocation-service";
 //import OpenSettings from "react-native-open-settings";
 
-
 const WCIcon = require("../../icones/toilet-icon.png");
 const sceneIcon = require("../../icones/scene.png");
 const restaurantIcon = require("../../icones/restaurant.png");
@@ -37,8 +36,6 @@ const Carte = ({ localisations }) => {
       return legendState.assistance ? assistanceIcon : null;
     }
   };
-
-
 
   return (
 
@@ -129,7 +126,6 @@ const Carte = ({ localisations }) => {
         </View>
       </View>
     </View>
-
   );
 };
 

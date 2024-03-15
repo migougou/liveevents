@@ -12,11 +12,9 @@ import Billetterie from "../billetterie/Billetterie";
 import FAQ from "../plus/FAQ/FAQ";
 import Partenaires from "../plus/Partenaires";
 
-
-
 const Stack = createStackNavigator();
 
-function PlusStack() {
+const PlusStack = () => {
   return (
     <Stack.Navigator initialRouteName="Menu" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Menu" component={Plus} />

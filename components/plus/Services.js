@@ -29,7 +29,7 @@ const Services = ({ navigation }) => {
     }
   });
 
-  const [isExpanded, setisExpanded] = useState(servicesTemporaire.map(() => false));    
+  const [isExpanded, setisExpanded] = useState(servicesTemporaire.map(() => false));
 
   return (
     <SafeAreaView style={styles.container}>

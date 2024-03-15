@@ -322,7 +322,7 @@ export const trieArtistes = (displayArray) => {
   });
 }
 
-// Utilise AsyncStorage pour stocker une valeur liée à une clé dans les données en cache 
+// Utilise AsyncStorage pour stocker une valeur liée à une clé dans les données en cache
 export const storeData = async (value, key) => {
   try {
     const jsonValue = JSON.stringify(value);

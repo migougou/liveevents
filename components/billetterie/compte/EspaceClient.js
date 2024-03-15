@@ -25,7 +25,6 @@ const EspaceClient = ({ infosClient, setInfosClient, ordersData }) => {
     const commande = ordersData?.filter(order => infosClient?.commandes.includes(order.id));
     setCommandeClient(commande);
   }, [infosClient]);
-  
 
   return (
     <View>

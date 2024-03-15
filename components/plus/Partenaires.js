@@ -4,7 +4,6 @@ import { View, Text, Image, TouchableOpacity, Linking, ScrollView, SafeAreaView 
 import styles from "./styles";
 import Footer from "../footer/footer.js";
 
-
 const wordpressPartenaires = require ("../../local_data/wordpressPartenaires.json")
 
 const Partenaires = () => {

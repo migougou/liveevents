@@ -41,7 +41,7 @@ const Accueil = ({ artistes, navigation }) => {
               key={scene.name}
               scene={scene}
               isSelected={scene.name === selectedScene}
-              onClick={SceneArray} 
+              onClick={SceneArray}
             />
           ))}
         </View>
@@ -50,7 +50,7 @@ const Accueil = ({ artistes, navigation }) => {
         {scenesArray.map((artiste) => <ArtistCard key={artiste.id} artiste={artiste} navigation={navigation}/>)}
       </ScrollView>
     </View>
-  );  
+  );
 };
 
 export default React.memo(Accueil);

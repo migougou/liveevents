@@ -34,7 +34,7 @@ const Plus = ({navigation}) => {
                   <Text style={styles.sousTextTitle}>{category.title}</Text>
                 </View>
                 <View style={styles.separator}/>
-              </TouchableOpacity> 
+              </TouchableOpacity>
             ))}
           </View>
 

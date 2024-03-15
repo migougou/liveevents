@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   diversesPages: {
-    flex: 1, 
-    flexDirection: 'row', 
+    flex: 1,
+    flexDirection: 'row',
     justifyContent: 'space-between'
   },
   reseauxSociaux: {

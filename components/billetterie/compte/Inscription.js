@@ -24,7 +24,6 @@ const Inscription = ({ setInscription, setInfosClient }) => {
     }
   }
 
-  // 
   async function postData(data) {
     try {
       const response = await axios.post('http://cchost.freeboxos.fr:5001/clients', data);
