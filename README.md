@@ -20,4 +20,4 @@
 
 ## Review 15/03/2024
 - Le render d'un composant doit être unique (voir App.js)
-- 
+- Possibilité d'utilisation des refs à plusieurs endroits du code plutôt qu'en permanence des states
