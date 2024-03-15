@@ -18,6 +18,10 @@
  - psycopg2
 - A vous de jouer, sois en lançant main.py et en choississant quel méthodes vous utilisez en mettant un # devant les méthodes que vous ne voulez pas utiliser dans "if __name__ == '__main__':" ou sois en lançant run_api et la vous aurez flask qui vous permettra de faire des requêtes avec un navigateur ou Postman via l'adresse qui vous est donnée
 
-## Review 15/03/2024
+## Review 15/03/2024 => Points à améliorer
 - Le render d'un composant doit être unique (voir App.js)
-- Possibilité d'utilisation des refs à plusieurs endroits du code plutôt qu'en permanence des states
+- Possibilité d'utilisation des refs à plusieurs endroits du code plutôt qu'en permanence des states.
+- Il aurait fallu mettre les pages dans un dossier pages à la racine.
+- Il aurait fallu mettre les routes dans un dossier routes à la racine.
+- Utilisation de display: grid plus adapaté à certains endroits pour l'UI.
+- L'utilisation des % pour les dimensions n'étaient pas une bonne idée avec l'expérience que j'ai actuellement.

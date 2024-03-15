@@ -19,9 +19,7 @@ const Restaurant = ({ navigation }) => {
   wordpressPlus.forEach((info) => {
     const categoryInfo = info.acf.categories_infos;
 
-    if (categoryInfo === "Restaurants et Bars") {
-      restaurantTemporaire.push(info);
-    }
+    if (categoryInfo === "Restaurants et Bars") { restaurantTemporaire.push(info); }
   });
 
   const [isExpanded, setisExpanded] = useState(restaurantTemporaire.map(() => false));

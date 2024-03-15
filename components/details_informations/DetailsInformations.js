@@ -9,8 +9,7 @@ const DetailsInformations = ({
   choixInfo,
   changementInformation,
 }) => {
-  const affichageBoutton =
-    informationsBanales.length > 0 && informationsImportantes.length > 0;
+  const affichageBoutton = informationsBanales.length > 0 && informationsImportantes.length > 0;
 
   return (
     <>

@@ -18,9 +18,7 @@ const Objets = ({ navigation }) => {
   wordpressPlus.forEach((info) => {
     const categoryInfo = info.acf.categories_infos;
 
-    if (categoryInfo === "Objets trouvés et interdits") {
-      objetsTemporaire.push(info);
-    }
+    if (categoryInfo === "Objets trouvés et interdits") { objetsTemporaire.push(info); }
   });
 
   const [isExpanded, setisExpanded] = useState(objetsTemporaire.map(() => false));

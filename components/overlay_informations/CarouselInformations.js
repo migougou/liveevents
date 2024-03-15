@@ -29,12 +29,11 @@ const CarouselInformations = ({
   const indexInfoSelected = infoSelected === "Important" ? indexInfoImportantes : indexInfoBanales;
   const informationsSelected = infoSelected === "Important" ? informationsImportantes : informationsBanales;
 
+  // TODO: Le render d'un composant doit être unique !
   if (nombreInfoSelected === 0) {
     return (
       <View style={[styles.infoCarousel, styles[`carousel${infoSelected}`]]}>
-        <Text style={styles.titreTextCarousel}>
-          Pas d'information importante
-        </Text>
+        <Text style={styles.titreTextCarousel}>Pas d'information importante</Text>
       </View>
     );
   }
@@ -57,9 +56,7 @@ const CarouselInformations = ({
               Information {infoSelected.toLowerCase()}e n°{index + 1}
             </Text>
             <Text style={styles.textCarousel}>
-              {moment(item.acf.momentdepublication).format(
-                "DD/MM/YYYY HH:mm"
-              )}
+              {moment(item.acf.momentdepublication).format("DD/MM/YYYY HH:mm")}
             </Text>
             <Text style={styles.textCarouselMessage}>
               {item.acf.messagecourt}

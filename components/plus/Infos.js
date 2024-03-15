@@ -21,9 +21,7 @@ const Infos = ({ navigation }) => {
   wordpressPlus.forEach((info) => {
     const categoryInfo = info.acf.categories_infos;
 
-    if (categoryInfo === "Horaires et Accès") {
-      horairesAccesTemporaire.push(info);
-    }
+    if (categoryInfo !== "Horaires et Accès") { horairesAccesTemporaire.push(info); };
   });
 
   const [isExpanded, setisExpanded] = useState(horairesAccesTemporaire.map(() => false));

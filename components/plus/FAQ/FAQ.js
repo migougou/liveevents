@@ -5,6 +5,8 @@ import { ScrollView, Text, View } from "react-native";
 import styles from "./styles";
 import FAQSection from './FAQSection';
 
+// Handle FAQ Generation
+// TODO: Passer la gestion des données de la FAQ dans le back-end ?
 const FAQ_DATA = [
   {
     title: 'Le Festival',
@@ -19,10 +21,6 @@ const FAQ_DATA = [
       ["Où puis-je acheter mon pass?", "Sur notre billetterie..."],
     ]
   },
-
-
-  // C'est dynamique, donc on peut tout générer de cette manière
-  // Peut-être passer ça dans en back-end ?
 ];
 
 const FAQ = () => {
@@ -30,9 +28,7 @@ const FAQ = () => {
     <View style={styles.container}>
       <ScrollView vertical>
         <Text style={styles.headerText}>Foire aux Questions</Text>
-        {FAQ_DATA.map((section, index) => (
-          <FAQSection key={index} section={section} />
-        ))}
+        { FAQ_DATA.map((section, index) => (<FAQSection key={index} section={section} />)) }
       </ScrollView>
     </View>
   );

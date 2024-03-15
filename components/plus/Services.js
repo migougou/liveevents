@@ -24,9 +24,7 @@ const Services = ({ navigation }) => {
   wordpressPlus.forEach((info) => {
     const categoryInfo = info.acf.categories_infos;
 
-    if (categoryInfo === "Services") {
-      servicesTemporaire.push(info);
-    }
+    if (categoryInfo === "Services") { servicesTemporaire.push(info); }
   });
 
   const [isExpanded, setisExpanded] = useState(servicesTemporaire.map(() => false));
