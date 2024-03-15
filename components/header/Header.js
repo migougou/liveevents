@@ -4,7 +4,7 @@ import { Badge } from "react-native-elements";
 import styles from "./styles";
 
 const logoPays = require("../../icones/france.png");
-const logoConcert = require("../../icones/concert.png");
+const logoConcert = require("../../icones/Nations-sounds.png");
 const notification = require("../../icones/notification.png");
 const notificationImportante = require("../../icones/notificationImportante.png");
 

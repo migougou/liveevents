@@ -27,8 +27,12 @@ const FAQ = () => {
   return (
     <View style={styles.container}>
       <ScrollView vertical>
-        <Text style={styles.headerText}>Foire aux Questions</Text>
-        { FAQ_DATA.map((section, index) => (<FAQSection key={index} section={section} />)) }
+        <Text style={styles.headerText}>Foire Aux Questions</Text>
+        <View style={styles.faqContainer}>
+        {FAQ_DATA.map((section, index) => (
+          <FAQSection key={index} section={section} />
+        ))}
+        </View>
       </ScrollView>
     </View>
   );

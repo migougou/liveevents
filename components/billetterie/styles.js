@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: 'auto'
+    marginHorizontal: 8,
   },
   buttonCacher: {
     marginEnd: wp(10)
@@ -114,6 +114,27 @@ const styles = StyleSheet.create({
     color: "black",
     textDecorationLine: 'underline',
     alignSelf: 'flex-start',
+  },
+  textClient: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginTop: hp(1.5),
+    color: "black",
+    alignSelf: "center",
+  },
+  textInfoClient: {
+    fontSize: 16,
+    marginTop: hp(1.5),
+    color: "black",
+    alignSelf: "flex-start",
+  },
+  faqContainer: {
+    padding: hp(1.5),
+    backgroundColor: "white",
+    borderRadius: 10,
+    borderColor: C5,
+    borderWidth: 2,
+    marginVertical: hp(1.5),
   },
   errorMessage: {
     color: 'black',
@@ -147,8 +168,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingStart: wp(2),
   },
-  buttonPanier: {
-    marginStart: wp('0'),
+  buttonProduitDelete: {
     justifyContent: "center",
     alignItems: "center",
     borderColor : C3,
@@ -158,6 +178,33 @@ const styles = StyleSheet.create({
     height: hp(6),
     backgroundColor: "white",
     marginTop: wp('2'),
+    
+  },
+  buttonProduitAllDelete: {
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor : C3,
+    borderWidth : 2,
+    borderRadius: 5,
+    width: wp(30),
+    height: hp(6),
+    backgroundColor: "white",
+    marginTop: wp('2'),
+    marginStart: 5,
+    
+  },
+  buttonPanier: {
+    marginBottom: wp('4'),
+    marginHorizontal: wp(2),
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderColor : C5,
+    borderWidth : 2,
+    borderRadius: 5,
+    width: wp(80),
+    height: hp(6),
+    backgroundColor: "white",
+    paddingStart: wp(2),
   },
   textPanier: {
     fontSize: 13,

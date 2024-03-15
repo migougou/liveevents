@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Button, Text, View, TouchableOpacity } from 'react-native';
 import { deleteInfoClient } from '../../utilities';
 import axios from 'axios';
+import styles from '../styles';
 
 const EspaceClient = ({ infosClient, setInfosClient, ordersData }) => {
   const [commandeClient, setCommandeClient] = useState([])
@@ -28,18 +29,23 @@ const EspaceClient = ({ infosClient, setInfosClient, ordersData }) => {
 
   return (
     <View>
-      <View>
-        <Button title="se déconnecter" onPress={() => deleteInfoClient(setInfosClient)} />
+      <TouchableOpacity style={styles.buttonCompte} onPress={() => deleteInfoClient(setInfosClient)}>
+        <Text style={styles.textCompte}>Déconnecter</Text>
+      </TouchableOpacity>
+      <Text style={styles.textClient}>Bienvenue {infosClient.prenom} {infosClient.nom}</Text>
+      <View style={styles.faqContainer}>
+        <Text style={styles.textInfoClient}>Adresse : {infosClient.adresse}</Text>
+        <Text style={styles.textInfoClient}>Code postal : {infosClient.codepostal}</Text>
+        <Text style={styles.textInfoClient}>Ville : {infosClient.ville}</Text>
+        <Text style={styles.textInfoClient}>Département : {infosClient.departement}</Text>
+        <Text style={styles.textInfoClient}>Pays : {infosClient.pays}</Text>
+        <Text style={styles.textInfoClient}>Téléphone : {infosClient.telephone}</Text>
+        <Text style={styles.textInfoClient}>Email : {infosClient.email}</Text>
       </View>
-      <Text>Salut {infosClient.prenom} {infosClient.nom}</Text>
-      <Text>Adresse : {infosClient.adresse}</Text>
-      <Text>Code postal : {infosClient.codepostal}</Text>
-      <Text>Ville : {infosClient.ville}</Text>
-      <Text>Departement : {infosClient.departement}</Text>
-      <Text>Pays : {infosClient.pays}</Text>
-      <Text>Telephone : {infosClient.telephone}</Text>
-      <Text>Email : {infosClient.email}</Text>
       {commandeClient?.map(commande => <Text key={commande.id}>Prix commande : {commande.total}</Text>)}
+      <TouchableOpacity style={styles.buttonCompte} onPress={() => deleteInfoClient(setInfosClient)}>
+        <Text style={styles.textCompte}>Déconnecter</Text>
+      </TouchableOpacity>
     </View>
   );
 };

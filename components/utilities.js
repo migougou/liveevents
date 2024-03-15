@@ -364,7 +364,10 @@ export const cleanAllData = async () => {
 export const checkUserCredentials = async (email, motdepasse) => {
   try {
     const response = await axios
-      .post('http://cchost.freeboxos.fr:5001/clients-test', {
+      .post(
+        'http://cchost.freeboxos.fr:5001/clients-test'
+        // 'http://cchost.freeboxos.fr:5001/clients-test'
+        , {
         email,
         motdepasse,
       });
