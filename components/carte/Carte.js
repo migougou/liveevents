@@ -3,8 +3,10 @@ import MapView, { Marker, Callout } from "react-native-maps"
 import { View, Text, Image } from "react-native";
 import { CheckBox } from "react-native-elements";
 import styles from "./styles";
-//import Geolocation from "react-native-geolocation-service";
-//import OpenSettings from "react-native-open-settings";
+import { C7 } from "../colors";
+
+// import Geolocation from "react-native-geolocation-service";
+// import OpenSettings from "react-native-open-settings";
 
 const WCIcon = require("../../icones/toilet-icon.png");
 const sceneIcon = require("../../icones/scene.png");
@@ -14,17 +16,10 @@ const assistanceIcon = require("../../icones/secours.png");
 const initialPin = { latitude: 48.859349, longitude: 2.233235 };
 
 const Carte = ({ localisations }) => {
-  const [allLocations, setAllLocations] = useState(localisations);
-
-  const [legendState, setLegendState] = useState({
-    scene: true,
-    WC: true,
-    assistance: true,
-    restaurant: true,
-  });
+  const [legendState, setLegendState] = useState({ scene: true, WC: true, assistance: true, restaurant: true });
 
   const getIconImage = (typeLocalisation) => {
-    var lowercaseTypeLocalisation = typeLocalisation.toLowerCase();
+    const lowercaseTypeLocalisation = typeLocalisation.toLowerCase();
 
     if (lowercaseTypeLocalisation.includes("restaurant")) {
       return legendState.restaurant ? restaurantIcon : null;
@@ -38,7 +33,6 @@ const Carte = ({ localisations }) => {
   };
 
   return (
-
     <View style={styles.container}>
       <MapView
         style={styles.map}
@@ -48,7 +42,7 @@ const Carte = ({ localisations }) => {
           longitudeDelta: 0.01,
         }}
       >
-        {allLocations.map((localisation) => (
+        {localisations.map((localisation) => (
           <Marker
             key={localisation.id}
             coordinate={{
@@ -73,13 +67,8 @@ const Carte = ({ localisations }) => {
           <Text style={styles.textScene}>Scènes</Text>
           <CheckBox
             checked={legendState.scene}
-            onPress={() =>
-              setLegendState((prevState) => ({
-                ...prevState,
-                scene: !prevState.scene,
-              }))
-            }
-            checkedColor="#4AA3A2"
+            onPress={() => setLegendState((prevState) => ({ ...prevState, scene: !prevState.scene })) }
+            checkedColor={C7}
           />
         </View>
         <View style={styles.legendItem}>
@@ -87,13 +76,8 @@ const Carte = ({ localisations }) => {
           <Text style={styles.textWC}>Toilettes</Text>
           <CheckBox
             checked={legendState.WC}
-            onPress={() =>
-              setLegendState((prevState) => ({
-                ...prevState,
-                WC: !prevState.WC,
-              }))
-            }
-            checkedColor="#4AA3A2"
+            onPress={() => setLegendState((prevState) => ({ ...prevState, WC: !prevState.WC })) }
+            checkedColor={C7}
           />
         </View>
         <View style={styles.legendItem}>
@@ -101,13 +85,8 @@ const Carte = ({ localisations }) => {
           <Text style={styles.textAssistance}>Secours</Text>
           <CheckBox
             checked={legendState.assistance}
-            onPress={() =>
-              setLegendState((prevState) => ({
-                ...prevState,
-                assistance: !prevState.assistance,
-              }))
-            }
-            checkedColor="#4AA3A2"
+            onPress={() => setLegendState((prevState) => ({ ...prevState, assistance: !prevState.assistance })) }
+            checkedColor={C7}
           />
         </View>
         <View style={styles.legendItem}>
@@ -115,13 +94,8 @@ const Carte = ({ localisations }) => {
           <Text style={styles.textRestaurant}>Restaurations</Text>
           <CheckBox
             checked={legendState.restaurant}
-            onPress={() =>
-              setLegendState((prevState) => ({
-                ...prevState,
-                restaurant: !prevState.restaurant,
-              }))
-            }
-            checkedColor="#4AA3A2"
+            onPress={() => setLegendState((prevState) => ({ ...prevState, restaurant: !prevState.restaurant })) }
+            checkedColor={C7}
           />
         </View>
       </View>

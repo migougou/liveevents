@@ -8,12 +8,9 @@ import InfoArtiste from "./InfoArtiste";
 const DetailsArtiste = ({ route, navigation }) => {
   const { artiste } = route.params;
 
-  if (!artiste) {
-    return null;
-  }
+  if (!artiste) { return null; }
 
   const { acf: { hdebut, hfin } } = artiste;
-
   const hmdebut = useMemo(() => hdebut.slice(0, 5), [hdebut]);
   const hmfin = useMemo(() => hfin.slice(0, 5), [hfin]);
 

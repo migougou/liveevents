@@ -11,7 +11,6 @@ import DayButton from "./DayButton.js";
 import FilterCheckList from "./FilterCheckList.js";
 import styles from "./styles.js";
 
-
 const Programmation = ({ artistes, navigation }) => {
   const [filterArtistes, setFilterArtistes] = useState([]);
   const [jour, setJour] = useState("samedi");
@@ -75,13 +74,13 @@ const Programmation = ({ artistes, navigation }) => {
         />
         <DayButton
           label="SAMEDI"
-          date="01 Août"
+          date="30 Mars"
           selected={jour === "samedi"}
           onPress={() => setJour("samedi")}
         />
         <DayButton
           label="DIMANCHE"
-          date="02 Août"
+          date="31 Mars"
           selected={jour === "dimanche"}
           onPress={() => setJour("dimanche")}
         />
@@ -119,16 +118,10 @@ const Programmation = ({ artistes, navigation }) => {
           )}
           <FlatList
             data={filterArtistes}
-            renderItem={({ item }) => (
-              <CarteArtiste item={item} onPress={() => navigation.navigate("Details de l'artiste", { artiste: item })}/>
-            )}
+            renderItem={({ item }) => (<CarteArtiste item={item} onPress={() => navigation.navigate("Details de l'artiste", { artiste: item })}/>)}
             keyExtractor={(item) => item.id}
             style={styles.list}
-            ListEmptyComponent={
-              <Text>
-                Aucun artiste ne correspond à ce ou ces critères de filtre.
-              </Text>
-            }
+            ListEmptyComponent={<Text>Aucun artiste ne correspond à ce ou ces critères de filtre.</Text>}
           />
         </View>
       )}
