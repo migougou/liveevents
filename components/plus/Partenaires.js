@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity, Linking, ScrollView, SafeAreaView } from "react-native";
 
 import styles from "./styles";
-import Footer from "../footer/footer.js";
+import Footer from "../footer/Footer";
 
 const wordpressPartenaires = require ("../../local_data/wordpressPartenaires.json")
 

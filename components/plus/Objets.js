@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View, TouchableOpacity, SafeAreaView, ScrollView, Image } from "react-native";
 
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import Footer from "../footer/footer";
+import Footer from "../footer/Footer";
 import styles from "./styles.js";
 
 const wordpressPlus = require("../../local_data/wordpressPlus.json");

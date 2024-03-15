@@ -3,7 +3,7 @@ import { Text, View, SafeAreaView, TouchableOpacity, ScrollView } from "react-na
 
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
-import Footer from "../footer/footer";
+import Footer from "../footer/Footer";
 import styles from "./styles";
 import { C1, C2, C3 } from "../colors";
 
