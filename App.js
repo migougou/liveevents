@@ -37,8 +37,8 @@ export default function App() {
   const [artistes, setArtistes] = useState([]);
   const [localisations, setLocalisations] = useState([]);
   const [informations, setInformations] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [loadingText, setLoadingText] = useState("Loading");
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadingText, setLoadingText] = useState("isLoading");
   const [error, setError] = useState(null);
   const [informationType, setInformationType] = useState(true);
   const [overlayVisible, setOverlayVisible] = useState(false);
@@ -48,53 +48,25 @@ export default function App() {
   const [nombreInfoImportantes, setNombreInfoImportantes] = useState(0);
   const [choixInfo, setChoixInfo] = useState("important");
 
-  /* // Choix n°1 : data récupérées via un fetch sur les URL du wordpress
-  useEffect(() => {
-    setLoading(true);
-    let completedRequests = 0;
-
-    const handleRequestComplete = () => {
-      completedRequests++;
-
-      if (completedRequests === 4) { // Ajuster le nombre en fonction du nombre de requetes
-        setLoading(false);
-      }
-    };
-
-    fetchURL(filterURLs.artistes, setArtistes, handleRequestComplete);
-    fetchURL(filterURLs.localisations, setLocalisations, handleRequestComplete);
-    fetchURL(filterURLs.partenaires, setPartenaires, handleRequestComplete);
-    fetchURL(filterURLs.informations, setInformations, handleRequestComplete);
-
-    // Fetch des informations toutes les 30 secondes
-    const interval = setInterval(() => {
-      fetchURL(filterURLs.informations, setInformations, handleRequestComplete);
-    }, FETCH_INTERVAL);
-
-    return () => clearInterval(interval);
-  }, []); */
-
-  // Choix n°2 : data récupérées via des json
   useEffect(() => {
     setArtistes(localData.artistes);
     setLocalisations(localData.localisations);
     setInformations(localData.informations);
-    setLoading(false);
+    setIsLoading(false);
   }, []);
 
-  // Permet d'avoir un écran de chargement lors du fetch des données pour afficher l'application seulement quand les données sont récupérées et ainsi éviter les erreurs
+  // Handle Loading
   useEffect(() => {
-    if (loading) {
-      const interval = setInterval(() => {
-        setLoadingText((prevLoadingText) =>
-          prevLoadingText.endsWith("...") ? "Loading" : prevLoadingText + "."
-        );
-      }, LOADING_INTERVAL);
-      return () => clearInterval(interval);
-    }
-  }, [loading]);
+    if (!isLoading) return;
 
-  // Permet de diviser les informations en 2 catégories, Importantes et banales
+    const interval = setInterval(() => {
+      setLoadingText((previousLoadingText) => previousLoadingText.endsWith("...") ? "isLoading" : previousLoadingText + "." );
+    }, LOADING_INTERVAL);
+
+    return () => clearInterval(interval);
+  }, [isLoading]);
+
+  // Handle Informations => Banales && Importantes
   useEffect(() => {
     let infoBanales = [];
     let infoImportantes = [];
@@ -108,41 +80,28 @@ export default function App() {
 
     setInformationsBanales(infoBanales);
     setInformationsImportantes(infoImportantes);
+    setNombreInfoBanales(infoBanales.length);
+    setNombreInfoImportantes(infoImportantes.length);
+    setInformationType(infoImportantes.length > 0);
   }, [informations]);
 
-  // Permet l'affichage de la cloche d'informations et donne les nombre d'informations banales et importantes
-  useEffect(() => {
-    setNombreInfoBanales(informationsBanales.length);
-    setNombreInfoImportantes(informationsImportantes.length);
+  // const fetchURL = (URL, setData, onComplete) => {
+  //   axios
+  //     .get(URL)
+  //     .then((res) => {
+  //       setData(JSON.parse(res.request._response));
+  //       onComplete();
+  //     })
+  //     .catch((error) => {
+  //       setError('Une erreur s\'est produite ' + error);
+  //       onComplete();
+  //     });
+  // };
 
-    // true = info banale / false = info importante
-    informationsImportantes.length > 0 ? setInformationType(false) : setInformationType(true);
-  }, [informationsBanales, informationsImportantes]);
+  function overlayInfoLogic() { setOverlayVisible(!overlayVisible); }
 
-  const fetchURL = (URL, setData, onComplete) => {
-    axios
-      .get(URL)
-      .then((res) => {
-        setData(JSON.parse(res.request._response));
-        onComplete();
-      })
-      .catch((error) => {
-        setError('Une erreur s\'est produite ' + error);
-        onComplete();
-      });
-  };
-
-  function overlayInfoLogic() {
-    setOverlayVisible(!overlayVisible);
-  }
-
-  function changementInformation() {
-    setChoixInfo(choixInfo === "important" ? "banale" : "important")
-  }
-
-  //fin modifs
-
-  if (loading) {
+  // TODO: Le render d'un composant doit être unique !
+  if (isLoading) {
     return (
       <View style={styles.loading}>
         <Text>{loadingText}</Text>
@@ -150,6 +109,7 @@ export default function App() {
     );
   }
 
+  // TODO: Le render d'un composant doit être unique !
   if (error) {
     return (
       <View style={styles.error}>
@@ -177,13 +137,14 @@ export default function App() {
               setChoixInfo={setChoixInfo}
             />
           </Overlay>
-          <Tab.Navigator 
+          <Tab.Navigator
             backBehavior="initialRoute"
             initialRouteName="Accueil"
             screenOptions={({ route }) => ({
+              // Handle Icon Menu
               tabBarIcon: ({ color = C1, size }) => {
                 let iconName;
-    
+
                 if (route.name === "Map") {
                   iconName = "map";
                 } else if (route.name === "Artistes") {
@@ -195,23 +156,24 @@ export default function App() {
                 } else if (route.name === "Plus") {
                   iconName = "menu";
                 }
-    
+
                 return <Ionicons name={iconName} size={size} color={color} />;
               },
               tabBarButton: (props) => (<Pressable {...props} style={({ pressed }) => [styles.tabBarButton, { opacity: pressed ? 0.5 : 1 }]} />),
               headerShown: false,
               tabBarActiveTintColor: C3,
-              tabBarInactiveTintColor: '#ffffff',
+              tabBarInactiveTintColor: 'white',
               tabBarStyle: { backgroundColor: C2 },
             })}
           >
-    
+
             <Tab.Screen name="Map">{(props) => <Carte {...props} localisations={localisations} />}</Tab.Screen>
-            <Tab.Screen 
-              name="Artistes" 
+            <Tab.Screen
+              name="Artistes"
               children={(props) => <ArtistesStack {...props} artistes={artistes} />}
-              listeners={({ navigation }) => ({ tabPress: event => { 
-                event.preventDefault();           
+              // Route spéciale pour aller de Acceuil à Artistes/DetailsArtiste
+              listeners={({ navigation }) => ({ tabPress: event => {
+                event.preventDefault();
                 navigation.reset({ index: 0, routes: [{ name: 'Artistes', params: { screen: 'Programmation' }}],
                 });
               }})}
@@ -226,16 +188,3 @@ export default function App() {
   );
 }
 
-/*
-        <Drawer.Screen name="DetailsInformations" options={{ drawerItemStyle: { display: "none" } }}>
-          {(props) => (
-            <DetailsInformations
-              {...props}
-              informationsBanales={informationsBanales}
-              informationsImportantes={informationsImportantes}
-              choixInfo={choixInfo}
-              setChoixInfo={setChoixInfo}
-              changementInformation={changementInformation}
-            />
-          )}
-*/
