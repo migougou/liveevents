@@ -28,7 +28,8 @@ const Inscription = ({ setInscription, setInfosClient }) => {
     try {
       const response = await axios.post('http://cchost.freeboxos.fr:5001/clients', data);
       const utilisateur = response.data; // Récupérer les données de la réponse POST
-      storeInfoClient(utilisateur.data, setInfosClient);
+      console.log(utilisateur)
+      storeInfoClient(utilisateur.res, setInfosClient);
       setInscription(false);
     } catch (error) {
       if (error.response) {
@@ -39,7 +40,7 @@ const Inscription = ({ setInscription, setInfosClient }) => {
     }
   }
 
-  inputData = [{
+  const inputData = [{
     "id": 1,
     "placeholder": "Prénom",
     "keyboardType": "default",

@@ -95,7 +95,7 @@ export const rechercheNomArtiste = (arrayArtistes, rechercher) => {
 
   return arrayArtistes.filter((artiste) => {
     const nom = removeAccents(artiste.acf.artiste).toLowerCase();
-    return nom.includes(termeRecherche);
+    return nom?.includes(termeRecherche);
   });
 };
 
@@ -146,7 +146,7 @@ export const stylesArrayFilter = (artistes) => {
       style.forEach((style) => {
         style = premiereLettreMajuscule(style);
         // Ajoute les styles uniques au tableau
-        if (!Styles.includes(premiereLettreMajuscule(style))) {
+        if (!Styles?.includes(premiereLettreMajuscule(style))) {
           Styles.push(style);
         }
       });
@@ -180,7 +180,7 @@ export const sceneArrayFilter = (artistes) => {
     const scene = acf.scene;
 
     // Vérifie si la scène n'est pas vide et n'a pas encore été ajoutée à la liste des scènes
-    if (scene.length > 0 && !Scenes.includes(scene)) {
+    if (scene.length > 0 && !Scenes?.includes(scene)) {
       Scenes.push(scene);
     }
   });

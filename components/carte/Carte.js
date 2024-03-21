@@ -21,13 +21,13 @@ const Carte = ({ localisations }) => {
   const getIconImage = (typeLocalisation) => {
     const lowercaseTypeLocalisation = typeLocalisation.toLowerCase();
 
-    if (lowercaseTypeLocalisation.includes("restaurant")) {
+    if (lowercaseTypeLocalisation?.includes("restaurant")) {
       return legendState.restaurant ? restaurantIcon : null;
-    } else if (lowercaseTypeLocalisation.includes("toilettes")) {
+    } else if (lowercaseTypeLocalisation?.includes("toilettes")) {
       return legendState.WC ? WCIcon : null;
-    } else if (lowercaseTypeLocalisation.includes("scène")) {
+    } else if (lowercaseTypeLocalisation?.includes("scène")) {
       return legendState.scene ? sceneIcon : null;
-    } else if (lowercaseTypeLocalisation.includes("secours")) {
+    } else if (lowercaseTypeLocalisation?.includes("secours")) {
       return legendState.assistance ? assistanceIcon : null;
     }
   };

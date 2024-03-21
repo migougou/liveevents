@@ -54,8 +54,7 @@ class ClientsResource(GenericResource):
             if self.test_email(data['email']):
                 res = 1
             else:
-                motdepasse_crypte = hashlib.sha256(
-                    data['motdepasse'].encode()).hexdigest()
+                motdepasse_crypte = hashlib.sha256(data['motdepasse'].encode()).hexdigest()
                 # Remplace le mot de passe non crypté par le mot de passe crypté
                 data['motdepasse'] = motdepasse_crypte
                 data['email'] = data['email'].lower()

@@ -23,7 +23,7 @@ const EspaceClient = ({ infosClient, setInfosClient, ordersData }) => {
   console.log('commandeClient', commandeClient)
 
   useEffect(() => {
-    const commande = ordersData?.filter(order => infosClient?.commandes.includes(order.id));
+    const commande = ordersData?.filter(order => infosClient?.commandes?.includes(order.id));
     setCommandeClient(commande);
   }, [infosClient]);
 
