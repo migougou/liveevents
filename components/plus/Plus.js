@@ -19,7 +19,7 @@ const Plus = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.contentPlus}>
-          <Text style={styles.plusTitle}>LIVE EVENTS</Text>
+          <Text style={styles.plusTitle}>NATIONS SOUNDS</Text>
           <Text style={styles.textSousTitre}>10 - 11 juin</Text>
           <Text style={styles.textSousTitre}>Edition 2023</Text>
           <View style={styles.infosContainer}>
