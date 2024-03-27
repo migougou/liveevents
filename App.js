@@ -7,7 +7,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import { Overlay } from "react-native-elements";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import { FontAwesome5 } from "@expo/vector-icons";
 import axios from "axios";
 
 import { Accueil, Carte, Billetterie, OverlayInformations, ArtistesStack, PlusStack, Header } from "./components";
@@ -148,16 +148,16 @@ export default function App() {
                 if (route.name === "Map") {
                   iconName = "map";
                 } else if (route.name === "Artistes") {
-                  iconName = "musical-notes";
+                  iconName = "music";
                 } else if (route.name === "Accueil") {
                   iconName = "home";
                 } else if (route.name === "Billeterie") {
                   iconName = "wallet";
                 } else if (route.name === "Plus") {
-                  iconName = "menu";
+                  iconName = "bars";
                 }
 
-                return <Ionicons name={iconName} size={size} color={color} />;
+                return <FontAwesome5 name={iconName} size={size} color={color} />;
               },
               tabBarButton: (props) => (<Pressable {...props} style={({ pressed }) => [styles.tabBarButton, { opacity: pressed ? 0.5 : 1 }]} />),
               headerShown: false,
