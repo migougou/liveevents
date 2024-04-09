@@ -121,7 +121,7 @@ const Programmation = ({ artistes, navigation }) => {
             renderItem={({ item }) => (<CarteArtiste item={item} onPress={() => navigation.navigate("Details de l'artiste", { artiste: item })}/>)}
             keyExtractor={(item) => item.id}
             style={styles.list}
-            ListEmptyComponent={<Text>Aucun artiste ne correspond à ce ou ces critères de filtre.</Text>}
+            ListEmptyComponent={<Text style={styles.text}>Aucun artiste ne correspond à ce ou ces critères de filtre.</Text>}
           />
         </View>
       )}

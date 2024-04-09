@@ -2,10 +2,13 @@ import { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
 
+
+
 const FAQSection = ({ section }) => {
   const [expandedQuestionIndex, setExpandedQuestionIndex] = useState(null);
 
   const toggleQuestion = (index) => { setExpandedQuestionIndex(index === expandedQuestionIndex ? null : index); };
+
 
   return (
     <View style={styles.section}>

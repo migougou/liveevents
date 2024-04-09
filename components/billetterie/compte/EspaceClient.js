@@ -42,7 +42,7 @@ const EspaceClient = ({ infosClient, setInfosClient, ordersData }) => {
         <Text style={styles.textInfoClient}>Téléphone : {infosClient.telephone}</Text>
         <Text style={styles.textInfoClient}>Email : {infosClient.email}</Text>
       </View>
-      {commandeClient?.map(commande => <Text key={commande.id}>Prix commande : {commande.total}</Text>)}
+      {commandeClient?.map(commande => <Text key={commande.id} >Prix commande : {commande.total}</Text>)}
       <TouchableOpacity style={styles.buttonCompte} onPress={() => deleteInfoClient(setInfosClient)}>
         <Text style={styles.textCompte}>Déconnecter</Text>
       </TouchableOpacity>

@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 28,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     textShadowColor: C3,
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 3,
@@ -30,13 +30,13 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: "bold",
     marginVertical: wp(6),
     textAlign: "center",
     color: C3,
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 3,
+    fontFamily: 'Poppins_400Regular',
   },
   question: {
     fontSize: 20,
@@ -46,12 +46,14 @@ const styles = StyleSheet.create({
     borderBottomColor: C7,
     borderBottomWidth: 1,
     padding: 8,
+    fontFamily: 'Poppins_400Regular',
   },
   answer: {
     fontSize: 16,
     color: C3,
     marginBottom: 10,
     marginLeft: 10,
+    fontFamily: 'Poppins_400Regular',
   },
 });
 

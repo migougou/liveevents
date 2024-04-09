@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     bottom: 10,
     left: 0,
     right: 0,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     fontSize: 25,
     color: C3,
     textAlign: "center",
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 
   info: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     color: C7,
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
 
   centerInfo: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     color: C7,
     marginTop: 10,
     textAlign: "center",
@@ -86,12 +86,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     textAlign: "justify",
+    fontFamily: 'Poppins_400Regular',
   },
 
   buttonText: {
     color: C3,
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 3,

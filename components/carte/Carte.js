@@ -55,7 +55,7 @@ const Carte = ({ localisations }) => {
               style={styles.assistanceIcon}
             />
             <Callout style={styles.callout}>
-              <Text>{localisation.acf.localisation}</Text>
+              <Text style={styles.textLocal}>{localisation.acf.localisation}</Text>
             </Callout>
           </Marker>
         ))}

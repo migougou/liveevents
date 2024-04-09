@@ -45,7 +45,11 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: wp('0'),
   },
   titre: {
-    fontSize: wp('5'),
+    fontSize: wp('4.5'),
+    fontFamily: 'Poppins_400Regular',
+  },
+  text: {
+    fontFamily: 'Poppins_400Regular',
   },
   button: {
     flexDirection: 'row',
@@ -91,7 +95,7 @@ const styles = StyleSheet.create({
   },
   textCompte: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     color: C3,
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
@@ -105,7 +109,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   buttonCacher: {
-    marginEnd: wp(10)
+    marginEnd: wp(10),
+    fontFamily: 'Poppins_400Regular',
   },
   textLogin: {
     fontSize: 16,
@@ -114,10 +119,11 @@ const styles = StyleSheet.create({
     color: "black",
     textDecorationLine: 'underline',
     alignSelf: 'flex-start',
+    fontFamily: 'Poppins_400Regular',
   },
   textClient: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     marginTop: hp(1.5),
     color: "black",
     alignSelf: "center",
@@ -127,6 +133,7 @@ const styles = StyleSheet.create({
     marginTop: hp(1.5),
     color: "black",
     alignSelf: "flex-start",
+    fontFamily: 'Poppins_400Regular',
   },
   faqContainer: {
     padding: hp(1.5),
@@ -143,12 +150,14 @@ const styles = StyleSheet.create({
     marginLeft: wp(2.5),
     fontSize: 16,
     alignSelf: 'flex-start',
+    fontFamily: 'Poppins_400Regular',
   },
   errorMessageConnect: {
     color: 'black',
     marginLeft: wp(2.5),
     fontSize: 16,
     alignSelf: 'flex-start',
+    fontFamily: 'Poppins_400Regular',
   },
   inputContainer: {
     borderBottomWidth: 0,
@@ -208,7 +217,7 @@ const styles = StyleSheet.create({
   },
   textPanier: {
     fontSize: 13,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     color: C3,
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },

@@ -20,7 +20,7 @@ const Billets = ({ productsData, setPanierData }) => {
         renderItem={({ item }) => <CarteBillet item={item} setPanierData={setPanierData} />}
         keyExtractor={(item) => item.id}
         ListEmptyComponent={
-          <Text>
+          <Text style={styles.errorMessageConnect}>
             Aucun billet à vendre.
           </Text>
         }

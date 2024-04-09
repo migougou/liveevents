@@ -33,7 +33,7 @@ const ProduitPanier = ({ item, setPanierData }) => {
       <View style={styles.formatAdjust}>
         <Text style={styles.titre}>{item.name}</Text>
         <Text>{item.prix} €</Text>
-        <Text>quantité : {item.quantite}</Text>
+        <Text style={styles.text}>quantité : {item.quantite}</Text>
         <View style={styles.buttonDeleteContainer}>
           <TouchableOpacity style={styles.buttonProduitDelete} onPress={() => suppressionDuPanier('panier', 1)}>
             <Text style={styles.textPanier}>SUPPRIMER</Text>

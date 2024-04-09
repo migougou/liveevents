@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     },
     titleCard: {
         color: "black",
-        fontWeight: "900",
         fontSize: 18,
+        fontFamily: 'Poppins_400Regular',
     },
 });
 

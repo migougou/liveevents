@@ -38,7 +38,7 @@ const Restaurant = ({ navigation }) => {
                 <Text style={styles.sectionTitle}>{info.acf.sous_categories}</Text>
               </View>
               <View style={styles.contentText}>
-                <Text>
+                <Text style={styles.sectionText}>
                   {info.acf.texte_info}
                 </Text>
               </View>
