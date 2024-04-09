@@ -48,6 +48,7 @@ const Connection = ({ setConnection, setInfosClient }) => {
       </View>
       <View style={[styles.button, styles.buttonCompteConnect]}>
         <TextInput
+        style={styles.text}
           secureTextEntry={!showMotDePasse}
           value={motDePasse}
           onChangeText={setMotDePasse}

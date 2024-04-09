@@ -31,27 +31,32 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     width: 160,
+    fontFamily: 'Poppins_400Regular',
   },
 
   textRestaurant: {
-    marginBottom: 5,
+    marginEnd: -7,
     fontSize: 16,
+    fontFamily: 'Poppins_400Regular',
   },
   textWC: {
-    marginBottom: 5,
     fontSize: 16,
     marginEnd: 37,
+    fontFamily: 'Poppins_400Regular',
   },
   textAssistance: {
-    marginBottom: 5,
     fontSize: 16,
     marginEnd: 40,
+    fontFamily: 'Poppins_400Regular',
   },
   textScene: {
-    marginBottom: 5,
     fontSize: 16,
-    marginStart: 0,
     marginEnd: 46,
+    fontFamily: 'Poppins_400Regular',
+  },
+  textLocal: {
+    fontSize: 12,
+    fontFamily: 'Poppins_400Regular',
   },
   sceneIconLegend: {
     width: 20,

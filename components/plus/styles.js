@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import { wp, hp } from "../dimensions.js";
 import { C1, C2, C3, C4, C5, C6, C7 } from "../colors.js";
 
+
 const styles = StyleSheet.create({
   backButtonContainer: {
     top: 25,
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: C3,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 3,
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline",
     marginTop: 25,
     fontSize: 18,
+    fontFamily: 'Poppins_400Regular',
   },
   header: {
     alignItems: "center",
@@ -142,18 +144,18 @@ const styles = StyleSheet.create({
   },
   plusButtonText: {
     color: C3,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 3,
   },
   plusTitle: {
     fontSize: 30,
-    fontWeight: "bold",
     marginBottom: wp(3),
     textShadowColor: C3,
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 3,
+    fontFamily: 'Poppins_400Regular',
   },
   section: {
     flexDirection: "row",
@@ -163,11 +165,15 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     color: C3,
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 3,
+  },
+  sectionText: {
+    fontSize: 12,
+    fontFamily: 'Poppins_400Regular',
   },
   separator: {
     borderBottomColor: C7,
@@ -176,6 +182,7 @@ const styles = StyleSheet.create({
   },
   sousText: {
     flexDirection: "row",
+    fontFamily: 'Poppins_400Regular',
   },
   sousTextIcon: {
     marginRight: 12,
@@ -183,6 +190,7 @@ const styles = StyleSheet.create({
   },
   sousTextTitle: {
     fontSize: 16,
+    fontFamily: 'Poppins_400Regular',
     paddingBottom: 10,
     height: 30,
     color: C3,
@@ -192,7 +200,7 @@ const styles = StyleSheet.create({
   },
   textInfos: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     marginBottom: wp(8),
     textAlign: "center",
     color: C3,
@@ -201,37 +209,38 @@ const styles = StyleSheet.create({
     textShadowRadius: 3,
   },
   textSousTitre: {
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     textShadowColor: C3,
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 3,
   },
   textContact: {
     fontSize: 15,
+    fontFamily: 'Poppins_400Regular',
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     textShadowColor: C3,
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 3,
   },
   titleContact: {
     fontSize: 22,
-    fontWeight: "bold",
     marginBottom: 28,
     paddingBottom: 10,
     color: C3,
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 3,
+    fontFamily: 'Poppins_400Regular',
 
   },
   voirPlus: {
     color: C3,
     marginTop: hp(1.5),
     alignSelf: "center",
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
   },
 });
 

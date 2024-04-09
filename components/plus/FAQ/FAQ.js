@@ -5,6 +5,8 @@ import { ScrollView, Text, View } from "react-native";
 import styles from "./styles";
 import FAQSection from './FAQSection';
 
+
+
 // Handle FAQ Generation
 // TODO: Passer la gestion des données de la FAQ dans le back-end ?
 const FAQ_DATA = [
@@ -24,6 +26,8 @@ const FAQ_DATA = [
 ];
 
 const FAQ = () => {
+
+
   return (
     <View style={styles.container}>
       <ScrollView vertical>

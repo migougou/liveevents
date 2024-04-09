@@ -3,6 +3,9 @@ import { Text, View, Image, TouchableOpacity, Linking } from "react-native";
 import { useNavigation } from "@react-navigation/core";
 import styles from "./styles";
 
+
+
+
 const Facebook = require("../../icones/facebook.png");
 const Instagram = require("../../icones/instagram.png");
 const Twitter = require("../../icones/twitter.png");
@@ -23,6 +26,7 @@ const openSustainabilityCharterPage = () => { Linking.openURL("https://www.liven
 
 const Footer = () => {
   const navigation = useNavigation();
+
 
   return (
     <View style={styles.footer}>

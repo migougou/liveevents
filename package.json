@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.24.3",
+    "@expo-google-fonts/poppins": "^0.2.3",
     "@expo/vector-icons": "^14.0.0",
     "@react-native-async-storage/async-storage": "1.21.0",
     "@react-native-community/checkbox": "^0.5.17",
@@ -24,6 +25,9 @@
     "elements": "^0.6.0",
     "expo": "^50.0.14",
     "expo-status-bar": "~1.11.1",
+    "expo-app-loading": "^2.1.1",
+    "expo-font": "~11.4.0",
+    "expo-splash-screen": "~0.20.5",
     "expo-updates": "~0.24.12",
     "mathjs": "^12.4.1",
     "moment": "^2.30.1",

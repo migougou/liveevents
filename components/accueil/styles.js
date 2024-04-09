@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     color: C3,
     fontSize: 18,
     marginBottom: hp(0.5),
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     textAlign: "center",
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     color: C7,
     fontSize: 16,
     marginBottom: hp(0.3),
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     textAlign: "center",
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
@@ -35,6 +35,20 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "black",
     borderRadius: 8,
+  },
+
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%', 
+    height: '100%',
+  },
+
+  festivalImage: {
+    width: wp(100),
+    height: hp(43), 
+    resizeMode: 'cover',
   },
 
   container: {
@@ -89,13 +103,13 @@ const styles = StyleSheet.create({
 
   buttonText: {
     color: C3,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     fontSize: wp(3),
   },
 
   buttonTextSelected: {
     color: C2,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     fontSize: wp(3),
     borderRadius: 10,
     paddingHorizontal: wp(5),
@@ -116,7 +130,7 @@ const styles = StyleSheet.create({
 
   timer: {
     color: C3,
-    fontWeight: "bold",
+    fontFamily: 'Poppins_400Regular',
     marginBottom: hp(0.25),
     textAlign: "center",
     textShadowColor: C2,

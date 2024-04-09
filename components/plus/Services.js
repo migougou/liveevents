@@ -43,7 +43,7 @@ const Services = ({ navigation }) => {
                 <Text style={styles.sectionTitle}>{info.acf.sous_categories}</Text>
               </View>
               <View style={styles.contentText}>
-                <Text>
+                <Text style={styles.sectionText}>
                   {isExpanded[index] ? info.acf.texte_info : info.acf.texte_info.slice(0, 150) + (info.acf.texte_info.length > 150 ? "..." : "")}
                 </Text>
                 {info.acf.texte_info.length > 150 && (

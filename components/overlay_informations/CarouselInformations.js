@@ -4,9 +4,11 @@ import PaginationDot from "react-native-animated-pagination-dot";
 import Carousel from "react-native-reanimated-carousel";
 import moment from "moment";
 
+
 import { handleOpenDetails, compteurPage } from "../utilities.js"
 
 import styles from "./styles";
+
 
 const screenWidth = Dimensions.get("window").width;
 const autoPlayIntervalTime = 5000;
@@ -25,6 +27,7 @@ const CarouselInformations = ({
   handleOpenDetailsInformations
 }) => {
 
+
   const nombreInfoSelected = infoSelected === "Important" ? nombreInfoImportantes : nombreInfoBanales;
   const indexInfoSelected = infoSelected === "Important" ? indexInfoImportantes : indexInfoBanales;
   const informationsSelected = infoSelected === "Important" ? informationsImportantes : informationsBanales;
@@ -36,7 +39,7 @@ const CarouselInformations = ({
         <Text style={styles.titreTextCarousel}>Pas d'information importante</Text>
       </View>
     );
-  }
+  };
 
   return (
     <View style={styles[`carousel${infoSelected}`]}>
@@ -51,7 +54,7 @@ const CarouselInformations = ({
         onSnapToItem={(index) => compteurPage(infoSelected, setIndexInfoImportantes, setIndexInfoBanales, index)}
         data={informationsSelected}
         renderItem={({ item, index }) => (
-          <View key={index} style={styles.infoCarousel}>
+          <View key={index} style={[styles.infoCarousel, infoSelected === "Important" ? styles.infoImportant : styles.infoBanale]}>
             <Text style={styles.titreTextCarousel}>
               Information {infoSelected.toLowerCase()}e n°{index + 1}
             </Text>

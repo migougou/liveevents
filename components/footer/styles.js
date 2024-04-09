@@ -30,9 +30,9 @@ const styles = StyleSheet.create({
   },
   textFooter: {
     color: "white",
-    fontWeight: "bold",
     fontSize: 12,
     marginBottom: 10,
+    fontFamily: 'Poppins_400Regular',
   },
   textFooterContainer: {
     flexDirection: "row",

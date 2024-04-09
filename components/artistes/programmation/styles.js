@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   text: {
     alignItems: "center",
     color: C2,
+    fontFamily: 'Poppins_400Regular',
   },
 
   selectText: {
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: wp("0.7"),
     borderBottomColor: "#000",
     color: C1,
+    fontFamily: 'Poppins_400Regular',
   },
 
   checkboxTitle: {
@@ -63,6 +65,7 @@ const styles = StyleSheet.create({
     backgroundColor: C6,
     borderWidth: 2,
     borderColor: C3,
+    fontFamily: 'Poppins_400Regular',
   },
 
   dayButton: {
@@ -86,7 +89,7 @@ const styles = StyleSheet.create({
 
   dayButtonText: {
     fontSize: wp("4"),
-    fontWeight: "600",
+    fontFamily: 'Poppins_400Regular',
     color: C6,
     textShadowColor: C2,
     textShadowOffset: { width: -1, height: 1 },
@@ -100,6 +103,7 @@ const styles = StyleSheet.create({
   filterContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
+   
   },
 });
 

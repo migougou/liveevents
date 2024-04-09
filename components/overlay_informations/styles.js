@@ -1,6 +1,11 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { C1, C2, C3, C4, C5, C6, C7 } from "../colors";
+
+
 
 const screenWidth = Dimensions.get("window").width;
+
+
 
 const styles = StyleSheet.create({
   fullOverlay: {
@@ -11,20 +16,27 @@ const styles = StyleSheet.create({
   },
   infoCarousel: {
     height: screenWidth / 2,
-    backgroundColor: "rgba(255, 255, 255, 0.5)",
     padding: 5,
   },
+  infoImportant: {
+    backgroundColor: C4,
+  },
+  infoBanale: {
+    backgroundColor: C7,
+  },
   titreTextCarousel: {
-    fontSize: 20,
+    fontSize: 18,
     textAlign: "center",
-    fontWeight: "900",
+    fontFamily: 'Poppins_400Regular',
   },
   textCarousel: {
-    fontSize: 18,
+    fontSize: 14,
+    fontFamily: 'Poppins_400Regular',
   },
   textCarouselMessage: {
-    fontSize: 18,
+    fontSize: 14,
     height: 90,
+    fontFamily: 'Poppins_400Regular',
   },
   button: {
     padding: 10,
@@ -33,25 +45,25 @@ const styles = StyleSheet.create({
   buttonBanal: {
     padding: 8.5,
     borderRadius: 5,
-    backgroundColor: "#33CCFF",
+    backgroundColor: C6,
     borderColor: "black",
     borderWidth: 2,
   },
   buttonImportant: {
     padding: 8,
     borderRadius: 5,
-    backgroundColor: "#E24444",
+    backgroundColor: C5,
     borderColor: "black",
     borderWidth: 2
   },
   buttonText: {
     color: "black",
-    fontSize: 18,
-    fontWeight: "bold",
+    fontSize: 14,
+    fontFamily: 'Poppins_400Regular',
     textAlign: "center",
   },
   carouselBanal: {
-    backgroundColor: "#33CCFF",
+    backgroundColor: C6,
   },
   carouselImportant: {
     backgroundColor: "#E24444",

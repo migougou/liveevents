@@ -47,7 +47,7 @@ const CarteBillet = ({ item, setPanierData }) => {
       <Image source={{ uri: url }} style={styles.icone} />
       <View style={styles.formatAdjustBillet}>
         <Text style={styles.titre}>{item.name}</Text>
-        <Text>{descriptionFormate}</Text>
+        <Text style={styles.text}>{descriptionFormate}</Text>
         <View style={styles.button}>
           <Text>{item.price} €</Text>
           <TouchableOpacity style={styles.buttonBillets}  onPress={() => ajoutAuPanier('panier')}>
